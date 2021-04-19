@@ -1,0 +1,13 @@
+{
+  "name": "Pavel Mineev",
+  "short_name": "Pavel Mineev",
+  "icons": [
+    {
+      "src": "touch-icon.png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#ffffff",
+  "theme_color": "#ccc",
+  "display": "fullscreen"
+}

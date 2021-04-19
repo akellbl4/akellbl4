@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://pavel.mineev.me/sitemap.xml

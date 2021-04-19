@@ -1,0 +1,12 @@
+### Get track playing now in my Spotify
+GET {{ host }}/api/spotify/now-playing
+
+### Get list of my top tracks on Spotify
+GET {{ host }}/api/spotify/mow-playing
+
+### Get number of views on test post
+GET {{ host }}/api/views/test
+
+
+### Encrease number of views on test post
+POST {{ host }}/api/views/test
