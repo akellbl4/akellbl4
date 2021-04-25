@@ -6,9 +6,9 @@ From the very start to not so long ago my site was just number of links to my so
 
 ## Overview
 
-- `pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) makes Now Playing in my Spotify work as well as counting numbers of views with Redis.
-- `pages/blog/*` - Static pre-rendered blog pages using [MDX](https://github.com/mdx-js/mdx).
-- `pages/*` - All other static pages.
+- `src/pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) makes Now Playing in my Spotify work as well as counting numbers of views with Redis.
+- `src/pages/blog/*` - Static pre-rendered blog pages using [MDX](https://github.com/mdx-js/mdx).
+- `srcpages/*` - All other static pages.
 
 ## Run on local machine
 
