@@ -2,7 +2,7 @@ const headers = [
 	{
 		key: 'Content-Security-Policy',
 		value:
-			"default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://vitals.vercel-insights.com",
+			"default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://static.cloudflareinsights.com; img-src 'self' data:; connect-src 'self' https://vitals.vercel-insights.com https://static.cloudflareinsights.com",
 	},
 	{ key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
 	{ key: 'X-Frame-Options', value: 'DENY' },

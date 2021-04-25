@@ -14,6 +14,11 @@ export default class MyDocument extends Document {
 				<body className="preload-transitions bg-white text-gray-800 dark:text-gray-200 dark:bg-warmGray-900 min-w-[20rem] antialiased">
 					<Main />
 					<NextScript />
+					<script
+						defer
+						src="https://static.cloudflareinsights.com/beacon.min.js"
+						data-cf-beacon='{"token": "76d7c53c33994ba987887d0298985b3c"}'
+					/>
 				</body>
 			</Html>
 		)
