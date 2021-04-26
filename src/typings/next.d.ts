@@ -12,13 +12,23 @@ export module 'next' {
 	}
 
 	export type NextPageMeta = {
-		title?: string
+		name?: string
 		description?: string
-		imageUrl?: string
+		twitterAccount?: string
+		sharingImageUrl?: string
 		type?: 'article'
-		canonical?: string | null
+		canonical?: string
 		date?: string
-	}
+	} & (
+		| {
+				title: string
+				overrideTitle: true
+		  }
+		| {
+				title?: string
+				overrideTitle?: never
+		  }
+	)
 
 	export type NextGetStaticPropsResult<P> = next.GetStaticPropsResult<P & { meta: NextPageMeta }>
 

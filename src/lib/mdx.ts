@@ -38,7 +38,7 @@ async function transformMDX(content: string) {
 
 type GetFileContentResult<T> = {
 	content: string
-	meta: T & {
+	frontmatter: T & {
 		readingTime: string
 	} & (
 			| {
@@ -62,17 +62,17 @@ export async function getFileContent<T>(filepath: string): Promise<GetFileConten
 	const source = fs.readFileSync(path.resolve(dataFolderPath, filepath), 'utf-8')
 	const { data, content } = matter(source)
 	const result = {
-		meta: {
+		frontmatter: {
 			...data,
 			readingTime: `${readingTime(content).text}`,
 		},
-		content: await transformMDX(content),
+		content: await transformMDX(content, showAnchors),
 	} as GetFileContentResult<T>
 
-	if (typeof result.meta.publishedAt === 'string') {
+	if (typeof result.frontmatter.publishedAt === 'string') {
 		Object.assign(result, {
-			publishedAt: format(parseISO(result.meta.publishedAt), 'MMMM dd'),
-			publishedAtISO: result.meta.publishedAt,
+			publishedAt: format(parseISO(result.frontmatter.publishedAt), 'MMMM dd'),
+			publishedAtISO: result.frontmatter.publishedAt,
 		})
 	}
 

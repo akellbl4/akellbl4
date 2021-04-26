@@ -3,19 +3,18 @@ import type { InferGetStaticPropsType } from 'next'
 import { getFileContent } from 'lib/mdx'
 
 export async function getStaticProps() {
-	const { meta: postMeta, content } = await getFileContent('about.mdx')
-	const meta = {
-		...postMeta,
-		canonical: postMeta.original?.url || null,
-	}
+	const { frontmatter, content } = await getFileContent('about.mdx')
 
 	return {
 		props: {
-			meta,
+			meta: {
+				title: frontmatter.title,
+			},
 			content,
 		},
 	}
 }
+
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 export default function About({ meta, content }: Props) {

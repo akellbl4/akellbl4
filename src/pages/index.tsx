@@ -72,6 +72,6 @@ export default function Home() {
 }
 
 Home.meta = {
-	title: 'Pavel Mineev - Software Engineer, Open Source Contributor, Writer sometimes',
-	description: `Hi, I'm Pavel and you found my own cozy place on the Internet. Here you can find information about my activity on the Internet and far more.`,
+	title: 'Pavel Mineev - Software Engineer, Open Source Contributor, Mentor, and sometimes Writer',
+	overrideTitle: true,
 }

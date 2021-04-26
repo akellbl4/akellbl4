@@ -4,13 +4,13 @@ import type { AppProps } from 'next'
 
 import 'styles.css'
 import { fetcher } from 'lib/api'
+import { composeMeta } from 'lib/meta'
 import { Container } from 'components/Container'
 
 export default function MyApp({ Component, pageProps, router }: AppProps) {
-	const meta = { ...(pageProps.meta || {}), ...(Component.meta || {}) }
 	const [path] = router.asPath.split('?')
 	const url = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}${path}`
-	const canonical = meta.canonical || url
+	const meta = composeMeta(url, pageProps.meta, Component.meta)
 
 	if (typeof window !== 'undefined' && document.body.classList.contains('preload-transitions')) {
 		document.body.classList.remove('preload-transitions')
@@ -23,15 +23,15 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
 				<title>{meta.title}</title>
 				<meta name="description" content={meta.description} />
 				<meta property="og:url" content={url} />
-				<meta property="og:type" content={meta.type || 'website'} />
+				<meta property="og:type" content={meta.type} />
 				<meta property="og:title" content={meta.title} />
-				<meta property="og:image" content={meta.imageUrl} />
+				<meta property="og:image" content={meta.sharingImageUrl} />
 				<meta property="og:description" content={meta.description} />
-				<meta property="og:site_name" content="Pavel Mineev" />
-				<meta name="twitter:site" content="@akellbl4" />
+				<meta property="og:site_name" content={meta.name} />
+				<meta name="twitter:site" content={meta.twitterAccount} />
 				<meta name="twitter:card" content="summary_large_image" />
-				<meta name="author" content="Pavel Mineev" />
-				<link href={canonical} rel="canonical" />
+				<meta name="author" content={meta.name} />
+				<link href={meta.canonical} rel="canonical" />
 				{meta.date && <meta property="article:published_time" content={meta.date} />}
 			</Head>
 			<Container isHome={path === '/'}>

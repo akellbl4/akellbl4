@@ -1,9 +1,5 @@
 import Image from 'next/image'
-import type {
-	GetStaticPropsContext,
-	NextGetStaticPropsResult,
-	InferNextPageStaticProps,
-} from 'next'
+import type { GetStaticPropsContext, InferNextPageStaticProps, NextPageMeta } from 'next'
 
 import { getFileContent, getFiles, PostFrontmatter } from 'lib/mdx'
 import { Link } from 'components/Link'
@@ -19,23 +15,27 @@ export async function getStaticPaths() {
 }
 
 type Context = GetStaticPropsContext<{ slug: string }>
-type Result = NextGetStaticPropsResult<{
-	meta: PostFrontmatter
-	content: string
-}>
 
-export async function getStaticProps({ params }: Context): Promise<Result> {
-	const { meta: postMeta, content } = await getFileContent<PostFrontmatter>(
-		`blog/${params!.slug}.mdx`
+export async function getStaticProps({ params }: Context) {
+	const { frontmatter, content } = await getFileContent<PostFrontmatter>(
+		`blog/${params!.slug}.mdx`,
+		true
 	)
-	const meta = {
-		...postMeta,
-		canonical: postMeta.original?.url || null,
+	const meta: NextPageMeta = {
+		title: frontmatter.title,
+		date: frontmatter.publishedAt,
+	}
+
+	if (frontmatter.original?.url) {
+		meta.canonical = frontmatter.original.url
 	}
 
 	return {
 		props: {
 			meta,
+			original: frontmatter.original || null,
+			readingTime: frontmatter.readingTime,
+			publishedAt: frontmatter.publishedAt,
 			content,
 		},
 	}
@@ -43,7 +43,7 @@ export async function getStaticProps({ params }: Context): Promise<Result> {
 
 type Props = InferNextPageStaticProps<typeof getStaticProps, { slug: string }>
 
-export default function Blog({ meta, content, router }: Props) {
+export default function Blog({ meta, readingTime, publishedAt, original, content, router }: Props) {
 	const { slug } = router.query
 
 	return (
@@ -66,12 +66,12 @@ export default function Blog({ meta, content, router }: Props) {
 							<span itemProp="name">Pavel Mineev</span>
 						</span>
 						&nbsp;at&nbsp;
-						<time itemProp="datePublished" dateTime={meta.publishedAtISO}>
-							{meta.publishedAt}
+						<time itemProp="datePublished" dateTime={meta.date}>
+							{publishedAt}
 						</time>
 					</div>
 					<div className="text-gray-500">
-						{meta.readingTime}
+						{readingTime}
 						<span className="inline-block mx-2" role="separator">
 							•
 						</span>
@@ -104,14 +104,14 @@ export default function Blog({ meta, content, router }: Props) {
 						Edit on GitHub
 					</Link>
 				</div>
-				{meta.original && (
+				{original && (
 					<div className="text-sm">
 						Originally posted on{' '}
 						<Link
 							className="transition inline-block border-b border-transparent hover:border-gray-600"
-							href={meta.original.url}
+							href={original.url}
 						>
-							{meta.original.name}
+							{original.name}
 						</Link>
 					</div>
 				)}
