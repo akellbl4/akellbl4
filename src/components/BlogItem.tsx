@@ -20,7 +20,7 @@ export function BlogItem({ title, summary, slug, lang, hasContent, original }: P
 				<h3 className="flex mb-1 sm:mb-0 text-lg sm:text-xl font-bold w-full text-gray-900 dark:text-gray-100">
 					<Link
 						href={hasContent ? `/blog/${slug}` : original?.url ?? ''}
-						className="block-link flex transition-opacity opacity-80 hover:opacity-100"
+						className="block-link flex items-center transition-opacity opacity-80 hover:opacity-100"
 					>
 						{lang && (
 							<>
@@ -28,7 +28,13 @@ export function BlogItem({ title, summary, slug, lang, hasContent, original }: P
 							</>
 						)}
 						{title}
-						{!hasContent && <svg aria-hidden="true" className="w-6 h-6" />}
+						{!hasContent && (
+							<svg
+								aria-hidden="true"
+								className="ml-2 w-4 h-4"
+								dangerouslySetInnerHTML={{ __html: `<use xlink:href="#external-link-icon"></use>` }}
+							/>
+						)}
 					</Link>
 				</h3>
 				{hasContent && (

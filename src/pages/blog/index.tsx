@@ -13,6 +13,16 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>
 export default function Blog({ posts }: Props) {
 	return (
 		<>
+			<svg className="hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+				<symbol id="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+					/>
+				</symbol>
+			</svg>
 			<h1 className="font-bold text-4xl sm:text-5xl tracking-tight mb-6 sm:mb-10">Blog</h1>
 			<ul className="space-y-8 sm:space-y-12">
 				{posts.map((p) => (
