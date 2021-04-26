@@ -4,7 +4,7 @@ const { spacing } = require('tailwindcss/defaultTheme')
 
 module.exports = {
 	mode: 'jit',
-	purge: ['./src/**/*.tsx', './data/**/*.mdx'],
+	purge: ['./src/**/*.tsx', './src/**/*.ts', './data/**/*.mdx'],
 	darkMode: 'media',
 	theme: {
 		extend: {
@@ -46,8 +46,14 @@ module.exports = {
 						'code::before': false,
 						'code::after': false,
 						'h1,h2,h3,h4': {
+							display: 'flex',
+							width: '100%',
+							alignItems: 'center',
 							color: theme('colors.gray.800'),
 							'scroll-margin-top': spacing[16],
+							'& a, & a:hover': {
+								textDecoration: 'none',
+							},
 						},
 					},
 				},

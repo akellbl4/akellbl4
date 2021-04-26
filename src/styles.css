@@ -121,6 +121,11 @@ h6 {
 	@apply m-0 mb-2 text-xl sm:text-2xl no-underline;
 }
 
+.prose .anchor {
+	font-size: 0.7em;
+	vertical-align: middle;
+}
+
 .remark-code-title {
 	@apply py-3 px-4 bg-gray-200 dark:bg-warmGray-700 rounded-t-lg font-mono font-bold tracking-tight text-sm dark:text-gray-300;
 }

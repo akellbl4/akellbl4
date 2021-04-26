@@ -20,18 +20,30 @@ export function getFile(relFilepath: string) {
 	return fs.readFileSync(path.resolve(dataFolderPath, relFilepath))
 }
 
-async function transformMDX(content: string) {
-	const { renderedOutput } = await renderToString(content, {
+async function transformMDX(content: string, showAnchors?: boolean) {
+	let { renderedOutput } = await renderToString(content, {
 		components: { img: Image, a: Link, Project, Talk },
 		mdxOptions: {
 			remarkPlugins: [
-				require('remark-autolink-headings'),
 				require('remark-slug'),
+				[
+					require('remark-autolink-headings'),
+					showAnchors
+						? {
+								behavior: 'append',
+								content: { type: 'text', value: '🔗' },
+								linkProperties: { className: 'anchor ml-2' },
+						  }
+						: {},
+				],
 				require('remark-code-titles'),
 			],
 			rehypePlugins: [require('mdx-prism')],
 		},
 	})
+
+	// fix prefix slash in anchor links
+	renderedOutput = renderedOutput.replace(/href="\/#/gi, 'href="#')
 
 	return renderedOutput
 }
@@ -58,7 +70,10 @@ type GetFileContentResult<T> = {
  * @param filepath relative path from data folder
  * @returns frontmatter data and transformed mdx to string
  */
-export async function getFileContent<T>(filepath: string): Promise<GetFileContentResult<T>> {
+export async function getFileContent<T>(
+	filepath: string,
+	showAnchors?: boolean
+): Promise<GetFileContentResult<T>> {
 	const source = fs.readFileSync(path.resolve(dataFolderPath, filepath), 'utf-8')
 	const { data, content } = matter(source)
 	const result = {
