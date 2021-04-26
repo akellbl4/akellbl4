@@ -1,15 +1,25 @@
+import { LangBadge } from './LangBadge'
+
 type Props = React.PropsWithChildren<{
 	title: string
+	lang?: string
 	conferences: {
 		name: string
 		year: string
 	}[]
 }>
 
-export function Talk({ title, conferences, children }: Props) {
+export function Talk({ title, conferences, lang, children }: Props) {
 	return (
 		<section>
-			<h3 className="text-lg">{title}</h3>
+			<h3 className="flex text-lg">
+				{lang && (
+					<>
+						<LangBadge lang={lang} />{' '}
+					</>
+				)}
+				{title}
+			</h3>
 			{conferences && (
 				<ul>
 					{conferences.map(({ name, year }, i) => (

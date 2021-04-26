@@ -95,12 +95,13 @@ export async function getFileContent<T>(
 }
 
 export type PostFrontmatter = {
+	lang?: string
 	slug: string
 	title: string
 	summary: string
 	publishedAt: string
 	publishedAtISO: string
-	original: { url: string; name: string }
+	original?: { url: string; name: string }
 	readingTime: string
 }
 
@@ -111,11 +112,12 @@ export async function getAllBlogPostsFrontmatter() {
 	return files
 		.map((f) => {
 			const filepath = path.resolve(blogFolderPath, f)
-			const { data } = matter.read(filepath)
+			const { data, content } = matter.read(filepath)
 			const frontmatter = {
 				...data,
 				slug: f.replace('.mdx', ''),
-			} as PostFrontmatter
+				hasContent: content.length > 0,
+			} as PostFrontmatter & { hasContent: boolean }
 
 			return frontmatter
 		})

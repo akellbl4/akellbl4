@@ -53,7 +53,7 @@ export function Container({ children, isHome }: Props) {
 				<main id="skip" className="flex flex-col flex-grow py-12">
 					{children}
 				</main>
-				<footer className="flex text-sm sm:text-base flex-col justify-between sm:flex-row sm:items-end">
+				<footer className="flex mb-4 text-sm sm:text-base flex-col justify-between sm:flex-row sm:items-end">
 					<ul className="flex flex-wrap flex-shrink-0 max-w-full mr-6">
 						{SOCIAL_LINK.map(([emoji, label, href]) => (
 							<li key={label} className="mr-4 mt-2">
