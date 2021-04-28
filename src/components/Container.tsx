@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import { Link } from 'components/Link'
 import { NowPlaying } from 'components/NowPlaying'
+import { ActiveLink } from 'components/ActiveLink'
 
 type Props = React.PropsWithChildren<{
 	isHome: boolean
@@ -21,30 +22,15 @@ export function Container({ children, isHome }: Props) {
 					</a>
 					<nav className="text-sm sm:text-base">
 						<ul className="flex w-full space-x-4">
-							<li>
-								<Link
-									href="/blog"
-									className="transition-color duration-200 inline-block text-gray-500 dark:text-gray-200 transition-color border-b dark:border-gray-700 hover:border-gray-400"
-								>
-									Blog
-								</Link>
+							<li className="nav-link">
+								<ActiveLink href="/blog">Blog</ActiveLink>
 							</li>
-							<li>
-								<Link
-									href="/about"
-									className="transition-color duration-200 inline-block text-gray-500 dark:text-gray-200 transition-color border-b dark:border-gray-700 hover:border-gray-400"
-								>
-									About
-								</Link>
+							<li className="nav-link">
+								<ActiveLink href="/about">About</ActiveLink>
 							</li>
 							{!isHome && (
-								<li>
-									<Link
-										href="/"
-										className="transition-color duration-200 inline-block text-gray-500 dark:text-gray-200 transition-color border-b dark:border-gray-700 hover:border-gray-400"
-									>
-										Home
-									</Link>
+								<li className="nav-link">
+									<ActiveLink href="/">Home</ActiveLink>
 								</li>
 							)}
 						</ul>

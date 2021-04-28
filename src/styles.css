@@ -40,6 +40,32 @@ h6 {
 	transition: none !important;
 }
 
+.nav-link {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	color: black;
+	text-decoration: none;
+}
+
+.nav-link::after {
+	content: attr(data-text);
+	content: attr(data-text) / '';
+	height: 0;
+	visibility: hidden;
+	overflow: hidden;
+	user-select: none;
+	pointer-events: none;
+	font-weight: bold;
+}
+
+@media speech {
+	.nav-link::after {
+		display: none;
+	}
+}
+
 .title-gradient {
 	background-image: linear-gradient(to right, #ff005e 0%, #feaf40 50%, #ff005e 100%);
 	background-clip: text;
@@ -100,6 +126,22 @@ h6 {
 .block-link::after {
 	@apply absolute inset-0 block;
 	content: '';
+}
+
+.prose h2 > a,
+.prose h3 > a,
+.prose h4 > a,
+.prose h5 > a,
+.prose h6 > a {
+	display: none;
+}
+
+.prose h2 > a:hover,
+.prose h3 > a:hover,
+.prose h4 > a:hover,
+.prose h5 > a:hover,
+.prose h6 > a:hover {
+	display: block;
 }
 
 .prose h1 {
