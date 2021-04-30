@@ -1,6 +1,5 @@
 const fs = require('fs')
 const RSS = require('rss')
-const htmlmin = require('html-minifier')
 
 const { posts } = require('./get-blog-frontmatters')
 const { baseUrl } = require('../src/meta.json')
@@ -20,7 +19,4 @@ posts.forEach((data) => {
 	})
 })
 
-fs.writeFileSync(
-	'./public/feed.xml',
-	htmlmin.minify(feed.xml({ indent: true }), { collapseWhitespace: true })
-)
+fs.writeFileSync('./public/feed.xml', feed.xml({ indent: true }))
