@@ -7,15 +7,15 @@ const datapath = path.resolve(__dirname, '../data/blog')
 const posts = fs.readdirSync(datapath)
 const feed = new RSS({
 	title: 'Pavel Mineev',
-	site_url: process.env.VERCEL_URL,
-	feed_url: `${process.env.VERCEL_URL}/feed.xml`,
+	site_url: `https://${process.env.VERCEL_URL}`,
+	feed_url: `https://${process.env.VERCEL_URL}/feed.xml`,
 })
 
 posts.forEach((name) => {
 	const { data } = matter.read(path.resolve(datapath, name))
 
 	feed.item({
-		url: `${process.env.VERCEL_URL}/blog/${name.replace(/\.mdx?/, '')}`,
+		url: `https://${process.env.VERCEL_URL}/blog/${name.replace(/\.mdx?/, '')}`,
 		title: data.title,
 		date: data.publishedAt,
 		description: data.summary,
