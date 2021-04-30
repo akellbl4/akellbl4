@@ -7,7 +7,7 @@ const { baseUrl } = require('../src/meta.json')
 
 const feed = new RSS({
 	title: 'Pavel Mineev',
-	site_url: `${baseUrl}`,
+	site_url: baseUrl,
 	feed_url: `${baseUrl}/feed.xml`,
 })
 
