@@ -9,8 +9,7 @@ import { Container } from 'components/Container'
 
 export default function MyApp({ Component, pageProps, router }: AppProps) {
 	const [path] = router.asPath.split('?')
-	const url = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}${path}`
-	const meta = composeMeta(url, pageProps.meta, Component.meta)
+	const meta = composeMeta(path, pageProps.meta, Component.meta)
 
 	if (typeof window !== 'undefined' && document.body.classList.contains('preload-transitions')) {
 		document.body.classList.remove('preload-transitions')
@@ -22,7 +21,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
 				<meta name="viewport" content="width=device-width" />
 				<title>{meta.title}</title>
 				<meta name="description" content={meta.description} />
-				<meta property="og:url" content={url} />
+				<meta property="og:url" content={meta.url} />
 				<meta property="og:type" content={meta.type} />
 				<meta property="og:title" content={meta.title} />
 				<meta property="og:image" content={meta.sharingImageUrl} />

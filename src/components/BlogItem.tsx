@@ -6,20 +6,20 @@ type Props = {
 	title: string
 	summary: string
 	slug: string
-	hasContent: boolean
 	lang?: string
 	original?: {
 		url: string
+		external?: boolean
 	}
 }
 
-export function BlogItem({ title, summary, slug, lang, hasContent, original }: Props) {
+export function BlogItem({ title, summary, slug, lang, original }: Props) {
 	return (
 		<article className="relative">
 			<div className="flex flex-col sm:flex-row justify-between mb-2">
 				<h3 className="flex mb-1 sm:mb-0 text-lg sm:text-xl font-bold w-full text-gray-900 dark:text-gray-100">
 					<Link
-						href={hasContent ? `/blog/${slug}` : original?.url ?? ''}
+						href={original?.external ? original?.url : `/blog/${slug}`}
 						className="block-link transition-opacity opacity-80 hover:opacity-100"
 					>
 						{lang && (
@@ -28,7 +28,7 @@ export function BlogItem({ title, summary, slug, lang, hasContent, original }: P
 							</span>
 						)}
 						{title}
-						{!hasContent && (
+						{original?.external && (
 							<svg
 								aria-hidden="true"
 								className="ml-2 w-4 h-4 inline align-baseline"
@@ -37,7 +37,7 @@ export function BlogItem({ title, summary, slug, lang, hasContent, original }: P
 						)}
 					</Link>
 				</h3>
-				{hasContent && (
+				{!original?.external && (
 					<span className="whitespace-nowrap text-sm sm:text-base text-gray-500 text-left md:text-right">
 						<ViewCounter slug={slug} />
 					</span>

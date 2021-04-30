@@ -32,6 +32,22 @@ module.exports = {
 			{ source: '/:path*', headers },
 		]
 	},
+	redirects() {
+		const { posts } = require('./scripts/get-blog-frontmatters')
+
+		const externalPosts = posts
+			.filter((p) => p.original?.external)
+			.map((p) => ({ source: `/blog/${p.slug}`, destination: p.original.url, permanent: false }))
+
+		return [
+			{
+				source: '/1h',
+				destination: 'https://calendly.com/akellbl4/1h',
+				permanent: false,
+			},
+			...externalPosts,
+		]
+	},
 	webpack(config, { dev, isServer }) {
 		if (isServer) {
 			require('./scripts/generate-sitemap')

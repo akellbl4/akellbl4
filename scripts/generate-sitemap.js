@@ -2,14 +2,20 @@ const fs = require('fs')
 const globby = require('globby')
 const htmlmin = require('html-minifier')
 
-const pages = globby.sync(['pages/*.tsx', 'data/**/*.mdx', '!src/pages/api'])
+const pages = globby.sync([
+	'src/pages/*.tsx',
+	'data/blog/*.mdx',
+	'!src/pages/api',
+	'!src/pages/_*.tsx',
+	'!src/pages/404.tsx',
+])
 
 const content = pages
-	.map((page) => {
-		const path = page
+	.map((p) => {
+		const path = p
 			.replace('src/pages', '')
 			.replace('data', '')
-			.replace('.js', '')
+			.replace('.tsx', '')
 			.replace('.mdx', '')
 		const route = path === '/index' ? '' : path
 		const url = `${process.env.VERCEL_URL}${route}`

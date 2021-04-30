@@ -1,15 +1,15 @@
 import Image from 'next/image'
 import type { GetStaticPropsContext, InferNextPageStaticProps, NextPageMeta } from 'next'
 
-import { getFileContent, getFiles, PostFrontmatter } from 'lib/mdx'
+import { getAllBlogPostsFrontmatter, getFileContent, PostFrontmatter } from 'lib/mdx'
 import { Link } from 'components/Link'
 import { ViewCounter } from 'components/ViewCounter'
 
 export async function getStaticPaths() {
-	const posts = getFiles('blog')
+	const posts = await getAllBlogPostsFrontmatter()
 
 	return {
-		paths: posts.map((p) => ({ params: { slug: p.replace(/\.mdx/, '') } })),
+		paths: posts.filter((p) => !p.original?.external).map(({ slug }) => ({ params: { slug } })),
 		fallback: false,
 	}
 }
@@ -21,6 +21,7 @@ export async function getStaticProps({ params }: Context) {
 		`blog/${params!.slug}.mdx`,
 		true
 	)
+
 	const meta: NextPageMeta = {
 		title: frontmatter.title,
 		date: frontmatter.publishedAt,

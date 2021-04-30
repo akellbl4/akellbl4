@@ -1,25 +1,26 @@
 const fs = require('fs')
-const path = require('path')
 const RSS = require('rss')
-const matter = require('gray-matter')
+const htmlmin = require('html-minifier')
 
-const datapath = path.resolve(__dirname, '../data/blog')
-const posts = fs.readdirSync(datapath)
+const { posts } = require('./get-blog-frontmatters')
+const { baseUrl } = require('../src/meta.json')
+
 const feed = new RSS({
 	title: 'Pavel Mineev',
-	site_url: `https://${process.env.VERCEL_URL}`,
-	feed_url: `https://${process.env.VERCEL_URL}/feed.xml`,
+	site_url: `${baseUrl}`,
+	feed_url: `${baseUrl}/feed.xml`,
 })
 
-posts.forEach((name) => {
-	const { data } = matter.read(path.resolve(datapath, name))
-
+posts.forEach((data) => {
 	feed.item({
-		url: `https://${process.env.VERCEL_URL}/blog/${name.replace(/\.mdx?/, '')}`,
+		url: `${baseUrl}/blog/${data.slug}`,
 		title: data.title,
 		date: data.publishedAt,
 		description: data.summary,
 	})
 })
 
-fs.writeFileSync('./public/feed.xml', feed.xml({ indent: true }))
+fs.writeFileSync(
+	'./public/feed.xml',
+	htmlmin.minify(feed.xml({ indent: true }), { collapseWhitespace: true })
+)

@@ -12,10 +12,6 @@ import { Project } from 'components/Project'
 
 const dataFolderPath = path.resolve(process.cwd(), 'data')
 
-export function getFiles(type: string) {
-	return fs.readdirSync(path.resolve(dataFolderPath, type))
-}
-
 export function getFile(relFilepath: string) {
 	return fs.readFileSync(path.resolve(dataFolderPath, relFilepath))
 }
@@ -101,7 +97,7 @@ export type PostFrontmatter = {
 	summary: string
 	publishedAt: string
 	publishedAtISO: string
-	original?: { url: string; name: string }
+	original?: { url: string; name: string; external: boolean }
 	readingTime: string
 }
 
@@ -112,12 +108,11 @@ export async function getAllBlogPostsFrontmatter() {
 	return files
 		.map((f) => {
 			const filepath = path.resolve(blogFolderPath, f)
-			const { data, content } = matter.read(filepath)
+			const { data } = matter.read(filepath)
 			const frontmatter = {
 				...data,
 				slug: f.replace('.mdx', ''),
-				hasContent: content.length > 0,
-			} as PostFrontmatter & { hasContent: boolean }
+			} as PostFrontmatter
 
 			return frontmatter
 		})
