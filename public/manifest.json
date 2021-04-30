@@ -5,7 +5,7 @@
     { "src": "/touch-192x192.png", "type": "image/png", "sizes": "192x192" },
     { "src": "/touch-512x512.png", "type": "image/png", "sizes": "512x512" }
   ],
-  "background_color": "##fff6ac",
-  "theme_color": "##ce6fea",
+  "background_color": "#fff6ac",
+  "theme_color": "#ce6fea",
   "display": "fullscreen"
 }

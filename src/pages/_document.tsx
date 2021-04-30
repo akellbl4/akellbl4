@@ -7,10 +7,10 @@ export default class MyDocument extends Document {
 				<Head>
 					<link href="/favicon.ico" rel="icon" />
 					<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
-					<link href="/favicon-mask.svg" rel="mask-icon" color="##ce6fea" />
+					<link href="/favicon-mask.svg" rel="mask-icon" color="#ce6fea" />
 					<link href="/touch-180x180.png" rel="apple-touch-icon" />
 					<link href="/manifest.json" rel="manifest" />
-					<meta content="##ce6fea" name="theme-color" />
+					<meta content="#ce6fea" name="theme-color" />
 				</Head>
 				<body className="preload-transitions bg-white text-gray-800 dark:text-gray-200 dark:bg-warmGray-900 min-w-[20rem] antialiased">
 					<Main />
