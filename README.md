@@ -2,7 +2,7 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fakellbl4%2Fpavel.mineev.me)
 
-From the very start to not so long ago my site was just number of links to my social media and contacts. Since I started to write about development I decided to have my own place where I can write that I want. So, I decided to use Next.js, Tailwind, and MDX as base for my website.
+From the very start to not so long ago my site was just several links to my social media and contacts. Since I started to write about development I decided to have my place where I can write what I want. So, I decided to use Next.js, Tailwind, and MDX as the base for my website.
 
 ## Overview
 
@@ -18,7 +18,9 @@ $ cd pavel.mineev.me
 $ yarn
 $ yarn dev
 ```
+
 If you want to make work counting view and Spotify features you need to copy config and put credentials there.
+
 ```
 $ cp .env.example .env.local
 ```
@@ -29,4 +31,4 @@ $ cp .env.example .env.local
 - [MDX](https://github.com/mdx-js/mdx)
 - [Tailwind CSS](https://tailwindcss.com/)
 
-Hosted on [Vercel](https://vercel.com)
+Hosted on [Vercel](https://vercel.com), accelerated by [Cloudflare](https://cloundflare.com)
