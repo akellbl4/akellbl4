@@ -24,7 +24,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
 				<meta property="og:url" content={meta.url} />
 				<meta property="og:type" content={meta.type} />
 				<meta property="og:title" content={meta.title} />
-				<meta property="og:image" content={meta.sharingImageUrl} />
+				<meta property="og:image" content={`${meta.baseUrl}${meta.sharingImageUrl}`} />
 				<meta property="og:description" content={meta.description} />
 				<meta property="og:site_name" content={meta.name} />
 				<meta name="twitter:site" content={meta.twitterAccount} />

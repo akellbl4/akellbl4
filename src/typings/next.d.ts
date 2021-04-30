@@ -13,6 +13,7 @@ export module 'next' {
 
 	export type NextPageMeta = {
 		url?: string
+		baseUrl?: string
 		name?: string
 		description?: string
 		twitterAccount?: string
