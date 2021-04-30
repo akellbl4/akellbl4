@@ -2,6 +2,8 @@ const fs = require('fs')
 const globby = require('globby')
 const htmlmin = require('html-minifier')
 
+const { baseUrl } = require('../src/meta.json')
+
 const pages = globby.sync([
 	'src/pages/*.tsx',
 	'data/blog/*.mdx',
@@ -18,7 +20,7 @@ const content = pages
 			.replace('.tsx', '')
 			.replace('.mdx', '')
 		const route = path === '/index' ? '' : path
-		const url = `${process.env.VERCEL_URL}${route}`
+		const url = `${baseUrl}${route}`
 
 		return `<url><loc>${url}</loc></url>`
 	})
