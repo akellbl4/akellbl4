@@ -20,18 +20,18 @@ export function BlogItem({ title, summary, slug, lang, hasContent, original }: P
 				<h3 className="flex mb-1 sm:mb-0 text-lg sm:text-xl font-bold w-full text-gray-900 dark:text-gray-100">
 					<Link
 						href={hasContent ? `/blog/${slug}` : original?.url ?? ''}
-						className="block-link flex items-center transition-opacity opacity-80 hover:opacity-100"
+						className="block-link transition-opacity opacity-80 hover:opacity-100"
 					>
 						{lang && (
-							<>
+							<span className="order-2 self-start ml-auto sm:order-none sm:ml-0 sm:mr-2">
 								<LangBadge lang={lang} />{' '}
-							</>
+							</span>
 						)}
 						{title}
 						{!hasContent && (
 							<svg
 								aria-hidden="true"
-								className="ml-2 w-4 h-4"
+								className="ml-2 w-4 h-4 inline align-baseline"
 								dangerouslySetInnerHTML={{ __html: `<use xlink:href="#external-link-icon"></use>` }}
 							/>
 						)}

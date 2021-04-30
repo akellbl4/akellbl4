@@ -34,7 +34,7 @@ export function NowPlaying() {
 				className="track-link flex items-center"
 				title={`${data.name} – ${data.artist}`}
 			>
-				<figure className="flex-shrink-0 rounded-sm shadow overflow-hidden h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3 transition-transform duration-300 bg-gray-200">
+				<figure className="flex-shrink-0 rounded-sm shadow overflow-hidden h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3 transition-transform duration-300 bg-gray-200 dark:bg-gray-600">
 					<Image
 						key={data.coverUrl}
 						src={data.coverUrl}

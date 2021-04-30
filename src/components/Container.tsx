@@ -46,7 +46,7 @@ export function Container({ children, isHome }: Props) {
 								<Link
 									href={href}
 									data-emoji={emoji}
-									className="link-emoji relative inline-block text-gray-500 transition-color duration-200 border-b hover:text-transparent hover:border-transparent dark:text-gray-300  dark:border-gray-700 hover:border-gray-400"
+									className="link-emoji relative inline-block text-gray-500 dark:text-gray-300 transition-colors duration-200 border-b dark:border-gray-700 hover:text-transparent hover:border-transparent"
 								>
 									{label}
 								</Link>

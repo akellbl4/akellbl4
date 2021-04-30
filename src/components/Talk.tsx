@@ -14,9 +14,9 @@ export function Talk({ title, conferences, lang, children }: Props) {
 		<section>
 			<h3 className="flex text-lg">
 				{lang && (
-					<>
+					<span className="order-2 self-start ml-auto sm:order-none sm:ml-0 sm:mr-2">
 						<LangBadge lang={lang} />{' '}
-					</>
+					</span>
 				)}
 				{title}
 			</h3>

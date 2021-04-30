@@ -9,7 +9,7 @@ export default async function nowPlayingApi(
 		try {
 			const track = await getNowPlaying()
 
-			res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=30')
+			res.setHeader('Cache-Control', 'public, s-maxage=30, stale-while-revalidate=15')
 
 			return res.status(200).json(track)
 		} catch (e) {

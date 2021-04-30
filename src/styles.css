@@ -40,24 +40,10 @@ h6 {
 	transition: none !important;
 }
 
-.nav-link {
-	display: inline-flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-between;
-	color: black;
-	text-decoration: none;
-}
-
 .nav-link::after {
+	@apply h-0 invisible overflow-hidden select-none pointer-events-none font-bold;
 	content: attr(data-text);
 	content: attr(data-text) / '';
-	height: 0;
-	visibility: hidden;
-	overflow: hidden;
-	user-select: none;
-	pointer-events: none;
-	font-weight: bold;
 }
 
 @media speech {
@@ -67,12 +53,20 @@ h6 {
 }
 
 .title-gradient {
-	background-image: linear-gradient(to right, #ff005e 0%, #feaf40 50%, #ff005e 100%);
+	background-image: linear-gradient(
+		to right,
+		#2dd2dd 0%,
+		#9a47f3 25%,
+		#fcb26d 50%,
+		#ff61e6 75%,
+		#2dd2dd 100%
+	);
+	background-size: 400% 0;
 	background-clip: text;
 	text-fill-color: transparent;
 	-webkit-text-fill-color: transparent;
 	background-size: 200% auto;
-	animation: slide 5s linear infinite;
+	animation: slide 10s linear infinite;
 }
 
 .avatar {
@@ -153,7 +147,7 @@ h6 {
 }
 
 .prose .project a {
-	@apply text-gray-800 dark:text-gray-200 no-underline font-bold;
+	@apply inline-block text-gray-800 dark:text-gray-200 no-underline font-bold;
 }
 .prose .project a:hover {
 	@apply dark:text-gray-200;

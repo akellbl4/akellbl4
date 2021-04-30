@@ -11,9 +11,10 @@ export function ActiveLink(props: Props) {
 	return (
 		<Link
 			className={clsx(
+				'inline-block',
 				isActive
-					? 'border-none text-gray-600 dark:text-gray-100 font-bold'
-					: 'border-b text-gray-500 dark:text-gray-200'
+					? 'text-gray-600 dark:text-gray-100 font-bold'
+					: 'text-gray-500 dark:text-gray-300 transition-colors duration-200 border-b dark:border-gray-700 hover:border-current'
 			)}
 			{...props}
 		/>
