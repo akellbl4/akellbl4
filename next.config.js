@@ -45,6 +45,11 @@ module.exports = {
 				destination: 'https://calendly.com/akellbl4/1h',
 				permanent: false,
 			},
+			{
+				source: '/resume',
+				destination: '/resume-2021.pdf',
+				permanent: false,
+			},
 			...externalPosts,
 		]
 	},
