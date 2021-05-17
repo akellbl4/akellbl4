@@ -63,9 +63,9 @@ export function Container({ children, isHome }: Props) {
 }
 
 const SOCIAL_LINK = [
-	['👤', 'Facebook', 'https://facebook.com'],
-	['📷', 'Instagram', 'https://www.instargram.com'],
-	['🐦', 'Twitter', 'https://twitter.com'],
-	['🐙', 'GitHub', 'https://github.com'],
-	['👨‍💻', 'LinkedIn', 'https://linkedin.com'],
+	['👤', 'Facebook', 'https://www.facebook.com/akellbl4'],
+	['📷', 'Instagram', 'https://www.instagram.com/akellbl4/'],
+	['🐦', 'Twitter', 'https://twitter.com/akellbl4'],
+	['🐙', 'GitHub', 'https://github.com/akellbl4'],
+	['👨‍💻', 'LinkedIn', 'https://www.linkedin.com/in/akellbl4'],
 ]
