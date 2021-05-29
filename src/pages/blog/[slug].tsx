@@ -100,7 +100,7 @@ export default function Blog({ meta, readingTime, publishedAt, original, content
 					</span>
 					<Link
 						className="transition inline-block border-b border-transparent hover:border-gray-600"
-						href={`${process.env.GITHUB_REPO_URL}/edit/main/data/blog/${slug}.mdx`}
+						href={`${process.env.NEXT_PUBLIC_GITHUB_REPO_URL}/edit/main/data/blog/${slug}.mdx`}
 					>
 						Edit on GitHub
 					</Link>
