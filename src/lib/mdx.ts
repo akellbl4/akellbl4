@@ -3,12 +3,8 @@ import matter from 'gray-matter'
 import path from 'path'
 import readingTime from 'reading-time'
 import { format, parseISO } from 'date-fns'
-import renderToString from 'next-mdx-remote/render-to-string'
-
-import Image from 'next/image'
-import { Link } from 'components/Link'
-import { Talk } from 'components/Talk'
-import { Project } from 'components/Project'
+import { serialize } from 'next-mdx-remote/serialize'
+import type { MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 const dataFolderPath = path.resolve(process.cwd(), 'data')
 
@@ -17,8 +13,7 @@ export function getFile(relFilepath: string) {
 }
 
 async function transformMDX(content: string, showAnchors?: boolean) {
-	let { renderedOutput } = await renderToString(content, {
-		components: { img: Image, a: Link, Project, Talk },
+	let source = await serialize(content, {
 		mdxOptions: {
 			remarkPlugins: [
 				require('remark-slug'),
@@ -28,7 +23,7 @@ async function transformMDX(content: string, showAnchors?: boolean) {
 						? {
 								behavior: 'append',
 								content: { type: 'text', value: '🔗' },
-								linkProperties: { className: 'anchor ml-2' },
+								linkProperties: { className: 'anchor' },
 						  }
 						: {},
 				],
@@ -39,13 +34,13 @@ async function transformMDX(content: string, showAnchors?: boolean) {
 	})
 
 	// fix prefix slash in anchor links
-	renderedOutput = renderedOutput.replace(/href="\/#/gi, 'href="#')
+	// renderedOutput = renderedOutput.replace(/href="\/#/gi, 'href="#')
 
-	return renderedOutput
+	return source
 }
 
 type GetFileContentResult<T> = {
-	content: string
+	source: MDXRemoteSerializeResult<Record<string, unknown>>
 	frontmatter: T & {
 		readingTime: string
 	} & (
@@ -77,12 +72,12 @@ export async function getFileContent<T>(
 			...data,
 			readingTime: `${readingTime(content).text}`,
 		},
-		content: await transformMDX(content, showAnchors),
+		source: await transformMDX(content, showAnchors),
 	} as GetFileContentResult<T>
 
 	if (typeof result.frontmatter.publishedAt === 'string') {
-		Object.assign(result, {
-			publishedAt: format(parseISO(result.frontmatter.publishedAt), 'MMMM dd'),
+		Object.assign(result.frontmatter, {
+			publishedAt: format(parseISO(result.frontmatter.publishedAt), 'MMMM d, yyyy'),
 			publishedAtISO: result.frontmatter.publishedAt,
 		})
 	}

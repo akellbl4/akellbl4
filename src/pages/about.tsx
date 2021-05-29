@@ -1,23 +1,27 @@
+import { MDXRemote } from 'next-mdx-remote'
 import type { InferGetStaticPropsType } from 'next'
 
 import { getFileContent } from 'lib/mdx'
+import { Link } from 'components/Link'
+import { Talk } from 'components/Talk'
+import { Project } from 'components/Project'
 
 export async function getStaticProps() {
-	const { frontmatter, content } = await getFileContent('about.mdx')
+	const { frontmatter, source } = await getFileContent('about.mdx')
 
 	return {
 		props: {
 			meta: {
 				title: frontmatter.title,
 			},
-			content,
+			source,
 		},
 	}
 }
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-export default function About({ meta, content }: Props) {
+export default function About({ meta, source }: Props) {
 	return (
 		<article className="prose dark:prose-dark max-w-full">
 			<svg width="0" height="0" className="hidden" aria-hidden="true">
@@ -29,7 +33,7 @@ export default function About({ meta, content }: Props) {
 				</symbol>
 			</svg>
 			<h1>{meta.title}</h1>
-			<div dangerouslySetInnerHTML={{ __html: content }} />
+			<MDXRemote {...source} components={{ Link, Talk, Project }} />
 		</article>
 	)
 }
