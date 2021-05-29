@@ -65,7 +65,7 @@ function MyComponent() {
 
 I noticed that people often use `router.push` from `useRouter`. If you use it in functions that were wrapped in `useCallback` or just inside `useEffect` you have to mention it in dependencies like in the example down below.
 
-```jsx
+```jsx:pages/params.jsx
 import { useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
 
@@ -89,7 +89,7 @@ function MyComponent() {
 
 It's completely unnecessary because these functions don't update over re-renders but ESlint rules will tell you that you should do it. Solutions for this are fairly easy. Just use routing functions from the `Router`. It makes your code cleaner and nicer 😉
 
-```jsx
+```jsx:pages/params.jsx
 import Router from 'next/router'
 
 function MyComponent() {
@@ -112,8 +112,7 @@ function MyComponent() {
 
 Sometimes when I work with the router I need to get the current pathname. But `react/router` stores the dynamic representation of the router in that field, and it's the same as router filed. We can create these params by ourselves with `asPath`. I created a wrapper over `useRouter` and always have access to the props If I need them.
 
-```jsx
-// lib/router.ts
+```jsx:lib/router.js
 import { useRouter as useNextRouter } from 'next/router'
 
 export function useRouter() {
@@ -126,7 +125,7 @@ export function useRouter() {
 
 The wrapper gives us handy props that we can use in a situation when we need to update a current route.
 
-```jsx
+```jsx:pages/params.jsx
 import Router from 'next/router'
 import { useRouter } from 'lib/router'
 
@@ -158,8 +157,7 @@ Do you wonder why the second param in `Router.replace` is `null`? Since 10.x wit
 
 Since we have such a feature as automatic resolving we can use it in `next/router`, but it is a small inconvenience in its API. Because if you want to pass `options` you should pass dynamic route to the first argument and full path to the second in earlier versions and Next.js kept those 3 arguments for backward compatibility. I have small handy functions that help me to use router functions easier.
 
-```jsx
-// lib/router.ts
+```jsx:lib/router.js
 import NextRouter from 'next/router'
 
 function push(url, opts) {
@@ -172,10 +170,9 @@ const Router = {
 }
 
 export default Router
+```
 
-/* ... */
-
-// pages/params.tsx
+```jsx:pages/params.jsx
 import Router, { useRouter } from 'lib/router'
 
 function MyComponent() {
