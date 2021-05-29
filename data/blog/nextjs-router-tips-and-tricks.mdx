@@ -14,7 +14,7 @@ If you use Next.js for a long time your projects should have a huge amount of co
 
 ### Server Redirect and Not Found
 
-These features, as well as previous, were released in version 10 and I still see a lot of questions about how to make redirect on the server. First of all, I suggest checking if you use modern fetching methods because only they get updates and new features. I explained **[here](https://pavel.mineev.me/blog/why-i-got-rid-of-getinitialprops-in-my-nextjs-project)** other reasons why to use modern fetching methods.
+These features, as well as previous, were released in version 10 and I still see a lot of questions about how to make redirect on the server. First of all, I suggest checking if you use modern fetching methods because only they get updates and new features. I explained **[here](/blog/why-i-got-rid-of-getinitialprops-in-my-nextjs-project)** other reasons why to use modern fetching methods.
 
 Here is a simple way to make redirect or show page 404:
 
@@ -95,12 +95,12 @@ import Router from 'next/router'
 function MyComponent() {
 	const handleClick = useCallback(() => {
 		// some logic
-		push('/profile')
+		Router.push('/profile')
 	}, [])
 
 	useEffect(() => {
 		if (...) {
-			push('/sign-in')
+			Router.push('/sign-in')
 		}
 	}, [])
 
