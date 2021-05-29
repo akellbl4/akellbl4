@@ -98,14 +98,9 @@ h6 {
 }
 
 .link-emoji::after {
-	position: absolute;
-	left: 0;
-	top: 0;
+	@apply absolute top-0 left-0 w-full h-full opacity-0 text-center;
 	content: attr(data-emoji);
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	opacity: 0;
+
 	color: initial;
 	transition-duration: 0.2s;
 	transition-delay: 0.1s;
@@ -113,29 +108,13 @@ h6 {
 }
 
 .link-emoji:hover::after {
-	opacity: 100;
+	@apply opacity-100;
 	transform: scale(1.5);
 }
 
 .block-link::after {
 	@apply absolute inset-0 block;
 	content: '';
-}
-
-.prose h2 > a,
-.prose h3 > a,
-.prose h4 > a,
-.prose h5 > a,
-.prose h6 > a {
-	display: none;
-}
-
-.prose h2 > a:hover,
-.prose h3 > a:hover,
-.prose h4 > a:hover,
-.prose h5 > a:hover,
-.prose h6 > a:hover {
-	display: block;
 }
 
 .prose h1 {
@@ -158,8 +137,13 @@ h6 {
 }
 
 .prose .anchor {
-	font-size: 0.7em;
-	vertical-align: middle;
+	@apply align-middle invisible ml-1;
+	color: inherit;
+	font-size: 0.8em;
+}
+
+.prose *:hover > a {
+	@apply visible;
 }
 
 .remark-code-title {

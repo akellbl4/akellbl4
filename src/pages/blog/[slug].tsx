@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { MDXRemote } from 'next-mdx-remote'
 import type { GetStaticPropsContext, InferNextPageStaticProps, NextPageMeta } from 'next'
 
 import { getAllBlogPostsFrontmatter, getFileContent, PostFrontmatter } from 'lib/mdx'
@@ -17,7 +18,7 @@ export async function getStaticPaths() {
 type Context = GetStaticPropsContext<{ slug: string }>
 
 export async function getStaticProps({ params }: Context) {
-	const { frontmatter, content } = await getFileContent<PostFrontmatter>(
+	const { frontmatter, source } = await getFileContent<PostFrontmatter>(
 		`blog/${params!.slug}.mdx`,
 		true
 	)
@@ -37,14 +38,14 @@ export async function getStaticProps({ params }: Context) {
 			original: frontmatter.original || null,
 			readingTime: frontmatter.readingTime,
 			publishedAt: frontmatter.publishedAt,
-			content,
+			source,
 		},
 	}
 }
 
 type Props = InferNextPageStaticProps<typeof getStaticProps, { slug: string }>
 
-export default function Blog({ meta, readingTime, publishedAt, original, content, router }: Props) {
+export default function Blog({ meta, readingTime, publishedAt, original, source, router }: Props) {
 	const { slug } = router.query
 
 	return (
@@ -80,11 +81,9 @@ export default function Blog({ meta, readingTime, publishedAt, original, content
 					</div>
 				</div>
 			</header>
-			<section
-				className="prose dark:prose-dark w-full mb-6 mx-auto"
-				itemProp="articleBody"
-				dangerouslySetInnerHTML={{ __html: content }}
-			/>
+			<section className="prose dark:prose-dark w-full mb-6 mx-auto" itemProp="articleBody">
+				<MDXRemote {...source} />
+			</section>
 			<footer className="max-w-[65ch] w-full mx-auto flex justify-between text-gray-600 dark:text-gray-400">
 				<div className="text-sm">
 					<Link
