@@ -98,14 +98,9 @@ h6 {
 }
 
 .link-emoji::after {
-	position: absolute;
-	left: 0;
-	top: 0;
+	@apply absolute top-0 left-0 w-full h-full opacity-0 text-center;
 	content: attr(data-emoji);
-	width: 100%;
-	height: 100%;
-	text-align: center;
-	opacity: 0;
+
 	color: initial;
 	transition-duration: 0.2s;
 	transition-delay: 0.1s;
@@ -113,7 +108,7 @@ h6 {
 }
 
 .link-emoji:hover::after {
-	opacity: 100;
+	@apply opacity-100;
 	transform: scale(1.5);
 }
 
