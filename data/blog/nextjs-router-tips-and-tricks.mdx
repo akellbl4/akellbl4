@@ -108,8 +108,6 @@ function MyComponent() {
 }
 ```
 
----
-
 Sometimes when I work with the router I need to get the current pathname. But `react/router` stores the dynamic representation of the router in that field, and it's the same as router filed. We can create these params by ourselves with `asPath`. I created a wrapper over `useRouter` and always have access to the props If I need them.
 
 ```jsx:lib/router.js
@@ -133,9 +131,9 @@ function MyComponent() {
 	const { query, pathname } = useRouter()
 
 	function handleSubmit(evt) {
-    const params = new FormData(evt.currentTarget).getAll("fruits");
+		const params = new FormData(evt.currentTarget).getAll("fruits");
 
-    evt.preventDefault();
+		evt.preventDefault();
 		Router.replace(
 			{ pathname, query: { ...query, params }},
 			null,
@@ -145,7 +143,6 @@ function MyComponent() {
 
 	return (
 		<form>
-			{/* A form that changes params */}
 			{...}
 			<button type="submit">Apply</button>
 		</form>
@@ -179,11 +176,11 @@ function MyComponent() {
 	const { query } = useRouter()
 
 	function handleSubmit(evt) {
-    const params = new FormData(evt.currentTarget).getAll("fruits");
+		const params = new FormData(evt.currentTarget).getAll("fruits");
 
-    evt.preventDefault();
-    Router.push({ pathname, query: { ...query, params } }, { shallow: true });
-  }
+		evt.preventDefault();
+		Router.push({ pathname, query: { ...query, params } }, { shallow: true });
+	}
 
 	return <>{...}</>
 }
