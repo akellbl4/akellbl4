@@ -14,5 +14,12 @@ export function Link({ rel, href, ...props }: CustomLinkProps) {
 		)
 	}
 
-	return <a target="_blank" rel={clsx('noopener', 'noreferrer', rel)} href={href} {...props} />
+	return (
+		<a
+			target="_blank"
+			rel={clsx('noopener', 'noreferrer', 'nofollow', rel)}
+			href={href}
+			{...props}
+		/>
+	)
 }
