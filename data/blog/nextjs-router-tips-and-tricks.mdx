@@ -1,6 +1,6 @@
 ---
 title: Next.js Router – Tips & Tricks
-summary: Sometimes we can skip something new that was released in a framework that we use. Also, it could be some changes that keep backward compatibility and we should deal with it. These tips and tricks for you on the Next.js router help you make your DX much better.
+summary: These tips and tricks for you on the Next.js router help you make your DX better and code cleaner
 publishedAt: '2021-05-29'
 ---
 
@@ -12,7 +12,7 @@ Next.js is a dynamically developed framework and a lot of old articles about it 
 
 If you use Next.js for a long time your projects should have a huge amount of code, and you just keep writing it in the style that it already has. Sometimes because you use to and sometimes because you use your codebase as a catalog of snippets and examples. That's why you can skip new cool stuff.
 
-### Server Redirect and Not Found
+### Server redirects and not found status
 
 These features, as well as previous, were released in version 10 and I still see a lot of questions about how to make redirect on the server. First of all, I suggest checking if you use modern fetching methods because only they get updates and new features. I explained **[here](/blog/why-i-got-rid-of-getinitialprops-in-my-nextjs-project)** other reasons why to use modern fetching methods.
 
@@ -37,7 +37,7 @@ export function getServerSideProps() {
 }
 ```
 
-### Automatic Resolving of `href`
+### Automatic resolving of `href` param
 
 Try to find `next/link` in your project that has `href` and `as` prop as well. If you found it, it's time to update that links. Because starts with 10.x version you don't need to pass both of the params you can drop `href` param and rename `as` to `href`, and it will work well.
 
