@@ -122,7 +122,7 @@ h6 {
 }
 
 .prose h2 {
-	@apply text-2xl sm:text-4xl;
+	@apply text-2xl sm:text-3xl;
 }
 
 .prose .project a {
@@ -137,7 +137,7 @@ h6 {
 }
 
 .prose .anchor {
-	@apply align-middle invisible ml-1;
+	@apply align-middle invisible ml-1 no-underline;
 	color: inherit;
 	font-size: 0.8em;
 }
