@@ -403,6 +403,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/json-schema@^7.0.6":
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.7.tgz#98a993516c859eb0d5c4c8f098317a9ea68db9ad"
+  integrity sha512-cxWFQVseBm6O9Gbw1IWb8r6OS4OhSt3hPZLkFApLjM8TEXROBuQGLAH2i2gZpcXdLBIrpXuTDhH7Vbm1iXmNGA==
+
 "@types/mdast@^3.0.0":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/mdast/-/mdast-3.0.3.tgz#2d7d671b1cd1ea3deb306ea75036c2a0407d2deb"
@@ -430,14 +435,7 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
 
-"@types/puppeteer-core@^5.4.0":
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/@types/puppeteer-core/-/puppeteer-core-5.4.0.tgz#880a7917b4ede95cbfe2d5e81a558cfcb072c0fb"
-  integrity sha512-yqRPuv4EFcSkTyin6Yy17pN6Qz2vwVwTCJIDYMXbE3j8vTPhv0nCQlZOl5xfi0WHUkqvQsjAR8hAfjeMCoetwg==
-  dependencies:
-    "@types/puppeteer" "*"
-
-"@types/puppeteer@*", "@types/puppeteer@^5.4.3":
+"@types/puppeteer@^5.4.3":
   version "5.4.3"
   resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-5.4.3.tgz#cdca84aa7751d77448d8a477dbfa0af1f11485f2"
   integrity sha512-3nE8YgR9DIsgttLW+eJf6mnXxq8Ge+27m5SU3knWmrlfl6+KOG0Bf9f7Ua7K+C4BnaTMAh3/UpySqdAYvrsvjg==
@@ -506,7 +504,12 @@ agent-base@6:
   dependencies:
     debug "4"
 
-ajv@^6.10.0, ajv@^6.12.4:
+ajv-keywords@^3.5.2:
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.5.2.tgz#31f29da5ab6e00d1c2d329acf7b5929614d5014d"
+  integrity sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==
+
+ajv@^6.10.0, ajv@^6.12.4, ajv@^6.12.5:
   version "6.12.6"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
   integrity sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==
@@ -1336,6 +1339,11 @@ emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
   integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
+
+emojis-list@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-3.0.0.tgz#5570662046ad29e2e916e71aae260abdff4f6a78"
+  integrity sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==
 
 encoding@0.1.13:
   version "0.1.13"
@@ -2409,6 +2417,15 @@ loader-utils@1.2.3:
     emojis-list "^2.0.0"
     json5 "^1.0.1"
 
+loader-utils@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-2.0.0.tgz#e4cace5b816d425a166b5f097e10cd12b36064b0"
+  integrity sha512-rP4F0h2RaWSvPEkD7BLDFQnvSf+nK+wr3ESUjNTyAGobqrijmW92zc+SO6d4p4B1wh7+B/Jg1mkQe5NYUEHtHQ==
+  dependencies:
+    big.js "^5.2.2"
+    emojis-list "^3.0.0"
+    json5 "^2.1.2"
+
 locate-path@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-5.0.0.tgz#1afba396afd676a6d42504d0a67a3a7eb9f62aa0"
@@ -2597,6 +2614,11 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
+mime-db@1.48.0:
+  version "1.48.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.48.0.tgz#e35b31045dd7eada3aaad537ed88a33afbef2d1d"
+  integrity sha512-FM3QwxV+TnZYQ2aRqhlKBMHxk10lTbMt3bBkMAp54ddrNeVSfcQYOOKuGuy3Ddrm38I04If834fOUSq1yzslJQ==
+
 mime-db@~1.25.0:
   version "1.25.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.25.0.tgz#c18dbd7c73a5dbf6f44a024dc0d165a1e7b1c392"
@@ -2608,6 +2630,13 @@ mime-types@2.1.13:
   integrity sha1-4HqqnGxrmnyjASxpADrSWjnpKog=
   dependencies:
     mime-db "~1.25.0"
+
+mime-types@^2.1.27:
+  version "2.1.31"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.31.tgz#a00d76b74317c61f9c2db2218b8e9f8e9c5c9e6b"
+  integrity sha512-XGZnNzm3QvgKxa8dpzyhFTHmpP3l5YNusmne07VUOXxou9CqUqYa/HBy124RqtVh/O2pECas/MOcsDgpilPOPg==
+  dependencies:
+    mime-db "1.48.0"
 
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
@@ -3240,6 +3269,24 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
+puppeteer-core@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-10.0.0.tgz#5bf787ad95b5f70ea61634d8c80ffca9f2e92b6e"
+  integrity sha512-kaNsKhNYcayHnlwpkBf1w/lhyi1zUSHGLgh5z6DwhTbTrVN0pQHjWj7/TNBooop5Ehv0H7KFuH5QTbxrRFeDdA==
+  dependencies:
+    debug "4.3.1"
+    devtools-protocol "0.0.883894"
+    extract-zip "2.0.1"
+    https-proxy-agent "5.0.0"
+    node-fetch "2.6.1"
+    pkg-dir "4.2.0"
+    progress "2.0.1"
+    proxy-from-env "1.1.0"
+    rimraf "3.0.2"
+    tar-fs "2.0.0"
+    unbzip2-stream "1.3.3"
+    ws "7.4.6"
+
 puppeteer@^10.0.0:
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/puppeteer/-/puppeteer-10.0.0.tgz#1b597c956103e2d989ca17f41ba4693b20a3640c"
@@ -3317,6 +3364,14 @@ raw-body@2.4.1:
     http-errors "1.7.3"
     iconv-lite "0.4.24"
     unpipe "1.0.0"
+
+raw-loader@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/raw-loader/-/raw-loader-4.0.2.tgz#1aac6b7d1ad1501e66efdac1522c73e59a584eb6"
+  integrity sha512-ZnScIV3ag9A4wPX/ZayxL/jZH+euYb6FcUinPcgiQW0+UBtEv0O6Q3lGd3cqJ+GHH+rksEv3Pj99oxJ3u3VIKA==
+  dependencies:
+    loader-utils "^2.0.0"
+    schema-utils "^3.0.0"
 
 react-dom@17.0.2:
   version "17.0.2"
@@ -3604,6 +3659,15 @@ scheduler@^0.20.2:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
+
+schema-utils@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-3.0.0.tgz#67502f6aa2b66a2d4032b4279a2944978a0913ef"
+  integrity sha512-6D82/xSzO094ajanoOSbe4YvXWMfn2A//8Y1+MUqFAJul5Bs+yn36xbK9OtNDcRVSBJ9jjeoXftM6CfztsjOAA==
+  dependencies:
+    "@types/json-schema" "^7.0.6"
+    ajv "^6.12.5"
+    ajv-keywords "^3.5.2"
 
 section-matter@^1.0.0:
   version "1.0.0"
@@ -4255,6 +4319,15 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+url-loader@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/url-loader/-/url-loader-4.1.1.tgz#28505e905cae158cf07c92ca622d7f237e70a4e2"
+  integrity sha512-3BTV812+AVHHOJQO8O5MkWgZ5aosP7GnROJwvzLS9hWDj00lZ6Z0wNak423Lp9PBZN05N+Jk/N5Si8jRAlGyWA==
+  dependencies:
+    loader-utils "^2.0.0"
+    mime-types "^2.1.27"
+    schema-utils "^3.0.0"
 
 url@^0.11.0:
   version "0.11.0"

@@ -59,6 +59,11 @@ module.exports = {
 			require('./scripts/generate-rss')
 		}
 
+		config.module.rules.push({
+			test: /\.ttf/,
+			use: ['url-loader'],
+		})
+
 		if (!dev && !isServer) {
 			Object.assign(config.resolve.alias, {
 				react: 'preact/compat',

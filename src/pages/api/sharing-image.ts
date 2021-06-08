@@ -4,19 +4,18 @@ import render from 'preact-render-to-string'
 
 import { SharingImage } from 'components/SharingImage'
 
+import interRegularUrl from 'fonts/Inter/Inter-Regular.ttf'
+
 export default async function sharingImage(_: NextApiRequest, res: NextApiResponse) {
 	const browser = await chromium.puppeteer.launch({
 		args: [...(chromium.args || []), '--font-render-hinting=none', '--force-color-profile=srgb'],
 		executablePath: await chromium.executablePath,
 		headless: true,
 	})
+	await chromium.font(interRegularUrl)
 	const page = await browser.newPage()
 	const image = render(SharingImage())
 
-	await chromium.font('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900')
-	await chromium.font(
-		'https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf'
-	)
 	await page.setViewport({ width: 1200, height: 630 })
 	await page.setContent(image)
 
