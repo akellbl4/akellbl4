@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import NextLink from 'next/link'
 
 type CustomLinkProps = {
@@ -17,7 +16,7 @@ export function Link({ rel, href, ...props }: CustomLinkProps) {
 	return (
 		<a
 			target="_blank"
-			rel={clsx('noopener', 'noreferrer', 'nofollow', rel)}
+			rel={`noopener noreferrer nofollow${rel ? ' ' + rel : ''}`}
 			href={href}
 			{...props}
 		/>

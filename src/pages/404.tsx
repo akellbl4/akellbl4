@@ -6,9 +6,9 @@ export default function NotFound() {
 			<h1 className="font-bold text-8xl md:text-9xl tracking-tight mb-4 text-black dark:text-white">
 				418
 			</h1>
-			<h2 className="font-bold text-3xl md:text-4xl tracking-tight mb-4">I'm a Teapot</h2>
+			<h2 className="font-bold text-3xl md:text-4xl tracking-tight mb-4">I&apos;m a Teapot</h2>
 			<p className="text-gray-700 dark:text-gray-300 mb-8">
-				Actually, page haven't been found but error 404 is too boring.
+				Actually, page haven&apos;t been found but error 404 is too boring.
 			</p>
 			<Link href="/">
 				<a className="p-2 sm:p-4 w-64 font-bold mx-auto bg-gray-100 dark:bg-gray-900 text-center rounded-md">

@@ -39,12 +39,12 @@ export default function Home() {
 			</Link>
 			<p className="block text-md w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-gray-400">
 				<span className="transition-color duration-300 hover:text-gray-600 dark:hover:text-gray-200">
-					I'm a Software Engineer.
+					I&apos;m a Software Engineer.
 				</span>{' '}
 				<span className="transition-color duration-300 hover:text-gray-600 dark:hover:text-gray-200">
 					I work at{' '}
 					<Link
-						className="border-b dark:border-gray-600 hover:dark:border-gray-400"
+						className="border-b dark:border-gray-600 dark:hover:border-gray-400"
 						href="https://junehomes.com"
 					>
 						June Homes{' '}
@@ -56,12 +56,12 @@ export default function Home() {
 					I like to contribute to{' '}
 					<Link
 						href="/about#projects"
-						className="border-b dark:border-gray-600 hover:dark:border-gray-400"
+						className="border-b dark:border-gray-600 dark:hover:border-gray-400"
 					>
 						open-source
 					</Link>{' '}
 					and&nbsp;
-					<Link href="/blog" className="border-b dark:border-gray-600 hover:dark:border-gray-400">
+					<Link href="/blog" className="border-b dark:border-gray-600 dark:hover:border-gray-400">
 						write
 					</Link>{' '}
 					about web development.
