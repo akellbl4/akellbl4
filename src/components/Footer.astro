@@ -1,0 +1,39 @@
+---
+import NowPlaying from './NowPlaying.svelte'
+
+const { socialLinks } = Astro.props
+---
+<footer class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl flex text-sm sm:text-base flex-col justify-between sm:flex-row sm:items-end">
+	<ul class="flex flex-wrap flex-shrink-0 max-w-full mr-6">
+		{socialLinks.map(({ title, emoji, href }) => (
+			<li class="mr-4 mt-2">
+				<a
+					rel="noopener noreferrer"
+					target="_blank"
+					href={href}
+					data-emoji={emoji}
+					class="
+					relative inline-block text-gray-500 dark:text-gray-300 transition-colors duration-200 border-b dark:border-gray-700 hover:text-transparent hover:border-transparent
+					after:absolute
+					after:inset-0
+					after:w-full
+					after:h-full
+					after:transition
+					after:delay-100
+					after:scale-50
+					after:opacity-0
+					after:text-center
+					after:text-initial
+					hover:after:opacity-100 hover:after:scale-150
+					hover:after:content-[attr(data-emoji)]
+					"
+				>
+					{title}
+				</a>
+			</li>
+		))}
+	</ul>
+	<section class="max-w-full overflow-hidden p-1 -m-1 mt-4 mr-auto sm:mr-0 sm:mt-0">
+		<NowPlaying client:visible />
+	</section>
+</footer>

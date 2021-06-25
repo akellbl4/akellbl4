@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer utilities {
+	.text-initial {
+		color: initial;
+	}
+	.backface-hidden {
+		backface-visibility: hidden;
+	}
+	.rotate-y-0 {
+		transform: rotateY(0);
+	}
+	.rotate-y-180 {
+		transform: rotateY(180deg);
+	}
+	.rotate-y-360 {
+		transform: rotateY(180deg);
+	}
+}
+
+:root {
+	color-scheme: light dark;
+}
+
+::selection {
+	@apply bg-cyan-400 text-white bg-opacity-50;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply text-gray-900 dark:text-gray-100;
+}
+
+.anchor {
+	@apply md:after:top-0;
+}
+
+.preload-transitions * {
+	@apply !transition-none;
+}
+
+.code-section-title {
+	@apply py-3 px-4 bg-gray-200 dark:bg-warmGray-700 rounded-t-lg font-mono font-bold text-sm dark:text-gray-300;
+}
+.code-section pre {
+	@apply mt-0 rounded-t-none;
+}
+
+.code-section-title > a:after {
+	@apply invisible;
+}
+
+.title-gradient {
+	background-image: linear-gradient(
+		to right,
+		#2dd2dd 0%,
+		#9a47f3 25%,
+		#fcb26d 50%,
+		#ff61e6 75%,
+		#2dd2dd 100%
+	);
+	background-clip: text;
+	text-fill-color: transparent;
+	-webkit-text-fill-color: transparent;
+	background-size: 200% auto;
+	animation: slide 10s linear infinite;
+}
+
+.track-link:hover > *:first-child {
+	@apply transform scale-110 opacity-100;
+}
+
+.prose h1 {
+	@apply font-bold text-4xl sm:text-5xl;
+}
+.prose h1 > a:after {
+	@apply hidden;
+}
+
+.prose h2 {
+	@apply text-2xl sm:text-3xl;
+}
+
+.prose .project h3 {
+	@apply m-0 mb-2 text-xl sm:text-2xl no-underline;
+}
+
+.code-filename + pre {
+	@apply rounded-t-none mt-0 rounded-b-lg text-sm;
+}
+
+.token.comment {
+	@apply text-gray-400;
+}
+
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	@apply text-gray-700 dark:text-gray-300;
+}
+
+.token.punctuation {
+	@apply text-gray-700 dark:text-gray-300;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	@apply text-teal-600 dark:text-teal-300;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	@apply text-sky-700 dark:text-sky-300;
+}
+
+.language-css .token.string,
+.style .token.string,
+.token.entity,
+.token.url,
+.token.regex,
+.token.important,
+.token.variable,
+.token.parameter {
+	@apply text-yellow-600 dark:text-yellow-400;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	@apply text-blue-500 dark:text-blue-300;
+}
+
+.token.function,
+.token.class-name {
+	@apply text-pink-500 dark:text-pink-400;
+}
+
+@keyframes slide {
+	to {
+		background-position: 200% center;
+	}
+}

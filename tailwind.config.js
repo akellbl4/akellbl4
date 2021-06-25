@@ -1,10 +1,9 @@
 const colors = require('tailwindcss/colors')
-const typography = require('@tailwindcss/typography')
 const { spacing } = require('tailwindcss/defaultTheme')
 
 module.exports = {
 	mode: 'jit',
-	purge: ['./src/**/*.tsx', './src/**/*.ts', './data/**/*.mdx'],
+	purge: ['astro.config.mjs', 'src/**/*.{astro,md,svelte}'],
 	darkMode: 'media',
 	theme: {
 		extend: {
@@ -13,7 +12,7 @@ module.exports = {
 				gray: colors.blueGray,
 				cyan: colors.cyan,
 				rose: colors.rose,
-				lightBlue: colors.lightBlue,
+				sky: colors.sky,
 				teal: colors.teal,
 			},
 			typography: (theme) => ({
@@ -21,9 +20,9 @@ module.exports = {
 					css: {
 						color: theme('colors.gray.700'),
 						a: {
-							color: theme('colors.lightBlue.500'),
+							color: theme('colors.sky.500'),
 							'&:hover': {
-								color: theme('colors.lightBlue.700'),
+								color: theme('colors.sky.700'),
 							},
 						},
 						pre: {
@@ -45,10 +44,10 @@ module.exports = {
 						},
 						'code::before': false,
 						'code::after': false,
-						'h1,h2,h3,h4': {
-							width: '100%',
+						'h1,h2,h3,h4,h5,h6': {
+							position: 'relative',
 							color: theme('colors.gray.800'),
-							'scroll-margin-top': spacing[16],
+							'scroll-margin-top': spacing[4],
 						},
 					},
 				},
@@ -56,10 +55,10 @@ module.exports = {
 					css: {
 						color: theme('colors.gray.300'),
 						a: {
-							color: theme('colors.lightBlue.400'),
+							color: theme('colors.sky.400'),
 							transition: 'color 0.15s',
 							'&:hover': {
-								color: theme('colors.lightBlue.500'),
+								color: theme('colors.sky.500'),
 							},
 						},
 						pre: {
@@ -70,7 +69,7 @@ module.exports = {
 							color: theme('colors.cyan.400'),
 							backgroundColor: theme('colors.gray.800'),
 						},
-						'h1,h2,h3,h4': {
+						'h1,h2,h3,h4,h5,h6': {
 							color: theme('colors.gray.200'),
 						},
 					},
@@ -81,5 +80,5 @@ module.exports = {
 	variants: {
 		typography: ['dark'],
 	},
-	plugins: [typography],
+	plugins: [require('@tailwindcss/typography')],
 }
