@@ -1,0 +1,33 @@
+---
+const { content } = Astro.props;
+const title = "";
+const description = "";
+const type = "";
+const date = "";
+const url = "http://url";
+const image = "";
+const name = "";
+const twitter = "";
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <link rel="stylesheet" type="text/css" href="/global.css" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:image" content={new URL(image, url)} />
+    <meta property="og:site_name" content={name} />
+    <meta name="twitter:site" content={twitter} />
+    <meta name="author" content={name} />
+    <link rel="canonical" href={url} />
+    {date && <meta property="article:published_time" content={date} />}
+    <link rel="sitemap" href="/sitemap.xml" />
+    <link rel="alternate" type="application/rss+xml" href="/feed/posts.xml" />
+  </head>
+  <body>
+		<slot />
+	</body>
+</html>

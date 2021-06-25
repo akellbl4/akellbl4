@@ -1,10 +1,11 @@
+
 const colors = require('tailwindcss/colors')
 const typography = require('@tailwindcss/typography')
 const { spacing } = require('tailwindcss/defaultTheme')
 
 module.exports = {
 	mode: 'jit',
-	purge: ['./src/**/*.tsx', './src/**/*.ts', './data/**/*.mdx'],
+	purge: ['./public/**/*.html', './src/**/*.{astro,js,jsx,ts,tsx}'],
 	darkMode: 'media',
 	theme: {
 		extend: {

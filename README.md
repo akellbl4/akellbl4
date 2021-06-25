@@ -1,34 +1,47 @@
-# [Pavel.Mineev.me](https://pavel.mineev.me)
+# Astro Blog Example
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fakellbl4%2Fpavel.mineev.me)
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-From the very start to not so long ago my site was just several links to my social media and contacts. Since I started to write about development I decided to have my place where I can write what I want. So, I decided to use Next.js, Tailwind, and MDX as the base for my website.
+Features:
 
-## Overview
+- ✅ SEO-friendly setup with canonical URLs and OpenGraph data
+- ✅ Full Markdown support
+- ✅ RSS 2.0 generation
+- ✅ Sitemap.xml generation
 
-- `src/pages/api/*` - [API routes](https://nextjs.org/docs/api-routes/introduction) makes Now Playing in my Spotify work as well as counting numbers of views with Redis.
-- `src/pages/blog/*` - Static pre-rendered blog pages using [MDX](https://github.com/mdx-js/mdx).
-- `src/pages/*` - All other static pages.
+## 🚀 Project Structure
 
-## Run on local machine
-
-```bash
-$ git clone https://github.com/akellbl4/pavel.mineev.me.git
-$ cd pavel.mineev.me
-$ yarn
-$ yarn dev
-```
-
-If you want to make work counting view and Spotify features you need to copy config and put credentials there.
+Inside of your Astro project, you'll see the following folders and files:
 
 ```
-$ cp .env.example .env.local
+/
+├── public/
+│   ├── robots.txt
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   │   └── Tour.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-### Built Using
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-- [Next.js](https://nextjs.org/)
-- [MDX](https://github.com/mdx-js/mdx)
-- [Tailwind CSS](https://tailwindcss.com/)
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-Hosted on [Vercel](https://vercel.com), accelerated by [Cloudflare](https://cloundflare.com)
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command         | Action                                      |
+|:----------------|:--------------------------------------------|
+| `npm install`   | Installs dependencies                       |
+| `npm run start` | Starts local dev server at `localhost:3000` |
+| `npm run build` | Build your production site to `./dist/`     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://github.com/snowpackjs/astro) or jump into our [Discord server](https://astro.build/chat).

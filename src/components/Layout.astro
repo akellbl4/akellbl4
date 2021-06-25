@@ -1,0 +1,46 @@
+---
+import clsx from 'clsx'
+import Html from './Html.astro'
+import NavItem from './NavItem.astro'
+import navMenu from '../data/nav-menu.json'
+import socialLinks from '../data/social-links.json'
+
+const { request } = Astro.props;
+---
+
+<Html>
+	<div class='h-full w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl'>
+		<header>
+			<a href="#skip" class="sr-only focus:not-sr-only">
+				Skip to content
+			</a>
+			<nav class="text-sm sm:text-base">
+				<ul class="flex w-full space-x-4">
+					{navMenu.map(({ href, title }) => (
+						<NavItem href={href} active={href === request.url.pathname}>{title}</NavItem>
+					))}
+				</ul>
+			</nav>
+		</header>
+		<main id="skip" class="flex flex-col flex-grow py-12">
+			<slot />
+		</main>
+		<footer class="flex mb-4 text-sm sm:text-base flex-col justify-between sm:flex-row sm:items-end">
+			<ul class="flex flex-wrap flex-shrink-0 max-w-full mr-6">
+				{socialLinks.map(({ title, emoji, href }) => (
+					<li class="mr-4 mt-2">
+						<a
+							href={href}
+							data-emoji={emoji}
+							class="link-emoji relative inline-block text-gray-500 dark:text-gray-300 transition-colors duration-200 border-b dark:border-gray-700 hover:text-transparent hover:border-transparent"
+						>
+							{title}
+						</a>
+					</li>
+				))}
+			</ul>
+			<section class="max-w-full overflow-hidden p-1 -m-1 mt-4 mr-auto sm:mr-0 sm:mt-0">
+			</section>
+		</footer>
+	</div>
+</Html>
