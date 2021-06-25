@@ -36,6 +36,6 @@ export default function Blog({ posts }: Props) {
 }
 
 Blog.meta = {
-	title: 'Blog - Pavel Mineev',
+	title: 'Blog',
 	description: 'Here is my blog. I started to write not so long ago and trying my best',
 }
