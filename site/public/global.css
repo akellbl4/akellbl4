@@ -146,11 +146,11 @@ h6 {
 	@apply visible;
 }
 
-.remark-code-title {
-	@apply py-3 px-4 bg-gray-200 dark:bg-warmGray-700 rounded-t-lg font-mono font-bold tracking-tight text-sm dark:text-gray-300;
+.code-filename {
+	@apply py-3 px-4 bg-gray-200 dark:bg-warmGray-700 rounded-t-lg font-mono font-bold text-sm dark:text-gray-300;
 }
 
-.remark-code-title + pre {
+.code-filename + pre {
 	@apply rounded-t-none mt-0 rounded-b-lg text-sm;
 }
 
