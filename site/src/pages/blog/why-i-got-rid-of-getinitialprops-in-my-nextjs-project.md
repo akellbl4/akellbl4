@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/post.astro
 title: Why I Got Rid of getInitialProps in My Next.js Project
 summary: When I joined June Homes they already used Next.js and getInitialProps for fetching data. I've noticed that there are no pages that are statically optimized. I decided to try to fix it and make the transition to modern fetching methods. Let's look at how to do so and what problems you can face
 publishedAt: '2021-03-09'

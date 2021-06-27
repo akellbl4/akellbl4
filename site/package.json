@@ -19,6 +19,7 @@
     "astro": "^0.15.0",
     "clsx": "^1.1.1",
     "date-fns": "^2.22.1",
+    "reading-time": "^1.3.0",
     "tailwindcss": "^2.2.4"
   }
 }

@@ -1,4 +1,5 @@
 ---
+layout: ../../layouts/post.astro
 title: Fetch Shared Data in Next.js With Single Request
 summary: Does your project has a lot of static generated pages and all of the pages have shared data that is fetched from server side? It could cause spamming your server by many requests that are called by every page that should be generated. Let's take a look at how we can prevent that with NodeJS in front of Next.js on the build stage
 original:

@@ -1,12 +1,28 @@
 ---
 import Layout from '../layouts/main'
 import BlogItem from '../components/BlogItem'
-
-const posts = Astro.fetchContent('./blog/*.md')
-
-posts.sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
+let { collection } = Astro.props;
+export async function createCollection() {
+	return {
+		async data() {
+			const posts = Astro.fetchContent('./blog/*.md');
+			posts.sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
+			return posts;
+		},
+		rss: {
+			title: 'Blog | Pavel Mineev',
+			description: 'Blog',
+			customData: `<language>en-us</language>`,
+			item: (item) => ({
+				title: item.title,
+				description: item.description,
+				link: item.url,
+				pubDate: item.date,
+			}),
+		}
+	};
+}
 ---
-
 <Layout request={Astro.request}>
 	<svg class="hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
 		<symbol id="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -20,7 +36,7 @@ posts.sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
 	</svg>
 	<h1 class="font-bold text-4xl sm:text-5xl tracking-tight mb-6 sm:mb-10">Blog</h1>
 	<ul class="space-y-8 sm:space-y-12">
-		{posts.map((p) => (
+		{collection.data.map((p) => (
 			<li>
 				<BlogItem {...p} />
 			</li>
