@@ -1,10 +1,8 @@
 ---
-import Layout from '../components/Layout'
-
-const { request }= Astro
+import Layout from '../layouts/main'
 ---
 
-<Layout request={request}>
+<Layout request={Astro.request}>
 	<article class="my-auto pt-2">
 		<a href="/about" class="inline-block text-gray-800">
 			<h1 class="title relative inline-flex flex-col-reverse sm:flex-row mb-3">

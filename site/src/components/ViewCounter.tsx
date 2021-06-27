@@ -27,7 +27,7 @@ export function ViewCounter({ slug, count }: Props) {
 	// 	}
 	// 	api.post(`/views/${slug}`)
 	// }, [count, slug])
-	console.log(slug, count)
+	// console.log(slug, count)
 
 	return <>{formatViews('1')}</>
 }

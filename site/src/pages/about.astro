@@ -1,11 +1,12 @@
 ---
 import { Markdown } from 'astro/components'
-import Talk from '../components/Talk.astro'
-import Layout from '../components/Layout.astro'
-import Project from '../components/Project.astro'
+import Layout from '../layouts/main'
+import Talk from '../components/Talk'
+import Project from '../components/Project'
+
 ---
 
-<Layout>
+<Layout request={Astro.request}>
 	<Markdown>
 		Hey! My name is Pavel Mineev and currently I'm working at [June Homes](https://junehomes.com) as a&nbsp;leader of a&nbsp;full-stack team.
 
@@ -15,7 +16,7 @@ import Project from '../components/Project.astro'
 
 		## Projects
 
-		<div className="grid sm:grid-cols-2 gap-6">
+		<div class="grid sm:grid-cols-2 gap-6">
 			<Project href="https://github.com/umputun/remark42" title="Remark42">
 				I'm working on client-side part of the project since start of 2019. I work
 				on implementation of new functional, refactoring and updating of the UI.

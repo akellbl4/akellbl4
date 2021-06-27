@@ -254,10 +254,10 @@
     retext-smartypants "^4.0.0"
     unist-util-visit "^2.0.1"
 
-"@snowpack/plugin-postcss@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@snowpack/plugin-postcss/-/plugin-postcss-1.4.2.tgz#c450afcf4f88862da82c5824eae9c4ec26b09540"
-  integrity sha512-4ba0ZSz9PyQ13kisQWqFe9NIxILeq1/AzW8DFKAu1w3H89rNg54uto259kPc4/s9ajB6eiccq7oQjwxZonRGag==
+"@snowpack/plugin-postcss@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@snowpack/plugin-postcss/-/plugin-postcss-1.4.3.tgz#09704923033bd710e50a466bfc0afc90c7cc59df"
+  integrity sha512-RJGYagse6Pi86Bqm8vPukhCwFVa92VIB81qP3PXPQ/ITQy5gVWDYi4oU+r1A6hsEZ9scUNZevfw6ISya+oiMNQ==
   dependencies:
     minimatch "^3.0.4"
     normalize-path "^3.0.0"
@@ -325,9 +325,9 @@
     "@types/unist" "*"
 
 "@types/node@*":
-  version "15.12.4"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.12.4.tgz#e1cf817d70a1e118e81922c4ff6683ce9d422e26"
-  integrity sha512-zrNj1+yqYF4WskCMOHwN+w9iuD12+dGm0rQ35HLl9/Ouuq52cEtd0CH9qMgrdNmi5ejC1/V7vKEXYubB+65DkA==
+  version "15.12.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.12.5.tgz#9a78318a45d75c9523d2396131bd3cca54b2d185"
+  integrity sha512-se3yX7UHv5Bscf8f1ERKvQOD6sTyycH3hdaoozvaLxgUiY5lIGEeH37AD0G0Qi9kPqihPn0HOfd2yaIEN9VwEg==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -596,9 +596,9 @@ astring@^1.7.4:
   integrity sha512-lobf6RWXb8c4uZ7Mdq0U12efYmpD1UFnyOWVJPTa3ukqZrMopav+2hdNu0hgBF0JIBFK9QgrBDfwYvh3DFJDAA==
 
 astro@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-0.15.0.tgz#0eb8032969af9101ff32c63c3363c7438acfc1ea"
-  integrity sha512-uJ588E2BMJLUTMO340Meg+usR54sJV+/yINiIi3plDaWKn6qtiZvMs9sgCV7JUXRwEyTg+yYG2W1nXFXiKr3ng==
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-0.15.1.tgz#757f158db5558a480f9ddfde11fccaba3a08138e"
+  integrity sha512-dtz62anDb1ahlAhMThMOiH6kdFEn1NoWW/rrY32/dHvQS9PiBns2WciIh80aQ2IBnWjTXs4voC3R1fkqb7j+Ow==
   dependencies:
     "@astrojs/markdown-support" "0.1.2"
     "@astrojs/parser" "0.15.0"
@@ -612,7 +612,7 @@ astro@^0.15.0:
     "@babel/parser" "^7.13.15"
     "@babel/traverse" "^7.13.15"
     "@silvenon/remark-smartypants" "^1.0.0"
-    "@snowpack/plugin-postcss" "^1.4.2"
+    "@snowpack/plugin-postcss" "^1.4.3"
     "@snowpack/plugin-sass" "^1.4.0"
     acorn "^7.4.0"
     astring "^1.7.4"
@@ -808,9 +808,9 @@ camelcase-css@^2.0.1:
   integrity sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==
 
 caniuse-lite@^1.0.30001219, caniuse-lite@^1.0.30001230:
-  version "1.0.30001239"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001239.tgz#66e8669985bb2cb84ccb10f68c25ce6dd3e4d2b8"
-  integrity sha512-cyBkXJDMeI4wthy8xJ2FvDU6+0dtcZSJW3voUF8+e9f1bBeuvyZfc3PNbkOETyhbR+dGCPzn9E7MA3iwzusOhQ==
+  version "1.0.30001240"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001240.tgz#ec15d125b590602c8731545c5351ff054ad2d52f"
+  integrity sha512-nb8mDzfMdxBDN7ZKx8chWafAdBp5DAAlpWvNyUGe5tcDWd838zpzDN3Rah9cjCqhfOKkrvx40G2SDtP0qiWX/w==
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -1214,9 +1214,9 @@ ecc-jsbn@~0.1.1:
     safer-buffer "^2.1.0"
 
 electron-to-chromium@^1.3.723:
-  version "1.3.758"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.758.tgz#0baeb8f0a89d1850cc65f92da5f669343e4f6241"
-  integrity sha512-StYtiDbgZdjcck3OLwsVVVif7QDuD5m5v2gF+XpETp5lHa7X0y3129YBlYaHRPyj1fep1oAaC6i//gAdp+rhbw==
+  version "1.3.759"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.759.tgz#b0d652d376831470a4c230ba721da2427bfb996a"
+  integrity sha512-nM76xH0t2FBH5iMEZDVc3S/qbdKjGH7TThezxC8k1Q7w7WHvIAyJh8lAe2UamGfdRqBTjHfPDn82LJ0ksCiB9g==
 
 emoji-regex@^9.2.2:
   version "9.2.2"

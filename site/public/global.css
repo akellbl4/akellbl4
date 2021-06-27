@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
 :root {
 	color-scheme: light dark;
 }
@@ -180,7 +184,7 @@ h6 {
 .token.char,
 .token.builtin,
 .token.inserted {
-	@apply text-lightBlue-700 dark:text-lightBlue-300;
+	@apply text-sky-700 dark:text-sky-300;
 }
 
 .language-css .token.string,

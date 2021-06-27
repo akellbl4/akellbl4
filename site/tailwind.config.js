@@ -5,7 +5,7 @@ const { spacing } = require('tailwindcss/defaultTheme')
 
 module.exports = {
 	mode: 'jit',
-	purge: ['./public/**/*.html', './src/**/*.{astro,js,jsx,ts,tsx}'],
+	purge: ['./public/**/*.html', './src/**/*.{astro,ts,tsx}'],
 	darkMode: 'media',
 	theme: {
 		extend: {
@@ -14,7 +14,7 @@ module.exports = {
 				gray: colors.blueGray,
 				cyan: colors.cyan,
 				rose: colors.rose,
-				lightBlue: colors.lightBlue,
+				sky: colors.sky,
 				teal: colors.teal,
 			},
 			typography: (theme) => ({
@@ -22,9 +22,9 @@ module.exports = {
 					css: {
 						color: theme('colors.gray.700'),
 						a: {
-							color: theme('colors.lightBlue.500'),
+							color: theme('colors.sky.500'),
 							'&:hover': {
-								color: theme('colors.lightBlue.700'),
+								color: theme('colors.sky.700'),
 							},
 						},
 						pre: {
@@ -57,10 +57,10 @@ module.exports = {
 					css: {
 						color: theme('colors.gray.300'),
 						a: {
-							color: theme('colors.lightBlue.400'),
+							color: theme('colors.sky.400'),
 							transition: 'color 0.15s',
 							'&:hover': {
-								color: theme('colors.lightBlue.500'),
+								color: theme('colors.sky.500'),
 							},
 						},
 						pre: {
