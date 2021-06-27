@@ -24,6 +24,6 @@
     "tailwindcss": "^2.2.4"
   },
   "dependencies": {
-    "vercel": "^23.0.1"
+    "@vercel/node": "^1.11.1"
   }
 }
