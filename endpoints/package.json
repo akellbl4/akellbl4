@@ -1,0 +1,17 @@
+{
+  "name": "api.mineev.me",
+  "description": "API Endpoints for my peersonal site",
+  "version": "0.0.0",
+  "author": {
+    "name": "Pavel Mineev",
+    "email": "pavel@mineev.me",
+    "url": "https://pavel.mineev.me"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/akellbl4/pavel.mineev.me/endpoints",
+  "private": true,
+  "dependencies": {
+    "@vercel/node": "^1.11.1",
+    "ioredis": "^4.27.6"
+  }
+}
