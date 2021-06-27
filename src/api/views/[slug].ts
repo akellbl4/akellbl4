@@ -1,7 +1,7 @@
 import { getViews, increseViews } from 'lib/views'
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { VercelRequest, VercelResponse } from '@vercel/node'
 
-export default async function countVisit(req: NextApiRequest, res: NextApiResponse) {
+export default async function countVisit(req: VercelRequest, res: VercelResponse) {
 	const { slug } = req.query
 
 	if (typeof slug !== 'string') {

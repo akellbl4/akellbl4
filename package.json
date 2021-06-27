@@ -19,10 +19,11 @@
   },
   "devDependencies": {
     "astro": "^0.15.0",
+    "clsx": "^1.1.1",
+    "date-fns": "^2.22.1",
     "tailwindcss": "^2.2.4"
   },
   "dependencies": {
-    "clsx": "^1.1.1",
-    "date-fns": "^2.22.1"
+    "vercel": "^23.0.1"
   }
 }

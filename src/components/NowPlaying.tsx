@@ -1,16 +1,24 @@
-import Image from 'next/image'
-import useSWR from 'swr'
-import { Link } from 'components/Link'
-import type { Track } from 'lib/spotify'
+import { h } from 'preact'
+import { useState, useEffect } from 'preact/hooks'
+
+type Track = Record<string, string>
 
 export function NowPlaying() {
-	const { data } = useSWR<Track | ''>('/spotify/now-playing', { refreshInterval: 30000 })
+	const [data, setData] = useState<undefined | null | Track>(undefined)
+
+	useEffect(() => {
+		fetch('/api/spotify/now-playing')
+			.then((r) => r.json())
+			.then(() => {
+				setData(null)
+			})
+	}, [])
 
 	if (data === undefined) {
 		return <div className="transition-opacity duration-200 opacity-0 h-5 w-5 sm:h-6 sm:w-6" />
 	}
 
-	if (data === '') {
+	if (data === null) {
 		return (
 			<div className="transition-opacity duration-200 flex items-center opacity-60">
 				<svg
@@ -29,14 +37,14 @@ export function NowPlaying() {
 
 	return (
 		<div className="transition-opacity duration-500 opacity-100">
-			<Link
+			<a
 				href={data.url}
 				className="track-link flex items-center"
 				title={`${data.name} – ${data.artist}`}
 				rel="nofollow"
 			>
 				<figure className="flex-shrink-0 rounded-sm shadow overflow-hidden h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3 transition-transform duration-300 bg-gray-200 dark:bg-gray-600">
-					<Image
+					<img
 						key={data.coverUrl}
 						src={data.coverUrl}
 						height={64}
@@ -51,7 +59,7 @@ export function NowPlaying() {
 				<span className="inline-block text-gray-500 dark:text-gray-300 max-w-max truncate">
 					{data.artist}
 				</span>
-			</Link>
+			</a>
 		</div>
 	)
 }

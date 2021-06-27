@@ -1,10 +1,7 @@
-import { getNowPlaying, Track } from 'lib/spotify'
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { getNowPlaying } from 'lib/spotify'
+import { VercelRequest, VercelResponse } from '@vercel/node'
 
-export default async function nowPlayingApi(
-	req: NextApiRequest,
-	res: NextApiResponse<Track | null>
-) {
+export default async function nowPlayingApi(req: VercelRequest, res: VercelResponse) {
 	if (req.method === 'GET') {
 		try {
 			const track = await getNowPlaying()

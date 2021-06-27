@@ -1,7 +1,8 @@
+import { h, Fragment } from 'preact'
 // import { useEffect } from 'react'
-import useSWR from 'swr'
+// import useSWR from 'swr'
 
-import { api } from '../lib/api'
+// import { api } from '../lib/api'
 import { formatViews } from '../lib/format-views'
 
 type Props = {
@@ -18,6 +19,7 @@ export function ViewCounter({ slug, count }: Props) {
 	// 	}
 	// 	api.post(`/views/${slug}`)
 	// }, [count, slug])
+	console.log(slug, count)
 
 	return <>{formatViews('1')}</>
 }
