@@ -1,0 +1,70 @@
+---
+import clsx from 'clsx'
+import NavItem from '../components/NavItem.astro'
+import navMenu from '../data/nav-menu.json'
+import socialLinks from '../data/social-links.json'
+import defaultMeta from '../data/meta.json'
+
+const { request } = Astro.props;
+
+const title = "";
+const description = "";
+const type = "";
+const date = "";
+const image = "/";
+const name = "";
+const twitter = "";
+---
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>{title}</title>
+	<link rel="stylesheet" type="text/css" href="/global.css" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="description" content={description} />
+	<meta property="og:type" content={type} />
+	<meta property="og:image" content={new URL(image, request.canonicalURL.origin)} />
+	<meta property="og:site_name" content={name} />
+	<meta name="twitter:site" content={twitter} />
+	<meta name="author" content={name} />
+	<link rel="canonical" href={request.url} />
+	{date && <meta property="article:published_time" content={date} />}
+	<link rel="sitemap" href="/sitemap.xml" />
+	<link rel="alternate" type="application/rss+xml" href="/feed/posts.xml" />
+</head>
+<body class="flex flex-col">
+	<header class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl">
+		<a href="#skip" class="sr-only focus:not-sr-only">
+			Skip to content
+		</a>
+		<nav class="text-sm sm:text-base">
+			<ul class="flex w-full space-x-4">
+				{navMenu.map(({ href, title }) => (
+					<NavItem href={href} active={href === request.url.pathname}>{title}</NavItem>
+				))}
+			</ul>
+		</nav>
+	</header>
+	<main id="skip" class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl flex flex-col flex-grow py-12">
+		<slot />
+	</main>
+	<footer class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl flex text-sm sm:text-base flex-col justify-between sm:flex-row sm:items-end">
+		<ul class="flex flex-wrap flex-shrink-0 max-w-full mr-6">
+			{socialLinks.map(({ title, emoji, href }) => (
+				<li class="mr-4 mt-2">
+					<a
+						href={href}
+						data-emoji={emoji}
+						class="link-emoji relative inline-block text-gray-500 dark:text-gray-300 transition-colors duration-200 border-b dark:border-gray-700 hover:text-transparent hover:border-transparent"
+					>
+						{title}
+					</a>
+				</li>
+			))}
+		</ul>
+		<section class="max-w-full overflow-hidden p-1 -m-1 mt-4 mr-auto sm:mr-0 sm:mt-0">
+		</section>
+	</footer>
+</body>
+</html>
