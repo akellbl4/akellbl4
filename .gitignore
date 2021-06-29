@@ -1,9 +1,7 @@
-# build output
+node_modules
+.snowpack
+.vercel
 dist
-
-# dependencies
-node_modules/
-.snowpack/
 
 # logs
 npm-debug.log*
@@ -16,5 +14,3 @@ yarn-error.log*
 
 # macOS-specific files
 .DS_Store
-
-.vercel
