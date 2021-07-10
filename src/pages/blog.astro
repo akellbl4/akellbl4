@@ -1,7 +1,9 @@
 ---
-import Layout from '../layouts/main'
-import BlogItem from '../components/BlogItem'
-let { collection } = Astro.props;
+import Layout from '../layouts/main.astro'
+import BlogItem from '../components/BlogItem.astro'
+
+const { collection } = Astro.props;
+
 export async function createCollection() {
 	return {
 		async data() {
@@ -36,9 +38,9 @@ export async function createCollection() {
 	</svg>
 	<h1 class="font-bold text-4xl sm:text-5xl tracking-tight mb-6 sm:mb-10">Blog</h1>
 	<ul class="space-y-8 sm:space-y-12">
-		{collection.data.map((p) => (
+		{collection.data.map(({ title, original, lang, summary, url}) => (
 			<li>
-				<BlogItem {...p} />
+				<BlogItem title={title} original={original} lang={lang} summary={summary} url={url}/>
 			</li>
 		))}
 	</ul>

@@ -1,4 +1,4 @@
-import { getNowPlaying } from 'lib/spotify'
+import { getNowPlaying } from '~lib/spotify'
 import { VercelRequest, VercelResponse } from '@vercel/node'
 
 export default async function nowPlayingApi(req: VercelRequest, res: VercelResponse) {

@@ -1,8 +1,9 @@
 ---
-import { LangBadge } from './LangBadge'
-import { ViewCounter } from './ViewCounter.tsx'
+import LangBadge from './LangBadge.astro'
+import ViewsCounter from './ViewsCounter.svelte'
 
 const { original, title, lang, summary, url } = Astro.props
+let slug = ''
 ---
 
 <article class="relative">
@@ -27,7 +28,7 @@ const { original, title, lang, summary, url } = Astro.props
 		</h3>
 		{!original?.external && (
 			<span class="whitespace-nowrap text-sm sm:text-base text-gray-500 text-left md:text-right">
-				<ViewCounter:load />
+				<ViewsCounter client:visible slug={slug}/>
 			</span>
 		)}
 	</div>

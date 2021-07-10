@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["./*"]
+    },
+    "lib": ["esnext"]
   },
   "include": ["types.d.ts", "api/**/*.ts", "lib/*.ts"]
 }

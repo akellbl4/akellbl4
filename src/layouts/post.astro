@@ -3,7 +3,7 @@ import readingTime from 'reading-time'
 import { format, parseISO } from 'date-fns'
 
 import Layout from './main'
-import { ViewCounter } from '../components/ViewCounter'
+import ViewsCounter from '../components/ViewsCounter.svelte'
 
 const meta = {}
 const slug = ''
@@ -12,6 +12,8 @@ const { content } = Astro.props
 const { title, summary, publishedAt, astro } = content
 const stats = readingTime(astro.source)
 const publishAtDate = format(parseISO(publishedAt), 'MMMM d, yyyy')
+
+console.log(Astro.props.content.astro.headers)
 ---
 
 <Layout request={Astro.request}>
@@ -43,7 +45,7 @@ const publishAtDate = format(parseISO(publishedAt), 'MMMM d, yyyy')
 					<span class="inline-block mx-2" role="separator">
 						•
 					</span>
-					<ViewCounter slug={slug} count />
+					<ViewsCounter client:visible slug={slug} count />
 				</div>
 			</div>
 		</header>
