@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/main'
+---
+
+<Layout request={Astro.request}>
+	<article class="my-auto pt-2">
+		<a href="/about" class="inline-block text-gray-800">
+			<h1 class="group title relative inline-flex flex-col-reverse sm:flex-row mb-3 text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight whitespace-nowrap">
+				<div class="relative inline-block">
+					<span class="title-gradient pr-2">Pavel Mineev</span>
+					<span aria-hidden="true" class="absolute inset-0 group-hover:opacity-0 transition-opacity after:block after:content-[attr(title)]" title="Pavel Mineev"></span>
+				</div>
+				<div class="relative flex w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10">
+					<div class="
+						transform backface-hidden rotate-y-0 group-hover:rotate-y-180
+						transition-transform duration-300  absolute inset-0 h-full w-full flex rounded-full overflow-hidden bg-pink-300
+					"></div>
+					<div class="photo h-full w-full flex rounded-full overflow-hidden transform backface-hidden rotate-y-180 group-hover:rotate-y-0 bg-yellow-200"></div>
+				</div>
+			</h1>
+		</a>
+		<p class="block text-md w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-gray-400">
+			<span class="transition-color duration-300 hover:text-gray-600 dark:hover:text-gray-200">
+				I&apos;m a Software Engineer.
+			</span>{" "}
+			<span class="transition-color duration-300 hover:text-gray-600 dark:hover:text-gray-200">
+				I work at{" "}
+				<a
+					class="border-b dark:border-gray-600 dark:hover:border-gray-400"
+					href="https://junehomes.com"
+				>
+					June Homes{" "}
+				</a>
+				as&nbsp;a&nbsp;Principal&nbsp;Software&nbsp;Engineer.
+			</span>{" "}
+			<br class="hidden md:inline" />
+			<span class="transition-color duration-300 hover:text-gray-600 dark:hover:text-gray-200">
+				I like to contribute to{" "}
+				<a
+					href="/about#projects"
+					class="border-b dark:border-gray-600 dark:hover:border-gray-400"
+				>
+					open-source
+				</a>{" "}
+				and&nbsp;
+				<a
+					href="/blog"
+					class="border-b dark:border-gray-600 dark:hover:border-gray-400"
+				>
+					write
+				</a>{" "}
+				about web development.
+			</span>
+		</p>
+	</article>
+</Layout>

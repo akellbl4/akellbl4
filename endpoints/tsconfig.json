@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "baseUrl": "."
-  },
-  "include": ["types.d.ts", "api/**/*.ts", "lib/*.ts"]
-}

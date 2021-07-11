@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/main'
+import BlogItem from '../components/BlogItem'
+
+export async function createCollection() {
+	return {
+		async data() {
+			const posts = Astro.fetchContent('./blog/*.md');
+			posts.sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt))
+			return posts;
+		},
+		rss: {
+			title: 'Blog | Pavel Mineev',
+			description: 'Blog',
+			customData: `<language>en-us</language>`,
+			item: (item) => ({
+				title: item.title,
+				description: item.description,
+				link: item.url,
+				pubDate: item.date,
+			}),
+		}
+	};
+}
+
+const { collection } = Astro.props;
+---
+<Layout request={Astro.request}>
+	<svg class="hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+		<symbol id="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+			<path
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				strokeWidth="2"
+				d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+			/>
+		</symbol>
+	</svg>
+	<h1 class="font-bold text-4xl sm:text-5xl tracking-tight mb-6 sm:mb-10">Blog</h1>
+	<ul class="space-y-8 sm:space-y-12">
+		{collection.data.map(({ title, original, lang, summary, url}) => (
+			<li>
+				<BlogItem title={title} original={original} lang={lang} summary={summary} url={url}/>
+			</li>
+		))}
+	</ul>
+</Layout>

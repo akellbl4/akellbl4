@@ -1,0 +1,86 @@
+---
+import readingTime from 'reading-time'
+import { format, parseISO } from 'date-fns'
+
+import Layout from './main'
+import ViewsCounter from '../components/ViewsCounter.svelte'
+
+const meta = {}
+const slug = ''
+const original = ''
+const { content } = Astro.props
+const { title, summary, publishedAt, astro } = content
+const stats = readingTime(astro.source)
+const publishAtDate = format(parseISO(publishedAt), 'MMMM d, yyyy')
+---
+
+<Layout request={Astro.request}>
+	<article
+		class="my-6"
+		itemProp="blogPost"
+		itemScope
+		itemType="https://schema.org/BlogPosting"
+	>
+		<h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-6 " itemProp="name headline">
+			{title}
+		</h1>
+		<header class="flex items-center mb-8 sm:mb-10">
+			<figure class="bg-gray-200 w-8 h-8 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-gray-200 dark:ring-gray-800">
+				<img alt={process.env.NAME} height={32} width={32} src="/images/photo.jpg" />
+			</figure>
+			<div class="flex flex-col sm:flex-row sm:justify-between sm:w-full text-sm">
+				<div class="text-gray-600 dark:text-gray-400">
+					<span itemProp="author" itemScope itemType="https://schema.org/Person">
+						<span itemProp="name">Pavel Mineev</span>
+					</span>
+					&nbsp;at&nbsp;
+					<time itemProp="datePublished" dateTime={publishedAt}>
+						{publishAtDate}
+					</time>
+				</div>
+				<div class="text-gray-500">
+					{stats.text}
+					<span class="inline-block mx-2" role="separator">
+						•
+					</span>
+					<ViewsCounter client:visible slug={slug} count />
+				</div>
+			</div>
+		</header>
+		<section class="prose dark:prose-dark w-full mb-6 mx-auto" itemProp="articleBody">
+			<slot />
+		</section>
+		<footer class="max-w-[65ch] w-full mx-auto flex justify-between text-gray-600 dark:text-gray-400">
+			<div class="text-sm">
+				<a
+					class="transition inline-block border-b border-transparent hover:border-gray-600"
+					href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
+						`${process.env.NEXT_PUBLIC_VERCEL_URL}/blog/${slug})`
+					)}`}
+				>
+					Discuss on Twitter
+				</a>
+				<span class="mx-2" role="separator">
+					•
+				</span>
+				<a
+					class="transition inline-block border-b border-transparent hover:border-gray-600"
+					href={`${process.env.NEXT_PUBLIC_GITHUB_REPO_URL}/edit/main/data/blog/${slug}.mdx`}
+				>
+					Edit on GitHub
+				</a>
+			</div>
+			{original && (
+				<div class="text-sm">
+					Originally posted on{' '}
+					<a
+						class="transition inline-block border-b border-transparent hover:border-gray-600"
+						href={original.url}
+					>
+						{original.name}
+					</a>
+				</div>
+			)}
+		</footer>
+	</article>
+</Layout>

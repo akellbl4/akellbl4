@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/api", "destination": "https://pavel.mineev.me", "permanent": false },
+    { "source": "/api/lib/(.*)", "destination": "https://pavel.mineev.me", "permanent": false }
+  ]
+}

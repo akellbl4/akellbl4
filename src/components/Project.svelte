@@ -1,0 +1,14 @@
+<script lang="ts">
+	export let href: string
+	export let title: string
+</script>
+
+<section class="project relative block px-4 py-3 -mx-3 sm:mx-0 sm:px-6 sm:py-5 border border-gray-100 dark:border-gray-700 rounded-lg transition-shadow duration-200 hover:shadow-xl dark:transform dark:transition-transform dark:hover:-translate-y-1">
+	<h3 class="flex items-center mb-2 text-xl font-bold">
+		<a href={href} class="block-link">
+			{title}
+		</a>
+		<svg class="ml-auto w-6 h-6 opacity-60"><use xlink:href="#github-icon"></use></svg>
+	</h3>
+	<p><slot/></p>
+</section>
