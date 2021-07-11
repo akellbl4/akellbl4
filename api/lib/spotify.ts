@@ -1,25 +1,20 @@
-import { request } from 'lib/request'
-
-const {
-	SPOTIFY_CLIENT_ID,
-	SPOTIFY_CLIENT_SECRET,
-	SPOTIFY_REFRESH_TOKEN: refresh_token,
-} = process.env
+const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } = process.env
 
 const basic = Buffer.from(`${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`).toString('base64')
-const body = new URLSearchParams({ grant_type: 'refresh_token', refresh_token }).toString()
+const body = new URLSearchParams({
+	grant_type: 'refresh_token',
+	refresh_token: SPOTIFY_REFRESH_TOKEN,
+}).toString()
 
 async function getAccessToken() {
-	const { data } = await request.post<{ access_token: string }>(
-		'https://accounts.spotify.com/api/token',
+	const data = await fetch('https://accounts.spotify.com/api/token', {
+		method: 'POST',
 		body,
-		{
-			headers: {
-				Authorization: `Basic ${basic}`,
-				'Content-Type': 'application/x-www-form-urlencoded',
-			},
-		}
-	)
+		headers: {
+			Authorization: `Basic ${basic}`,
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+	}).then((r): Promise<{ access_token: string }> => r.json())
 
 	return data.access_token
 }
@@ -60,32 +55,29 @@ function formatTopTracks({ items }: SpotifyApi.UsersTopTracksResponse): Track[] 
 
 export async function getNowPlaying(): Promise<Track | null> {
 	const accessToken = await getAccessToken()
-	const { data, status } = await request.get<SpotifyApi.CurrentlyPlayingResponse>(
-		'https://api.spotify.com/v1/me/player/currently-playing',
-		{
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	)
+	const req = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		},
+	})
 
-	if (status !== 200) {
+	if (req.status !== 200) {
 		return null
 	}
+
+	const data: SpotifyApi.CurrentlyPlayingResponse = await req.json()
 
 	return formatPlayingTrack(data)
 }
 
 export async function getTopTracks() {
 	const accessToken = await getAccessToken()
-	const { data } = await request.get<SpotifyApi.UsersTopTracksResponse>(
-		'https://api.spotify.com/v1/me/top/tracks',
-		{
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	)
+	const req = await fetch('https://api.spotify.com/v1/me/top/tracks', {
+		headers: {
+			Authorization: `Bearer ${accessToken}`,
+		},
+	})
+	const data: SpotifyApi.UsersTopTracksResponse = await req.json()
 
 	return formatTopTracks(data)
 }

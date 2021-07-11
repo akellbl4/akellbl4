@@ -1,20 +1,24 @@
-<script lang="typescript">
+<script lang="ts">
 	import {onMount} from 'svelte'
 	export let slug: string
 	export let count: boolean
 
-	let views = '--- views'
+	let views = '---'
 
-	onMount(async () => {
-		debugger
-		const url = new URL(`/api/views/${slug}`, window.location.origin)
+	onMount(() => {
+		const baseUrl = import.meta.env.SNOWPACK_PUBLIC_API_URL || window.location.origin;
+		const url = new URL(`/api/views/${slug}`, baseUrl)
 
 		if (count) {
 			url.searchParams.append('count', '1')
 		}
-		views = await fetch(url.toString()).then((r) => r.text())
-		views = views.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+		fetch(url.toString(), { method: count ? 'POST' : 'GET' })
+			.then(r => r.text())
+			.then((d) => {
+				views = d.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+			})
 	})
 </script>
 
-{views}
+<div>{views} views</div>

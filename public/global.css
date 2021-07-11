@@ -2,6 +2,18 @@
 @tailwind utilities;
 @tailwind components;
 
+@layer utilities {
+	.backface-hidden {
+		backface-visibility: hidden;
+	}
+	.rotate-y-0 {
+		transform: rotateY(0);
+	}
+	.rotate-y-180 {
+		transform: rotateY(180deg);
+	}
+}
+
 :root {
 	color-scheme: light dark;
 }
@@ -12,11 +24,6 @@
 
 html {
 	scroll-behavior: smooth;
-}
-
-html,
-body {
-	@apply min-h-full;
 }
 
 body {
@@ -61,7 +68,6 @@ h6 {
 		#ff61e6 75%,
 		#2dd2dd 100%
 	);
-	background-size: 400% 0;
 	background-clip: text;
 	text-fill-color: transparent;
 	-webkit-text-fill-color: transparent;
@@ -70,8 +76,6 @@ h6 {
 }
 
 .avatar {
-	transition: transform 0.3s;
-	transform: rotateY(0);
 	backface-visibility: hidden;
 }
 

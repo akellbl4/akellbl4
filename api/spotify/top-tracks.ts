@@ -1,4 +1,4 @@
-import { getTopTracks } from '~lib/spotify'
+import { getTopTracks } from '../lib/spotify'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
 export default async function topTracks(req: VercelRequest, res: VercelResponse) {

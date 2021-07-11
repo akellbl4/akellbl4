@@ -1,22 +1,23 @@
 ---
 import clsx from 'clsx'
-import NavItem from '../components/NavItem.astro'
+import NavItem from '../components/NavItem'
 import navMenu from '../data/nav-menu.json'
 import socialLinks from '../data/social-links.json'
 import defaultMeta from '../data/meta.json'
 
-const { request } = Astro.props;
-
-const title = "";
-const description = "";
-const type = "";
-const date = "";
-const image = "/";
-const name = "";
-const twitter = "";
+const {
+	title,
+	description,
+	type,
+	name,
+	request,
+	twitter,
+	image,
+	date,
+} = { ...defaultMeta, ...Astro.props }
 ---
 
-<html>
+<html class="h-full">
 <head>
 	<meta charset="utf-8" />
 	<title>{title}</title>
@@ -34,7 +35,7 @@ const twitter = "";
 	<link rel="alternate" type="application/rss+xml" href="/feed/blog.xml" />
 	<link rel="sitemap" href="/sitemap.xml" />
 </head>
-<body class="flex flex-col">
+<body class="min-h-full flex flex-grow flex-col preload-transitions">
 	<header class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl">
 		<a href="#skip" class="sr-only focus:not-sr-only">
 			Skip to content
@@ -67,5 +68,6 @@ const twitter = "";
 		<section class="max-w-full overflow-hidden p-1 -m-1 mt-4 mr-auto sm:mr-0 sm:mt-0">
 		</section>
 	</footer>
+	<script>(() => document.body.classList.remove('preload-transitions'))()</script>
 </body>
 </html>

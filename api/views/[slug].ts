@@ -1,4 +1,4 @@
-import { getViews, increseViews } from '~lib/views'
+import { getViews, increseViews } from '../lib/views'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
 export default async function countVisit(req: VercelRequest, res: VercelResponse) {
@@ -9,7 +9,13 @@ export default async function countVisit(req: VercelRequest, res: VercelResponse
 	}
 
 	if (req.method === 'GET') {
-		let num: string | number = await getViews(slug)
+		let num = await getViews(slug)
+
+		return res.status(200).send(num)
+	}
+
+	if (req.method === 'POST') {
+		let num: number | string = await getViews(slug)
 
 		if (count === '1') {
 			increseViews(slug)

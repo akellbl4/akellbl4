@@ -1,4 +1,4 @@
-import { getNowPlaying } from '~lib/spotify'
+import { getNowPlaying } from '../lib/spotify'
 import { VercelRequest, VercelResponse } from '@vercel/node'
 
 export default async function nowPlayingApi(req: VercelRequest, res: VercelResponse) {
@@ -10,7 +10,7 @@ export default async function nowPlayingApi(req: VercelRequest, res: VercelRespo
 
 			return res.status(200).json(track)
 		} catch (e) {
-			return res.status(500).end()
+			return res.status(500).end('{}')
 		}
 	}
 

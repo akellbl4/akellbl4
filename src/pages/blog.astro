@@ -1,8 +1,6 @@
 ---
-import Layout from '../layouts/main.astro'
-import BlogItem from '../components/BlogItem.astro'
-
-const { collection } = Astro.props;
+import Layout from '../layouts/main'
+import BlogItem from '../components/BlogItem'
 
 export async function createCollection() {
 	return {
@@ -24,6 +22,8 @@ export async function createCollection() {
 		}
 	};
 }
+
+const { collection } = Astro.props;
 ---
 <Layout request={Astro.request}>
 	<svg class="hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">

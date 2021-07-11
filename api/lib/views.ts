@@ -1,4 +1,4 @@
-import { redis } from 'lib/redis'
+import { redis } from '../lib/redis'
 
 export async function getViews(slug: string): Promise<string> {
 	const count = await redis.hget('views', slug)
@@ -7,11 +7,10 @@ export async function getViews(slug: string): Promise<string> {
 }
 
 export async function increseViews(slug: string) {
-	const count = await redis.hget('views', slug)
+	const count = (await redis.hget('views', slug)) || 1
 
 	if (count === null) {
 		redis.hset('views', slug, 1)
-		return
 	}
 
 	redis.hset('views', slug, parseInt(count) + 1)
