@@ -2,26 +2,26 @@
   {
     "emoji": "👤",
     "title": "Facebook",
-    "link": "https://www.facebook.com/akellbl4"
+    "href": "https://www.facebook.com/akellbl4"
   },
   {
     "emoji": "📷",
     "title": "Instagram",
-    "link": "https://www.instagram.com/akellbl4/"
+    "href": "https://www.instagram.com/akellbl4/"
   },
   {
     "title": "Twitter",
     "emoji": "🐦",
-    "link": "https://twitter.com/akellbl4"
+    "href": "https://twitter.com/akellbl4"
   },
   {
     "title": "GitHub",
     "emoji": "🐙",
-    "link": "https://github.com/akellbl4"
+    "href": "https://github.com/akellbl4"
   },
   {
     "title": "LinkedIn",
     "emoji": "👨‍💻",
-    "link": "https://www.linkedin.com/in/akellbl4"
+    "href": "https://www.linkedin.com/in/akellbl4"
   }
 ]

@@ -1,23 +1,7 @@
 ---
 import LangBadge from './LangBadge'
-import ViewsCounter from './ViewsCounter.svelte'
 
-type Props = {
-	original: { external?: boolean, url?: string },
-	title: string,
-	lang: 'en' | 'ru',
-	summary: string,
-	url: string,
-	slug: string,
-}
-
-const {
-	lang,
-	original,
-	summary,
-	title,
-	url,
-} = Astro.props as Props
+const { lang, original, summary, title, url } = Astro.props
 const slug = url.split('/').pop()
 ---
 
@@ -42,8 +26,8 @@ const slug = url.split('/').pop()
 			</a>
 		</h3>
 		{!original?.external && (
-			<span class="whitespace-nowrap text-sm sm:text-base text-gray-500 text-left md:text-right">
-				<ViewsCounter client:load slug={slug}/>
+			<span data-views-for={slug} class="whitespace-nowrap text-sm sm:text-base text-gray-500 text-left md:text-right">
+				&dash;&dash;&dash; views
 			</span>
 		)}
 	</div>

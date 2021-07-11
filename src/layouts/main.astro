@@ -34,6 +34,7 @@ const {
 	<link rel="sitemap" href="/sitemap.xml" />
 	<link rel="alternate" type="application/rss+xml" href="/feed/blog.xml" />
 	<link rel="sitemap" href="/sitemap.xml" />
+	<script src="/global.js" defer />
 </head>
 <body class="min-h-full flex flex-grow flex-col preload-transitions">
 	<header class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl">
@@ -56,9 +57,25 @@ const {
 			{socialLinks.map(({ title, emoji, href }) => (
 				<li class="mr-4 mt-2">
 					<a
+						rel="noopener noreferrer"
+						target="_blank"
 						href={href}
 						data-emoji={emoji}
-						class="link-emoji relative inline-block text-gray-500 dark:text-gray-300 transition-colors duration-200 border-b dark:border-gray-700 hover:text-transparent hover:border-transparent"
+						class="
+						relative inline-block text-gray-500 dark:text-gray-300 transition-colors duration-200 border-b dark:border-gray-700 hover:text-transparent hover:border-transparent
+						after:absolute
+						after:inset-0
+						after:w-full
+						after:h-full
+						after:transition
+						after:delay-100
+						after:scale-50
+						after:opacity-0
+						after:text-center
+						after:text-initial
+						hover:after:opacity-100 hover:after:scale-150
+						hover:after:content-[attr(data-emoji)]
+						"
 					>
 						{title}
 					</a>

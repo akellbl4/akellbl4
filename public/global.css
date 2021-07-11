@@ -3,6 +3,9 @@
 @tailwind components;
 
 @layer utilities {
+	.text-initial {
+		color: initial;
+	}
 	.backface-hidden {
 		backface-visibility: hidden;
 	}
@@ -10,6 +13,9 @@
 		transform: rotateY(0);
 	}
 	.rotate-y-180 {
+		transform: rotateY(180deg);
+	}
+	.rotate-y-360 {
 		transform: rotateY(180deg);
 	}
 }
@@ -75,45 +81,12 @@ h6 {
 	animation: slide 10s linear infinite;
 }
 
-.avatar {
-	backface-visibility: hidden;
-}
-
-.photo {
-	transition: transform 0.3s;
-	transform: rotateY(180deg);
-	backface-visibility: hidden;
-}
-
-.title:hover .avatar {
-	transform: rotateY(180deg);
-}
-
-.title:hover .photo {
-	transform: rotateY(360deg);
-}
-
 .title:hover .title-cover {
 	@apply opacity-0;
 }
 
 .track-link:hover > *:first-child {
 	@apply transform scale-110 opacity-100;
-}
-
-.link-emoji::after {
-	@apply absolute top-0 left-0 w-full h-full opacity-0 text-center;
-	content: attr(data-emoji);
-
-	color: initial;
-	transition-duration: 0.2s;
-	transition-delay: 0.1s;
-	transform: scale(0.5);
-}
-
-.link-emoji:hover::after {
-	@apply opacity-100;
-	transform: scale(1.5);
 }
 
 .block-link::after {
