@@ -2,10 +2,10 @@
 layout: ../../layouts/post.astro
 title: Fetch Shared Data in Next.js With Single Request
 summary: Does your project has a lot of static generated pages and all of the pages have shared data that is fetched from server side? It could cause spamming your server by many requests that are called by every page that should be generated. Let's take a look at how we can prevent that with NodeJS in front of Next.js on the build stage
+publishedAt: '2021-03-06'
 original:
   name: ITNEXT
   url: https://itnext.io/fetch-shared-data-in-next-js-with-single-request-833433fa8ed1
-publishedAt: '2021-03-06'
 ---
 
 While reviewing my current project’s build process, I noticed that generating pages with `getStaticProps` yields many requests to one endpoint. It’s not a big problem in my case since our backend is quite fast but googling this issue showed that some people are struggling with it. For example, the issue might be serious in case of a slow database or when the backend can’t cope with 100 requests per second. So I decided to try solving this problem and improving the build time of my project.

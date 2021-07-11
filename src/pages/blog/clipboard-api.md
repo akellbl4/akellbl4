@@ -4,7 +4,7 @@ summary: Access to Clipboard was confusing in the beginning but now we’ve got 
 publishedAt: '2021-03-16'
 lang: ru
 original:
-	name: Web-Standards
-	url: https://web-standards.ru/articles/clipboard-api/
-	external: true
+  name: Web-Standards
+  url: https://web-standards.ru/articles/clipboard-api/
+  external: true
 ---
