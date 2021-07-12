@@ -15,6 +15,7 @@ const headers = [
 module.exports = {
 	images: {
 		domains: [
+			'astro.mineev.me', // use next js for resizing mechanism on experemental version of the size
 			'i.scdn.co', // Spotify Albums Covers
 		],
 	},
