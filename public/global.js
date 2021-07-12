@@ -1,3 +1,7 @@
+/**  Enable animations */
+document.body.classList.remove('preload-transitions')
+
+/** Run views counters if they are on a page */
 const viewsElements = document.querySelectorAll('[data-views-for]')
 
 viewsElements.forEach((e) => {

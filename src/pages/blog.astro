@@ -24,8 +24,10 @@ export async function createCollection() {
 }
 
 const { collection } = Astro.props;
+const title = 'Blog'
+const description = ''
 ---
-<Layout request={Astro.request}>
+<Layout request={Astro.request} title={title} description={description}>
 	<svg class="hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
 		<symbol id="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
 			<path
@@ -36,7 +38,7 @@ const { collection } = Astro.props;
 			/>
 		</symbol>
 	</svg>
-	<h1 class="font-bold text-4xl sm:text-5xl tracking-tight mb-6 sm:mb-10">Blog</h1>
+	<h1 class="font-bold text-4xl sm:text-5xl tracking-tight mb-6 sm:mb-10">{title}</h1>
 	<ul class="space-y-8 sm:space-y-12">
 		{collection.data.map(({ title, original, lang, summary, url}) => (
 			<li>

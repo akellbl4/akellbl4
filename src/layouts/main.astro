@@ -21,7 +21,7 @@ const {
 <html class="h-full">
 <head>
 	<meta charset="utf-8" />
-	<title>{title}</title>
+	<title>{Astro.props.title ? `${title}${defaultMeta.titleSuffix}` : title}</title>
 	<link rel="stylesheet" type="text/css" href="/global.css" />
 	<meta name="viewport" content="width=device-width" />
 	<meta name="description" content={description} />
@@ -54,6 +54,5 @@ const {
 		<slot />
 	</main>
 	<Footer {socialLinks}/>
-	<script>(() => document.body.classList.remove('preload-transitions'))()</script>
 </body>
 </html>
