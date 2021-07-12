@@ -3,11 +3,13 @@ const { href, title } = Astro.props
 ---
 
 <article class="project relative block px-4 py-3 -mx-3 sm:mx-0 sm:px-6 sm:py-5 border border-gray-100 dark:border-gray-700 rounded-lg transition-shadow duration-200 hover:shadow-xl dark:transform dark:transition-transform dark:hover:-translate-y-1">
-	<h3 class="flex items-center mb-2 text-xl font-bold">
-		<a href={href} class="block-link">
+	<h3 class="flex items-center mb-2 text-xl font-bold !static">
+		<a href={href} class="inline-block !text-gray-800 !dark:text-gray-200 !no-underline !font-bold after:block after:absolute after:inset-0">
 			{title}
 		</a>
-		<svg class="ml-auto w-6 h-6 opacity-60"><use xlink:href="#github-icon"></use></svg>
+		<svg class="ml-auto w-6 h-6 opacity-60">
+			<use xlink:href="#github-icon"/>
+		</svg>
 	</h3>
 	<p><slot/></p>
 </article>

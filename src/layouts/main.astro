@@ -1,6 +1,7 @@
 ---
 import clsx from 'clsx'
 import NavItem from '../components/NavItem'
+import Footer from '../components/Footer'
 import navMenu from '../data/nav-menu.json'
 import socialLinks from '../data/social-links.json'
 import defaultMeta from '../data/meta.json'
@@ -36,7 +37,7 @@ const {
 	<link rel="sitemap" href="/sitemap.xml" />
 	<script src="/global.js" defer />
 </head>
-<body class="min-h-full flex flex-grow flex-col preload-transitions">
+<body class="min-h-full flex flex-grow flex-col overflow-y-scroll preload-transitions">
 	<header class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl">
 		<a href="#skip" class="sr-only focus:not-sr-only">
 			Skip to content
@@ -52,39 +53,7 @@ const {
 	<main id="skip" class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl flex flex-col flex-grow py-12">
 		<slot />
 	</main>
-	<footer class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl flex text-sm sm:text-base flex-col justify-between sm:flex-row sm:items-end">
-		<ul class="flex flex-wrap flex-shrink-0 max-w-full mr-6">
-			{socialLinks.map(({ title, emoji, href }) => (
-				<li class="mr-4 mt-2">
-					<a
-						rel="noopener noreferrer"
-						target="_blank"
-						href={href}
-						data-emoji={emoji}
-						class="
-						relative inline-block text-gray-500 dark:text-gray-300 transition-colors duration-200 border-b dark:border-gray-700 hover:text-transparent hover:border-transparent
-						after:absolute
-						after:inset-0
-						after:w-full
-						after:h-full
-						after:transition
-						after:delay-100
-						after:scale-50
-						after:opacity-0
-						after:text-center
-						after:text-initial
-						hover:after:opacity-100 hover:after:scale-150
-						hover:after:content-[attr(data-emoji)]
-						"
-					>
-						{title}
-					</a>
-				</li>
-			))}
-		</ul>
-		<section class="max-w-full overflow-hidden p-1 -m-1 mt-4 mr-auto sm:mr-0 sm:mt-0">
-		</section>
-	</footer>
+	<Footer {socialLinks}/>
 	<script>(() => document.body.classList.remove('preload-transitions'))()</script>
 </body>
 </html>

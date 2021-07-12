@@ -3,7 +3,7 @@ const { spacing } = require('tailwindcss/defaultTheme')
 
 module.exports = {
 	mode: 'jit',
-	purge: ['src/**/*.{astro,md,svelte}'],
+	purge: ['astro.config.mjs', 'src/**/*.{astro,md,svelte}'],
 	darkMode: 'media',
 	theme: {
 		extend: {
@@ -44,10 +44,10 @@ module.exports = {
 						},
 						'code::before': false,
 						'code::after': false,
-						'h1,h2,h3,h4': {
-							width: '100%',
+						'h1,h2,h3,h4,h5,h6': {
+							position: 'relative',
 							color: theme('colors.gray.800'),
-							'scroll-margin-top': spacing[16],
+							'scroll-margin-top': spacing[4],
 						},
 					},
 				},
@@ -69,7 +69,7 @@ module.exports = {
 							color: theme('colors.cyan.400'),
 							backgroundColor: theme('colors.gray.800'),
 						},
-						'h1,h2,h3,h4': {
+						'h1,h2,h3,h4,h5,h6': {
 							color: theme('colors.gray.200'),
 						},
 					},

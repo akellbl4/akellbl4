@@ -3,19 +3,35 @@ import { Markdown } from 'astro/components'
 import Layout from '../layouts/main'
 import Talk from '../components/Talk'
 import Project from '../components/Project'
+
+const title = 'About Me'
+const description = `Hey ! My name is Pavel Mineev and currently I'm working at June Homes as a Principal Software Engineer in a full-stack team.`
 ---
-<Layout request={Astro.request}>
+<Layout request={Astro.request} title={title} description={description}>
+	<svg width="0" height="0" className="hidden" aria-hidden="true">
+		<symbol id="github-icon" viewBox="0 0 16 16" fill="currentColor">
+			<path
+				fillRule="evenodd"
+				d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+			/>
+		</symbol>
+	</svg>
 	<Markdown>
-		<article class="prose">
-			Hey! My name is Pavel Mineev and currently I'm working at [June Homes](https://junehomes.com) as a&nbsp;leader of a&nbsp;full-stack team.
+		<article class="prose dark:prose-dark !max-w-full">
+			# {title}
+
+			Hey👋! My name is Pavel Mineev and currently I'm working at [June Homes](https://junehomes.com) as a&nbsp;Principal Software Engineer in a&nbsp;full-stack team.
 
 			I share my expertise as a teacher at [LoftSchool](https://loftschool.ru) and provide mentoring sessions for people who want to grow fast. Sometimes I consult companies about tech-stack and review their projects. I write about development, web specs, and about problems I faced and how to solve them.
 
-			I have been participating in conferences, meetups, webinars and so on as a speaker and spoken about development, team formation and project managment from dev perspective. Also, I'm always happy to be a mentor or a judge on hackathons. I already took part in more then 10 hacks such as McHacks, SF Hacks, and LA Hacks.
+			I have been participating in conferences, meetups, webinars and so on as a speaker and spoken about development, team formation and project managment from dev perspective. Also, I'm always happy to be a mentor or a judge on hackathons. I already took part in more than 10 hacks such as McHacks, SF Hacks, and LA Hacks.
 
 			## Projects
 
 			<div class="grid sm:grid-cols-2 gap-6">
+				<Project href="https://github.com/akellbl4/pavel.mineev.me" title="Pavel.Mineev.me">
+					I have this site for a long-long time. In 2021, decided to make it fancy with Next.js and put my blog here. Then I redeveloped to make it light and fast I switched to Astro.
+				</Project>
 				<Project href="https://github.com/umputun/remark42" title="Remark42">
 					I'm working on client-side part of the project since start of 2019. I work
 					on implementation of new functional, refactoring and updating of the UI.

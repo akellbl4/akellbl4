@@ -36,13 +36,18 @@ const config = {
 	markdownOptions: {
 		rehypePlugins: [
 			[{ default: codeTitle }, { className: 'code-title' }],
-			import('rehype-slug'),
+			'rehype-slug',
 			[
-				import('rehype-autolink-headings'),
+				'rehype-autolink-headings',
 				{
 					behavior: 'wrap',
-					content: { type: 'text', value: '🔗' },
-					linkProperties: { className: 'anchor' },
+					content: { type: 'text', value: '' },
+					properties: {
+						'aria-hidden': 'true',
+						'data-sign': '🔗',
+						className:
+							'!text-gray-800 dark:!text-gray-200 !font-bold !no-underline inset-0 text-initial after:pl-1 after:opacity-0 after:transition-opacity hover:after:opacity-100 after:inline-block hover:after:content-[attr(data-sign)] md:after:absolute md:after:right-full md:after:pr-1 md:after:pl-0',
+					},
 				},
 			],
 		],

@@ -32,10 +32,6 @@ html {
 	scroll-behavior: smooth;
 }
 
-body {
-	@apply overflow-y-scroll;
-}
-
 h1,
 h2,
 h3,
@@ -45,24 +41,19 @@ h6 {
 	@apply text-gray-900 dark:text-gray-100;
 }
 
-#__next {
-	@apply flex flex-col min-h-full;
-}
-
 .preload-transitions * {
 	transition: none !important;
 }
 
-.nav-link::after {
-	@apply h-0 invisible overflow-hidden select-none pointer-events-none font-bold;
-	content: attr(data-text);
-	content: attr(data-text) / '';
+.code-section-title {
+	@apply py-3 px-4 bg-gray-200 dark:bg-warmGray-700 rounded-t-lg font-mono font-bold text-sm dark:text-gray-300;
+}
+.code-section pre {
+	@apply mt-0 rounded-t-none;
 }
 
-@media speech {
-	.nav-link::after {
-		display: none;
-	}
+.code-section-title > a:after {
+	@apply invisible;
 }
 
 .title-gradient {
@@ -81,50 +72,23 @@ h6 {
 	animation: slide 10s linear infinite;
 }
 
-.title:hover .title-cover {
-	@apply opacity-0;
-}
-
 .track-link:hover > *:first-child {
 	@apply transform scale-110 opacity-100;
 }
 
-.block-link::after {
-	@apply absolute inset-0 block;
-	content: '';
-}
-
 .prose h1 {
 	@apply font-bold text-4xl sm:text-5xl;
+}
+.prose h1 > a:after {
+	@apply hidden;
 }
 
 .prose h2 {
 	@apply text-2xl sm:text-3xl;
 }
 
-.prose .project a {
-	@apply inline-block text-gray-800 dark:text-gray-200 no-underline font-bold;
-}
-.prose .project a:hover {
-	@apply dark:text-gray-200;
-}
-
 .prose .project h3 {
 	@apply m-0 mb-2 text-xl sm:text-2xl no-underline;
-}
-
-.prose .anchor {
-	@apply align-middle invisible ml-1 no-underline;
-	color: inherit;
-	font-size: 0.8em;
-}
-
-.prose *:hover > a {
-	@apply visible;
-}
-
-.code-filename {
-	@apply py-3 px-4 bg-gray-200 dark:bg-warmGray-700 rounded-t-lg font-mono font-bold text-sm dark:text-gray-300;
 }
 
 .code-filename + pre {

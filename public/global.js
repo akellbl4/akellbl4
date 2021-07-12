@@ -6,7 +6,4 @@ viewsElements.forEach((e) => {
 		.then((data) => {
 			e.textContent = `${data[e.dataset.viewsFor].replace(/\B(?=(\d{3})+(?!\d))/g, ',')} views`
 		})
-		.catch(() => {
-			e.textContent = ''
-		})
 })

@@ -11,7 +11,7 @@ const publishAtDate = format(parseISO(publishedAt), 'MMMM d, yyyy')
 const slug = Astro.request.url.pathname.split('/').pop()
 ---
 
-<Layout request={Astro.request}>
+<Layout request={Astro.request} title="About Me">
 	<article
 		class="my-6"
 		itemProp="blogPost"
@@ -21,36 +21,38 @@ const slug = Astro.request.url.pathname.split('/').pop()
 		<h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-6 " itemProp="name headline">
 			{title}
 		</h1>
-		<div class="flex">
-			<aside class="order-2 w-full pl-6">
-				<div class="flex sticky top-0 pt-5">
-					<figure class="bg-gray-200 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-gray-200 dark:ring-gray-800">
-						<img alt={process.env.NAME} height={32} width={32} src="/images/photo.jpg" />
-					</figure>
-					<div class="text-gray-600 dark:text-gray-400">
-						<div class="mb-2" itemProp="author" itemScope itemType="https://schema.org/Person">
-							<span itemProp="name">Pavel Mineev</span>
-						</div>
-						<div class="text-sm">
-							<time itemProp="datePublished" dateTime={publishedAt}>
+		<div class="flex flex-col lg:flex-row">
+			<aside class="lg:order-2 lg:pl-6">
+				<div class="flex lg:flex-wrap sticky top-0 pt-5">
+					<div class="flex flex-wrap text-gray-600 dark:text-gray-400 lg:w-full lg:flex-shrink-0">
+						<figure class="bg-gray-200 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-gray-200 dark:ring-gray-800">
+							<img alt={process.env.NAME} height={32} width={32} src="/images/photo.jpg" />
+						</figure>
+						<div>
+							<div itemProp="author" itemScope itemType="https://schema.org/Person">
+								<span itemProp="name">Pavel Mineev</span>
+							</div>
+							<time data-prefix="&nbsp;at&nbsp;" class="before:content-[attr(data-prefix)] before:hidden md:before:block lg:before:hidden text-sm" itemProp="datePublished" dateTime={publishedAt}>
 								{publishAtDate}
 							</time>
-							<div class="text-gray-500 mb-2">
-								{stats.text}
-							</div>
-							<div data-views-for={slug} data-views-count>&dash;&dash;&dash; views</div>
 						</div>
+					</div>
+					<div class="flex text-gray-500 ml-auto lg:ml-0 lg:w-full lg:flex-shrink-0 lg:pl-10 lg:mt-6 lg:flex-wrap lg:text-sm">
+						<span class="lg:block lg:w-full lg:flex-shrink-0">
+							{stats.text}
+						</span>
+						<div data-prefix="&bullet;" class="whitespace-nowrap before:content-[attr(data-prefix)] before:mx-2 lg:before:hidden" data-views-for={slug} data-views-count>&dash;&dash;&dash; views</div>
 					</div>
 				</div>
 			</aside>
-			<section class="order-1 prose dark:prose-dark w-full mb-6" itemProp="articleBody">
+			<section class="lg:order-1 prose dark:prose-dark w-full mb-6" itemProp="articleBody">
 				<slot />
 			</section>
 		</div>
 		<footer class="max-w-[65ch] w-full flex justify-between text-gray-600 dark:text-gray-400">
 			<div class="text-sm">
 				<a
-					class="transition border-b border-transparent hover:border-gray-600"
+					class="transition border-b border-transparent hover:border-current"
 					href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
 						`${process.env.NEXT_PUBLIC_VERCEL_URL}/blog/${slug})`
 					)}`}
@@ -61,7 +63,7 @@ const slug = Astro.request.url.pathname.split('/').pop()
 					•
 				</span>
 				<a
-					class="transition border-b border-transparent hover:border-gray-600"
+					class="transition border-b border-transparent hover:border-current"
 					href={`${process.env.NEXT_PUBLIC_GITHUB_REPO_URL}/edit/main/data/blog/${slug}.mdx`}
 				>
 					Edit on GitHub
@@ -71,7 +73,7 @@ const slug = Astro.request.url.pathname.split('/').pop()
 				<div class="text-sm">
 					Originally posted on{' '}
 					<a
-						class="transition border-b border-transparent hover:border-gray-600"
+						class="transition border-b border-transparent hover:border-current"
 						href={original.url}
 					>
 						{original.name}
