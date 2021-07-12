@@ -22,6 +22,7 @@ export default function Home() {
 								priority
 								loading="eager"
 								alt="Pavel Mineev"
+								placeholder="blur"
 							/>
 						</div>
 						<div className="photo h-full w-full flex rounded-full overflow-hidden">
@@ -32,6 +33,7 @@ export default function Home() {
 								priority
 								loading="eager"
 								alt="Pavel Mineev"
+								placeholder="blur"
 							/>
 						</div>
 					</div>
