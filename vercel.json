@@ -1,18 +1,29 @@
 {
   "redirects": [
     { "source": "/api", "destination": "https://pavel.mineev.me", "permanent": false },
-    { "source": "/api/lib/(.*)", "destination": "https://pavel.mineev.me", "permanent": false }
+    { "source": "/api/lib/(.*)", "destination": "https://pavel.mineev.me", "permanent": false },
+    { "source": "/1h", "destination": "https://calendly.com/akellbl4/1h", "permanent": false },
+    { "source": "/resume", "destination": "/resume-2021.pdf", "permanent": false }
   ],
+  "rewrites": [{ "source": "/_image", "destination": "/api/resize-image" }],
   "headers": [
     {
-      "key": "Content-Security-Policy",
-      "value": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com"
-    },
-    { "key": "Referrer-Policy", "value": "origin-when-cross-origin" },
-    { "key": "X-Frame-Options", "value": "DENY" },
-    { "key": "X-Content-Type-Options", "value": "nosniff" },
-    { "key": "X-DNS-Prefetch-Control", "value": "on" },
-    { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
-    { "key": "Permissions-Policy", "value": "fullscreen=() geolocation=()" }
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; img-src 'self' data:; connect-src 'self' https://cloudflareinsights.com"
+        },
+        { "key": "Referrer-Policy", "value": "origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-DNS-Prefetch-Control", "value": "on" },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        { "key": "Permissions-Policy", "value": "fullscreen=(), geolocation=()" }
+      ]
+    }
   ]
 }
