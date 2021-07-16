@@ -23,9 +23,6 @@ export default async function resizeImage(req: VercelRequest, res: VercelRespons
 	https.get(url, (r) => {
 		res.setHeader('content-type', r.headers['content-type']!)
 		r.pipe(res)
-		r.on('end', () => {
-			res.end()
-			console.log('end')
-		})
+		r.on('end', () => res.end())
 	})
 }

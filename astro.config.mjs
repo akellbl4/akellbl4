@@ -1,5 +1,6 @@
 import { h } from 'hastscript'
 import { visit } from 'unist-util-visit'
+import dotenv from 'dotenv'
 
 function codeTitle() {
 	return function (tree) {
@@ -28,6 +29,7 @@ function codeTitle() {
  * @type {import('astro/dist/types/@types/astro').AstroConfig}
  **/
 const config = {
+	env: dotenv.config().parsed,
 	renderers: ['@astrojs/renderer-preact', '@astrojs/renderer-svelte'],
 	buildOptions: {
 		sitemap: true,
@@ -46,7 +48,7 @@ const config = {
 						'aria-hidden': 'true',
 						'data-sign': '🔗',
 						className:
-							'!text-gray-800 dark:!text-gray-200 !font-bold !no-underline inset-0 text-initial after:pl-1 after:opacity-0 after:transition-opacity hover:after:opacity-100 after:inline-block hover:after:content-[attr(data-sign)] md:after:absolute md:after:right-full md:after:pr-1 md:after:pl-0',
+							'anchor !text-gray-800 dark:!text-gray-200 !font-bold !no-underline inset-0 text-initial after:pl-1 after:opacity-0 after:transition-opacity hover:after:opacity-100 after:inline-block hover:after:content-[attr(data-sign)] md:after:absolute md:after:right-full md:after:pr-1 md:after:pl-0',
 					},
 				},
 			],

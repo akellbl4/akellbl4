@@ -1,8 +1,8 @@
 ---
 import readingTime from 'reading-time'
 import { format, parseISO } from 'date-fns'
-
 import Layout from './main'
+import Image from '../components/Image'
 
 const { content, request } = Astro.props
 const { title, summary, original, publishedAt, astro } = content
@@ -26,7 +26,7 @@ const slug = Astro.request.url.pathname.split('/').pop()
 				<div class="flex lg:flex-wrap sticky top-0 pt-5">
 					<div class="flex flex-wrap text-gray-600 dark:text-gray-400 lg:w-full lg:flex-shrink-0">
 						<figure class="bg-gray-200 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-gray-200 dark:ring-gray-800">
-							<img alt={process.env.NAME} height={32} width={32} src="/images/photo.jpg" />
+							<Image alt={process.env.NAME} height={32} width={32} src="/images/photo.jpg" />
 						</figure>
 						<div>
 							<div itemProp="author" itemScope itemType="https://schema.org/Person">

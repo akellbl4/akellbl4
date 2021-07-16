@@ -1,0 +1,33 @@
+---
+const SIZE_PARAMS = ['w', 'h']
+const { src, width, heigth, quality, ...restProps } = Astro.props
+const params = { w: width, h: heigth, q: quality }
+const source = new URL('/_image', process.env.API_URL)
+
+source.searchParams.append('url', `${process.env.BASE_URL}${src}`)
+
+Object.entries(params).forEach(([k, v]) => {
+	if (!v) {
+		return
+	}
+	console.log(k, v)
+	source.searchParams.append(k, v)
+})
+
+const x2source = new URL(source)
+
+SIZE_PARAMS.forEach((k) => {
+	const p = x2source.searchParams.get(k)
+	if (!p) return
+	x2source.searchParams.set(k, p * 2)
+})
+---
+<img
+	srcSet={`${source} 1x, ${x2source} 2x`}
+	src={x2source}
+	decoding="async"
+	loading="lazy"
+	{...restProps}
+/>
+
+

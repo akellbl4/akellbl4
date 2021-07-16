@@ -41,8 +41,12 @@ h6 {
 	@apply text-gray-900 dark:text-gray-100;
 }
 
+.anchor {
+	@apply md:after:top-0;
+}
+
 .preload-transitions * {
-	transition: none !important;
+	@apply !transition-none;
 }
 
 .code-section-title {

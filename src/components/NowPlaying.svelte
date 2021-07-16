@@ -9,8 +9,6 @@
 	}
 	let track: undefined | null | Track
 
-	$: console.log(track)
-
 	onMount(() => {
 		fetch('/api/spotify/now-playing')
 			.then((r) => {
