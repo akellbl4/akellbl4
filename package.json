@@ -14,7 +14,7 @@
     "start": "run-p start:*",
     "start:astro": "astro dev",
     "start:vercel": "vercel dev -l 0.0.0.0:3030",
-    "build:astro": "echo ''"
+    "build:astro": "astro build"
   },
   "dependencies": {
     "http-proxy": "^1.18.1",
