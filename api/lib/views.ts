@@ -7,11 +7,11 @@ export async function getViews(slug: string): Promise<string> {
 }
 
 export async function increseViews(slug: string) {
-	const count = (await redis.hget('views', slug)) || 1
+	const record = await redis.hget('views', slug)
 
-	if (count === null) {
-		redis.hset('views', slug, 1)
+	if (record === null) {
+		return redis.hset('views', slug, 1)
 	}
 
-	redis.hset('views', slug, parseInt(count) + 1)
+	return redis.hset('views', slug, parseInt(record) + 1)
 }

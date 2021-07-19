@@ -18,8 +18,7 @@ export default async function countVisit(req: VercelRequest, res: VercelResponse
 		let num: number | string = await getViews(slug)
 
 		if (count === '1') {
-			increseViews(slug)
-			num = parseInt(num) + 1
+			num = await increseViews(slug)
 		}
 
 		return res.status(200).send(num)
