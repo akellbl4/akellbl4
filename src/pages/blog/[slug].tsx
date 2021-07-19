@@ -6,6 +6,8 @@ import { getAllBlogPostsFrontmatter, getFileContent, PostFrontmatter } from 'lib
 import { Link } from 'components/Link'
 import { ViewCounter } from 'components/ViewCounter'
 
+import photo from '@public/images/photo.jpg'
+
 export async function getStaticPaths() {
 	const posts = await getAllBlogPostsFrontmatter()
 
@@ -60,7 +62,7 @@ export default function Blog({ meta, readingTime, publishedAt, original, source,
 			</h1>
 			<header className="flex items-center mb-8 sm:mb-10">
 				<figure className="bg-gray-200 w-8 h-8 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-gray-200 dark:ring-gray-800">
-					<Image alt={process.env.NAME} height={32} width={32} src="/images/photo.jpg" priority />
+					<Image alt={process.env.NAME} height={32} width={32} src={photo} priority />
 				</figure>
 				<div className="flex flex-col sm:flex-row sm:justify-between sm:w-full text-sm">
 					<div className="text-gray-600 dark:text-gray-400">

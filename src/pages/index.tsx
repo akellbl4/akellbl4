@@ -2,6 +2,9 @@ import Image from 'next/image'
 
 import { Link } from 'components/Link'
 
+import avatar from '@public/images/avatar.png'
+import photo from '@public/images/photo.jpg'
+
 export default function Home() {
 	return (
 		<article className="my-auto pt-2">
@@ -16,7 +19,7 @@ export default function Home() {
 					<div className="relative flex w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10">
 						<div className="avatar absolute inset-0 h-full w-full flex rounded-full overflow-hidden">
 							<Image
-								src="/images/avatar.png"
+								src={avatar}
 								width={64}
 								height={64}
 								priority
@@ -27,7 +30,7 @@ export default function Home() {
 						</div>
 						<div className="photo h-full w-full flex rounded-full overflow-hidden">
 							<Image
-								src="/images/photo.jpg"
+								src={photo}
 								width={64}
 								height={64}
 								priority

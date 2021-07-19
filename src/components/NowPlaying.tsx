@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import useSWR from 'swr'
+import Image from 'next/image'
 import { Link } from 'components/Link'
 import type { Track } from 'lib/spotify'
 
