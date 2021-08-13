@@ -26,7 +26,7 @@
     "gray-matter": "^4.0.3",
     "ioredis": "^4.27.6",
     "mdx-prism": "^0.3.3",
-    "next": "^11.0.0",
+    "next": "^11.1.0",
     "next-mdx-remote": "^3.0.2",
     "preact": "^10.5.13",
     "react": "^17.0.2",
