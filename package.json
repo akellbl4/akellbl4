@@ -11,7 +11,7 @@
   "repository": "https://github.com/akellbl4/pavel.mineev.me",
   "private": true,
   "scripts": {
-    "start": "astro dev",
+    "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },
