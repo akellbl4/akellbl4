@@ -1,5 +1,4 @@
 ---
-import clsx from 'clsx'
 import NavItem from '../components/NavItem'
 import Footer from '../components/Footer'
 import navMenu from '../data/nav-menu.json'
@@ -18,7 +17,7 @@ const {
 } = { ...defaultMeta, ...Astro.props }
 ---
 
-<html class="h-full" lang="en">
+<html class="h-full disable-transitions" lang="en">
 <head>
 	<meta charset="utf-8" />
 	<title>{Astro.props.title ? `${title}${defaultMeta.titleSuffix}` : title}</title>
@@ -37,7 +36,7 @@ const {
 	<link rel="sitemap" href="/sitemap.xml" />
 	<script src={Astro.resolve('../scripts/global.js')} defer />
 </head>
-<body class="min-h-full flex flex-grow flex-col overflow-y-scroll preload-transitions">
+<body class="min-h-full flex flex-grow flex-col overflow-y-scroll">
 	<header class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl">
 		<a href="#skip" class="sr-only focus:not-sr-only">
 			Skip to content

@@ -45,7 +45,7 @@ h6 {
 	@apply md:after:top-0;
 }
 
-.preload-transitions * {
+.disable-transitions * {
 	@apply !transition-none;
 }
 
