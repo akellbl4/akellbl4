@@ -4,8 +4,8 @@ import { format, parseISO } from 'date-fns'
 import Layout from './main'
 // import Image from '../components/Image'
 
-const { content, request } = Astro.props
-const { title, summary, original, publishedAt, astro } = content
+const { content } = Astro.props
+const { title, original, publishedAt, astro } = content
 const stats = readingTime(astro.source)
 const publishAtDate = format(parseISO(publishedAt), 'MMMM d, yyyy')
 const slug = Astro.request.url.pathname.split('/').pop()
@@ -41,7 +41,7 @@ const slug = Astro.request.url.pathname.split('/').pop()
 						<span class="lg:block lg:w-full lg:flex-shrink-0">
 							{stats.text}
 						</span>
-						<div data-prefix="&bullet;" class="whitespace-nowrap before:content-[attr(data-prefix)] before:mx-2 lg:before:hidden" data-views-for={slug} data-views-count>&dash;&dash;&dash; views</div>
+						<div data-prefix="&bullet;" class="whitespace-nowrap before:content-[attr(data-prefix)] before:mx-2 lg:before:hidden">&dash;&dash;&dash; views</div>
 					</div>
 				</div>
 			</aside>
