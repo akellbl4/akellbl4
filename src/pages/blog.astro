@@ -4,12 +4,13 @@ import BlogItem from '../components/BlogItem'
 
 const title = 'Blog'
 const description = ''
+const postsViewsScriptPath = Astro.resolve('../scripts/blog-views.js')
 const posts = Astro.fetchContent('./blog/*.md');
 
 posts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf());
 ---
 
-<script src={Astro.resolve('../scripts/blog-views.js')} defer />
+<script src={postsViewsScriptPath} defer />
 
 <Layout request={Astro.request} title={title} description={description}>
 	<svg class="hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">

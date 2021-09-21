@@ -15,13 +15,15 @@ const {
 	image,
 	date,
 } = { ...defaultMeta, ...Astro.props }
+const globalStylesPath = Astro.resolve('../styles/global.css')
+const globalScriptsPath = Astro.resolve('../scripts/global.js')
 ---
 
 <html class="h-full disable-transitions" lang="en">
 <head>
 	<meta charset="utf-8" />
 	<title>{Astro.props.title ? `${title}${defaultMeta.titleSuffix}` : title}</title>
-	<link rel="stylesheet" type="text/css" href={Astro.resolve('../styles/global.css')}>
+	<link rel="stylesheet" type="text/css" href={globalStylesPath}>
 	<meta name="viewport" content="width=device-width" />
 	<meta name="description" content={description} />
 	<meta property="og:type" content={type} />
@@ -34,7 +36,7 @@ const {
 	<link rel="sitemap" href="/sitemap.xml" />
 	<link rel="alternate" type="application/rss+xml" href="/feed/blog.xml" />
 	<link rel="sitemap" href="/sitemap.xml" />
-	<script src={Astro.resolve('../scripts/global.js')} defer />
+	<script src={globalScriptsPath} defer />
 </head>
 <body class="min-h-full flex flex-grow flex-col overflow-y-scroll">
 	<header class="w-full m-auto p-6 max-w-3xl lg:max-w-4xl">
