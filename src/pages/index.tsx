@@ -46,16 +46,6 @@ export default function Home() {
 				<span className="transition-color duration-300 hover:text-gray-600 dark:hover:text-gray-200">
 					I&apos;m a Software Engineer.
 				</span>{' '}
-				<span className="transition-color duration-300 hover:text-gray-600 dark:hover:text-gray-200">
-					I work at{' '}
-					<Link
-						className="border-b dark:border-gray-600 dark:hover:border-gray-400"
-						href="https://junehomes.com"
-					>
-						June Homes{' '}
-					</Link>
-					as&nbsp;a&nbsp;team&nbsp;leader.
-				</span>{' '}
 				<br className="hidden md:inline" />
 				<span className="transition-color duration-300 hover:text-gray-600 dark:hover:text-gray-200">
 					I like to contribute to{' '}
