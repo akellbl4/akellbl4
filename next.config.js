@@ -38,13 +38,13 @@ module.exports = {
 
 		return [
 			{
-				source: '/1h',
-				destination: 'https://calendly.com/akellbl4/1h',
+				source: '/calendar',
+				destination: 'https://calendly.com/akellbl4/chat-with-paul',
 				permanent: false,
 			},
 			{
 				source: '/resume',
-				destination: '/resume-2021.pdf',
+				destination: '/resume-2022.pdf',
 				permanent: false,
 			},
 			...externalPosts,
