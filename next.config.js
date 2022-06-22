@@ -50,6 +50,14 @@ module.exports = {
 			...externalPosts,
 		]
 	},
+	async rewrites() {
+		return [
+			{
+				source: '/api/spotify/now-playing',
+				destination: 'https://spotify-badge.vercel.app/api/now-playing',
+			},
+		]
+	},
 	webpack(config, { dev, isServer }) {
 		if (isServer) {
 			require('./scripts/generate-sitemap')

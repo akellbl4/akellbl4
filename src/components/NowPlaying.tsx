@@ -1,16 +1,27 @@
 import useSWR from 'swr'
 import Image from 'next/image'
 import { Link } from 'components/Link'
-import type { Track } from 'lib/spotify'
+
+type Track =
+	| {
+			progress: number | null
+			duration: number
+			track: string
+			artist: string
+			isPlaying: boolean
+			coverUrl: string
+			url: string
+	  }
+	| Record<string, never>
 
 export function NowPlaying() {
-	const { data } = useSWR<Track | ''>('/spotify/now-playing', { refreshInterval: 30000 })
+	const { data } = useSWR<Track>('/spotify/now-playing', { refreshInterval: 30000 })
 
 	if (data === undefined) {
 		return <div className="transition-opacity duration-200 opacity-0 h-5 w-5 sm:h-6 sm:w-6" />
 	}
 
-	if (data === '') {
+	if (data.url === undefined) {
 		return (
 			<div className="transition-opacity duration-200 flex items-center opacity-60">
 				<svg
@@ -32,7 +43,7 @@ export function NowPlaying() {
 			<Link
 				href={data.url}
 				className="track-link flex items-center"
-				title={`${data.name} – ${data.artist}`}
+				title={`${data.track} – ${data.artist}`}
 				rel="nofollow"
 			>
 				<figure className="flex-shrink-0 rounded-sm shadow overflow-hidden h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3 transition-transform duration-300 bg-gray-200 dark:bg-gray-600">
@@ -41,11 +52,11 @@ export function NowPlaying() {
 						src={data.coverUrl}
 						height={64}
 						width={64}
-						alt={`${data.name} – ${data.artist}`}
+						alt={`${data.track} – ${data.artist}`}
 					/>
 				</figure>
 				<span className="inline-block text-gray-800 dark:text-gray-200 font-medium max-w-xs truncate">
-					{data.name}
+					{data.track}
 				</span>
 				<span className="inline-block mx-2">–</span>
 				<span className="inline-block text-gray-500 dark:text-gray-300 max-w-max truncate">

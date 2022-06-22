@@ -43,37 +43,8 @@ function formatTrack({ name, album, artists, external_urls }: SpotifyApi.TrackOb
 	}
 }
 
-function formatPlayingTrack(t: SpotifyApi.CurrentlyPlayingResponse): Track | null {
-	if (t.currently_playing_type !== 'track') {
-		return null
-	}
-
-	return Object.assign(
-		{ isPlaying: t.is_playing },
-		formatTrack(t.item as SpotifyApi.TrackObjectFull)
-	)
-}
-
 function formatTopTracks({ items }: SpotifyApi.UsersTopTracksResponse): Track[] {
 	return items.slice(0, 10).map(formatTrack)
-}
-
-export async function getNowPlaying(): Promise<Track | null> {
-	const accessToken = await getAccessToken()
-	const { data, status } = await request.get<SpotifyApi.CurrentlyPlayingResponse>(
-		'https://api.spotify.com/v1/me/player/currently-playing',
-		{
-			headers: {
-				Authorization: `Bearer ${accessToken}`,
-			},
-		}
-	)
-
-	if (status !== 200) {
-		return null
-	}
-
-	return formatPlayingTrack(data)
 }
 
 export async function getTopTracks() {
