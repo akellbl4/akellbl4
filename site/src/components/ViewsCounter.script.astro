@@ -1,0 +1,23 @@
+<script is:inline>
+	document.querySelectorAll('[data-slug]').forEach((e) => {
+		const { slug, count } = e.dataset
+
+		if (!slug) {
+			return
+		}
+
+		fetch(`/api/views/${slug}`, count === '1' ? { method: 'POST' } : undefined)
+			.then((res) => {
+				if (res.status !== 200) {
+					throw Error(`${res.url} request failed`)
+				}
+
+				return res.text()
+			})
+			.then((data) => {
+				let count = data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+				e.textContent = `${count} views`
+			})
+	})
+</script>

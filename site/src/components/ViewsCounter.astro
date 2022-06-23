@@ -1,0 +1,10 @@
+---
+export type Props = {
+	slug: string;
+	shouldCount?: boolean;
+}
+
+const { slug, shouldCount = false } = Astro.props
+---
+
+<div class="inline" data-slug={slug} data-count={shouldCount ? '1' : '0' }>--- views</div>

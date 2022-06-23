@@ -1,0 +1,124 @@
+---
+import 'styles.css';
+import NowPlaying from 'components/NowPlaying.svelte'
+import ActiveLink from 'components/ActiveLink.astro'
+
+export type Props = {
+	title?: string;
+	type?: string
+	description?: string;
+	overrideTitle?: boolean
+	canonical?: string
+	date?: string
+	sharingImageUrl?: string
+}
+
+const { pathname } = Astro.canonicalURL
+const url = Astro.canonicalURL.toString()
+const isHome = pathname === '/'
+const baseUrl = "https://paul.mineev.me"
+
+let {
+	title = "Paul Mineev",
+	sharingImageUrl = '/sharing.png',
+	type = 'website',
+	description = "Hi, I'm Paul and you found my own cozy place on the Internet. Here you can find information about my activity on the Internet and far more.",
+	canonical,
+	date,
+} = Astro.props as Props
+
+if (!isHome) {
+	title = `${title} - Paul Mineev`
+}
+
+sharingImageUrl = `${baseUrl}${sharingImageUrl}`
+
+const SOCIAL_LINK = [
+	['👤', 'Facebook', 'https://www.facebook.com/akellbl4'],
+	['📷', 'Instagram', 'https://www.instagram.com/akellbl4/'],
+	['🐦', 'Twitter', 'https://twitter.com/akellbl4'],
+	['🐙', 'GitHub', 'https://github.com/akellbl4'],
+	['👨‍💻', 'LinkedIn', 'https://www.linkedin.com/in/akellbl4'],
+]
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<meta property="og:url" content={url} />
+	<meta property="og:type" content={type} />
+	<meta property="og:title" content={title} />
+	<meta property="og:image" content={sharingImageUrl} />
+	<meta property="og:description" content={description} />
+	<meta property="og:site_name" content="Paul Mineev" />
+	<meta name="twitter:site" content="@akellbl4" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="author" content="Paul Mineev" />
+	<link href={canonical} rel="canonical" />
+	{date &&
+	<meta property="article:published_time" content={date} />}
+	<link href="/favicon.ico" rel="icon" />
+	<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+	<link href="/favicon-mask.svg" rel="mask-icon" color="#ce6fea" />
+	<link href="/touch-180x180.png" rel="apple-touch-icon" />
+	<link href="/manifest.json" rel="manifest" />
+	<meta content="#ce6fea" name="theme-color" />
+</head>
+
+<body class={`preload-transitions bg-white text-slate-800 dark:text-slate-200 dark:bg-neutral-900 min-w-[20rem]
+	antialiased${isHome ? " flex items-center" : '' }`}>
+	<div class={ `w-full m-auto p-6 flex-grow flex flex-col max-w-3xl lg:max-w-4xl ${isHome ? 'h-full max-h-[44rem]'
+		: 'min-h-full' }` }>
+		<header>
+			<a href="#skip" class="sr-only focus:not-sr-only">
+				Skip to content
+			</a>
+			<nav class="text-sm sm:text-base">
+				<ul class="flex w-full space-x-4">
+					<li class="nav-link">
+						<ActiveLink href="/blog">Blog</ActiveLink>
+					</li>
+					<li class="nav-link">
+						<ActiveLink href="/about">About</ActiveLink>
+					</li>
+					{!isHome && (
+					<li class="nav-link">
+						<ActiveLink href="/">Home</ActiveLink>
+					</li>
+					)}
+				</ul>
+			</nav>
+		</header>
+		<main id="skip" class="flex flex-col flex-grow py-12">
+			<slot />
+		</main>
+		<footer class="flex mb-4 text-sm sm:text-base flex-col justify-between sm:flex-row sm:items-end">
+			<ul class="flex flex-wrap flex-shrink-0 max-w-full mr-6">
+				{SOCIAL_LINK.map(([emoji, label, href]) => (
+				<li class="mr-4 mt-2">
+					<a href={href} data-emoji={emoji}
+						class="link-emoji relative inline-block text-slate-500 dark:text-slate-300 transition-colors duration-200 border-b dark:border-slate-700 hover:text-transparent hover:border-transparent">
+						{label}
+					</a>
+				</li>
+				))}
+			</ul>
+			<section class="max-w-full overflow-hidden p-1 -m-1 mt-4 mr-auto sm:mr-0 sm:mt-0">
+				<NowPlaying client:idle />
+			</section>
+		</footer>
+	</div>
+	<script is:inline>
+		setTimeout(() => {
+			if (typeof window !== 'undefined' && document.body.classList.contains('preload-transitions')) {
+				document.body.classList.remove('preload-transitions')
+			}
+		}, 0)
+	</script>
+</body>
+
+</html>

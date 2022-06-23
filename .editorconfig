@@ -6,5 +6,5 @@ end_of_line = crlf
 [*.json]
 indent_style = space
 
-[*.{md,mdx}]
+[*.md]
 trim_trailing_whitespace = false

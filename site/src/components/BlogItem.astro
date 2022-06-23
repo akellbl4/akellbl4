@@ -1,0 +1,45 @@
+---
+import LangBadge from './LangBadge.astro'
+import ViewsCounter from './ViewsCounter.astro'
+
+export type Props = {
+	title: string
+	summary: string
+	url?: string
+	lang?: string
+	original?: {
+		url: string
+		external?: boolean
+	}
+}
+
+const { title, summary, url, lang, original } = Astro.props
+const slug = url.split('/').pop()
+---
+
+<article class="relative">
+	<div class="flex flex-col sm:flex-row justify-between mb-2">
+		<h3 class="flex mb-1 sm:mb-0 text-lg sm:text-xl font-bold w-full text-slate-900 dark:text-slate-100">
+			<a href={original?.external ? original?.url : url}
+				class="block-link transition-opacity opacity-80 hover:opacity-100">
+				{lang && (
+				<span class="order-2 self-start ml-auto sm:order-none sm:ml-0 sm:mr-2">
+					<LangBadge>{lang}</LangBadge>{' '}
+				</span>
+				)}
+				{title}
+				{original?.external && (
+				<svg aria-hidden="true" class="ml-2 w-4 h-4 inline align-baseline">
+					<use xlink:href="#external-link-icon"></use>
+				</svg>
+				)}
+			</a>
+		</h3>
+		{!original?.external && (
+		<span class="whitespace-nowrap text-sm sm:text-base text-slate-500 text-left md:text-right">
+			<ViewsCounter {slug} />
+		</span>
+		)}
+	</div>
+	<p class="text-slate-600 dark:text-slate-400 max-w-2xl">{summary}</p>
+</article>

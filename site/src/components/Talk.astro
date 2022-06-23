@@ -1,0 +1,37 @@
+---
+import LangBadge from './LangBadge.astro'
+
+export type Props = {
+	title: string
+	lang?: string
+	conferences: {
+		name: string
+		year: string
+	}[]
+}
+
+const { title, conferences, lang } = Astro.props as Props
+---
+
+<section>
+	<h3 class="flex text-lg">
+		{lang && (
+		<span class="order-2 self-start ml-auto sm:order-none sm:ml-0 sm:mr-2">
+			<LangBadge>{lang}</LangBadge>{' '}
+		</span>
+		)}
+		{title}
+	</h3>
+	{conferences && (
+	<ul>
+		{conferences.map(({ name, year }, i) => (
+		<li class="text-slate-700 dark:text-slate-300">
+			{name}, <span class="text-slate-500 dark:text-slate-400">{year}</span>
+		</li>
+		))}
+	</ul>
+	)}
+	<p>
+		<slot />
+	</p>
+</section>
