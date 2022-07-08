@@ -4,13 +4,18 @@ import { Link } from 'components/Link'
 
 type Track =
 	| {
-			progress: number | null
-			duration: number
-			track: string
-			artist: string
-			isPlaying: boolean
-			coverUrl: string
-			url: string
+			state: {
+				duration: number
+				progress: number
+				isPlaying: boolean
+			}
+			track: {
+				name: string
+				album: string
+				artist: string
+				coverUrl: string
+				url: string
+			}
 	  }
 	| Record<string, never>
 
@@ -21,7 +26,7 @@ export function NowPlaying() {
 		return <div className="transition-opacity duration-200 opacity-0 h-5 w-5 sm:h-6 sm:w-6" />
 	}
 
-	if (data.url === undefined) {
+	if (data.state.isPlaying === false) {
 		return (
 			<div className="transition-opacity duration-200 flex items-center opacity-60">
 				<svg
@@ -38,29 +43,30 @@ export function NowPlaying() {
 		)
 	}
 
+	const { state, track } = data
 	return (
 		<div className="transition-opacity duration-500 opacity-100">
 			<Link
-				href={data.url}
+				href={track.url}
 				className="track-link flex items-center"
-				title={`${data.track} – ${data.artist}`}
+				title={`${track.name} – ${track.artist}`}
 				rel="nofollow"
 			>
 				<figure className="flex-shrink-0 rounded-sm shadow overflow-hidden h-5 w-5 sm:h-6 sm:w-6 mr-2 sm:mr-3 transition-transform duration-300 bg-gray-200 dark:bg-gray-600">
 					<Image
-						key={data.coverUrl}
-						src={data.coverUrl}
+						key={track.coverUrl}
+						src={track.coverUrl}
 						height={64}
 						width={64}
-						alt={`${data.track} – ${data.artist}`}
+						alt={`${track.name} – ${track.artist}`}
 					/>
 				</figure>
 				<span className="inline-block text-gray-800 dark:text-gray-200 font-medium max-w-xs truncate">
-					{data.track}
+					{track.name}
 				</span>
 				<span className="inline-block mx-2">–</span>
 				<span className="inline-block text-gray-500 dark:text-gray-300 max-w-max truncate">
-					{data.artist}
+					{track.artist}
 				</span>
 			</Link>
 		</div>
