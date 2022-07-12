@@ -1,0 +1,69 @@
+---
+import calReadingTime from 'reading-time'
+import { format, parse } from 'date-fns'
+import { Image } from '@astrojs/image';
+
+import photo from 'assets/images/photo.jpg';
+import Layout from "layouts/Layout.astro";
+import ViewsCounter from 'components/ViewsCounter.astro';
+import ViewsCounterScript from 'components/ViewsCounter.script.astro';
+
+const { title, publishedAt, original, astro } = Astro.props.content
+const publishDate = format(parse(publishedAt, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy')
+const { text: readingTime } = calReadingTime(astro.source)
+const slug = Astro.canonicalURL.toString().split('/').splice(-2)[0]
+const { pathname } = Astro.canonicalURL
+const githubFileUrl = `https://github.com/akellbl4/pavel.mineev.me/edit/main/src/pages${pathname.replace(/\/$/, '')}.md`
+
+---
+
+<Layout title={title} canonical={original?.url}>
+	<article class="my-6" item-prop="blogPost" item-scope item-type="https://schema.org/BlogPosting">
+		<h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-6 " item-prop="name headline">
+			{title}
+		</h1>
+		<header class="flex items-center mb-8 sm:mb-10">
+			<figure
+				class="bg-slate-200 w-8 h-8 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-slate-200 dark:ring-slate-800">
+				<Image src={photo} height={64} width={64} alt="Paul Mineev" />
+			</figure>
+			<div class="flex flex-col sm:flex-row sm:justify-between sm:w-full text-sm">
+				<div class="text-slate-600 dark:text-slate-400">
+					<span item-prop="author" item-scope item-type="https://schema.org/Person">
+						<span item-prop="name">Paul Mineev</span>
+					</span>
+					&nbsp;at&nbsp;
+					<time item-prop="datePublished" date-time={publishedAt}>
+						{publishDate}
+					</time>
+				</div>
+				<div class="text-slate-500">
+					<ViewsCounter slug={slug} shouldCount />
+					<span class="inline-block mx-2" role="separator">
+						&bull;
+					</span>
+					{readingTime}
+				</div>
+			</div>
+		</header>
+		<section class="prose dark:prose-dark w-full mb-6 mx-auto" item-prop="articleBody">
+			<slot />
+		</section>
+		<footer class="max-w-[65ch] w-full mx-auto flex justify-between text-slate-600 dark:text-slate-400">
+			<div class="text-sm">
+				<a class="transition inline-block border-b border-transparent hover:border-slate-600" href={githubFileUrl}>
+					Edit on GitHub
+				</a>
+			</div>
+			{original && (
+			<div class="text-sm">
+				Originally posted on{' '}
+				<a class="transition inline-block border-b border-transparent hover:border-slate-600" href={original.url}>
+					{original.name}
+				</a>
+			</div>
+			)}
+		</footer>
+	</article>
+	<ViewsCounterScript />
+</Layout>

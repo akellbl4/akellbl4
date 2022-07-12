@@ -1,0 +1,49 @@
+---
+import Layout from "layouts/Layout.astro";
+import { Image } from '@astrojs/image/components';
+
+import avatar from 'assets/images/avatar.png';
+import photo from 'assets/images/photo.jpg';
+
+const title = 'Paul Mineev - Software Engineer, Open Source Contributor, Mentor, and sometimes Writer'
+---
+
+<Layout {title} overrideTitle>
+	<article class="my-auto pb-8">
+		<a class="inline-block text-slate-800">
+			<h1 class="title relative inline-flex flex-col-reverse sm:flex-row mb-3">
+				<div class="relative inline-block text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight">
+					<span class="title-gradient">Paul Mineev</span>
+					<span class="title-cover absolute inset-0 transition-opacity duration-500 print:hidden" aria-hidden="true">
+						Paul Mineev
+					</span>
+				</div>
+				<div class="relative flex w-10 h-10 mb-2 sm:w-16 sm:h-16 sm:-mt-10">
+					<div class="avatar absolute inset-0 h-full w-full flex rounded-full overflow-hidden first:w-full first:h-width">
+						<Image src={avatar} width={128} height={128} loading="lazy" alt="Paul Mineev" format="webp"/>
+					</div>
+					<div class="photo h-full w-full flex rounded-full overflow-hidden first:w-full first:h-width" aria-hidden>
+						<Image src={photo} width={128} height={128} loading="lazy" alt="" />
+					</div>
+				</div>
+			</h1>
+		</a>
+		<p class="block text-md w-[80%] md:w-[85%] sm:text-xl font-medium sm:leading-relaxed text-slate-400">
+			<span class="transition-color duration-300 hover:text-slate-600 dark:hover:text-slate-200">
+				I&apos;m a Software Engineer.
+			</span>{' '}
+			<br class="hidden md:inline" />
+			<span class="transition-color duration-300 hover:text-slate-600 dark:hover:text-slate-200">
+				I like to contribute to{' '}
+				<a href="/about#projects" class="border-b dark:border-slate-600 dark:hover:border-slate-400">
+					open-source
+				</a>{' '}
+				and&nbsp;
+				<a href="/blog" class="border-b dark:border-slate-600 dark:hover:border-slate-400">
+					write
+				</a>{' '}
+				about web development.
+			</span>
+		</p>
+	</article>
+</Layout>

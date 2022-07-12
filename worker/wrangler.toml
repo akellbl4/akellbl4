@@ -1,0 +1,7 @@
+name = "paul-mineev-me"
+main = "src/index.ts"
+compatibility_date = "2022-07-01"
+
+kv_namespaces = [
+  { binding = "kv", id = "40a04776dc0b4769a38d6a1d9d79fce4", preview_id = "46a8f780a8d7481d8385a769e16fa951" }
+]

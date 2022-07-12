@@ -1,0 +1,124 @@
+---
+layout: layouts/About.astro
+setup: |
+  import Project from 'components/Project.astro'
+  import Talk from 'components/Talk.astro'
+title: About Me
+---
+
+# About Me
+
+Hey, my name is Paul Mineev.
+
+I share my expertise as a teacher at [LoftSchool](https://loftschool.ru) and provide mentoring sessions for people
+who
+want to grow fast. Sometimes I consult companies about tech-stack and review their projects. I write about
+development, web specs, and about problems I faced and how to solve them.
+
+I have been participating in conferences, meetups, webinars and so on as a speaker and spoken about development,
+team
+formation and project managment from dev perspective. Also, I'm always happy to be a mentor or a judge on
+hackathons.
+I already took part in more than 10 hacks such as McHacks, SF Hacks, and LA Hacks.
+
+## Projects
+
+<div class="grid sm:grid-cols-2 gap-6">
+	<Project url="https://github.com/umputun/remark42" title="Remark42">
+		I'm working on client-side part of the project since start of 2019. I work on implementation of
+		new functional, refactoring and updating of the UI.
+	</Project>
+	<Project url="https://spotify-badge.vercel.app" title="Spotify Badge">
+		Once I realized Spotify has API I'm trying to utilize it. Since GitHub added Profile README.md I
+		wanted to share what is playing in my Spotify there. It led to this project.
+	</Project>
+	<Project url="https://github.com/radio-t/radio-t-site" title="Radio-T">
+		I joined the project with target of optimizations bundle size and reduce number of dependencies.
+		As goal we reached 90+ WebVitals score.
+	</Project>
+	<Project url="https://reproxy.io" title="Reproxy">
+		I like when cool projects have fancy design. Connected with that I created logo and web-site for
+		the project.
+	</Project>
+</div>
+
+## Conference Talks
+
+<Talk title="How to adopt new technology and don't waste time" lang="ru" conferences={[{ name: 'TechLead Conference', year: '2020' }]}>
+	Told to the audience about TechRadar, what is it, and how to utilize it for a team or for the
+	whole company. Explained why TechRadar could help adopt new tecnologies and why it's more
+	important not just create it but build whole process to manage it.
+</Talk>
+
+<Talk title="From Request to DOMContentLoaded on Example of Mail.ru Main Page" lang="ru" conferences={[{ name: 'Highload++ Conference', year: '2015' }, { name: 'Mail.ru Meetup', year: '2015' }]}>
+	Spoke about optimizations that were done for get maximum speed of loading of Mail.ru main page.
+	Introduced how we use pure V8 engine for isomorphic rendering and how we reached really good
+	perfomance on the server-side as well as on client-side.
+</Talk>
+
+## My Gear
+
+In case you are wondering what tech I am using daily and for development
+
+### Workstation
+
+- MacBook Pro 16" with M1 Pro
+- Mac Mini M1
+- LG Monitor 27" 27GN950 x2
+- iPad Pro 11"
+- Audioengine A2+
+- Logitech MX Master 3
+- Logitech 4K Pro Webcam
+- BenQ ScreenBar Halo
+- Shure MV7 on Elgato Wave Mic Arm
+- Beyerdynamics DT 770 PRO
+- Rama M60-A Olivia Edition 
+
+### Battlestation
+
+- ASUS Rog Strix Z390i
+- Intel 9900k
+- Saphire AMD Radeon 5700XT 8Gb (reference)
+- G.Skill 32GB 3200MHz
+- Samsung 1Tb 970 EVO Plus M2
+- AIO CoolerMaster 240mm
+- FormD T1
+
+### Office
+
+- Herman Miller Embody
+- Uplift Desk L-Shaped
+- Uplift Bamboo Rocker-X
+- Uplift Motion Stool
+
+### Keyboards
+
+**Rama M60-A Olivia Edition**
+- W02-A Internal Dampener
+- Drop X Holy Panda Switches
+- Drop + BIIP MT3 Extended 2048 Keycaps
+
+**KBDFans Tofu HHKB**
+- Silence Insert
+- ZealPC Zelious Switches
+- Gentleman Keycaps
+
+**HHKB Professional 2 (on sale)**
+- Silence Insert
+- Spacebar Foam Mod
+- Blue Spacebar
+- Red Esc
+
+### Other Tech
+
+- PlayStation 5
+- Apple Watch
+- Insta360 One RS 4k Boost Lense
+
+
+### Coding
+
+- Editor: VSCode, GoLand
+- Theme: Dracula Official
+- Terminal: iTerm and ZSH with Powerlevel10k
+
