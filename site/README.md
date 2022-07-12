@@ -8,11 +8,11 @@ When I switched to Astro I moved [API implementation](https://github.com/akellbl
 
 ## Run on local machine
 
-```bash
-$ git clone https://github.com/akellbl4/pavel.mineev.me.git
-$ cd pavel.mineev.me
-$ pnpm i
-$ pnpm dev
+```shell
+git clone https://github.com/akellbl4/pavel.mineev.me.git
+cd pavel.mineev.me
+pnpm i
+pnpm dev
 ```
 
 ### Built Using
