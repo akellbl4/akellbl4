@@ -14,7 +14,6 @@ const { text: readingTime } = calcReadingTime(astro.source)
 const { pathname } = Astro.canonicalURL
 const slug = pathname.split('/').splice(-2)[0]
 const githubFileUrl = `https://github.com/akellbl4/pavel.mineev.me/edit/main/site/src/pages${pathname.replace(/\/$/, '')}.md`
-
 ---
 
 <Layout title={title} canonical={original?.url}>
