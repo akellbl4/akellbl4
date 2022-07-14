@@ -13,7 +13,7 @@ const publishDate = format(parse(publishedAt, 'yyyy-MM-dd', new Date()), 'MMMM d
 const { text: readingTime } = calReadingTime(astro.source)
 const slug = Astro.canonicalURL.toString().split('/').splice(-2)[0]
 const { pathname } = Astro.canonicalURL
-const githubFileUrl = `https://github.com/akellbl4/pavel.mineev.me/edit/main/src/pages${pathname.replace(/\/$/, '')}.md`
+const githubFileUrl = `https://github.com/akellbl4/pavel.mineev.me/edit/main/site/src/pages${pathname.replace(/\/$/, '')}.md`
 
 ---
 
