@@ -64,12 +64,14 @@ function formatPlaybackState(data: SpotifyApi.CurrentlyPlayingResponse): Playbac
 }
 
 function formatNowPlaying(data: SpotifyApi.CurrentlyPlayingResponse): NowPlaying {
+  const state = formatPlaybackState(data)
+  const track = state.isPlaying && (data.item !== null || data.currently_playing_type === 'track')
+    ? formatTrack(data.item as SpotifyApi.TrackObjectFull)
+    : null;
+  
   return {
-    state: formatPlaybackState(data),
-    track:
-      data.item !== null || data.currently_playing_type === 'track'
-        ? formatTrack(data.item as SpotifyApi.TrackObjectFull)
-        : null,
+    state,
+    track
   }
 }
 
