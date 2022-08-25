@@ -1,10 +1,10 @@
 ---
 layout: layouts/About.astro
-setup: |
-  import Project from 'components/Project.astro'
-  import Talk from 'components/Talk.astro'
 title: About Me
 ---
+
+import Project from 'components/Project.astro'
+import Talk from 'components/Talk.astro'
 
 # About Me
 
@@ -23,7 +23,7 @@ I already took part in more than 10 hacks such as McHacks, SF Hacks, and LA Hack
 
 ## Projects
 
-<div class="grid sm:grid-cols-2 gap-6">
+<div class="grid gap-6 sm:grid-cols-2">
 	<Project url="https://github.com/umputun/remark42" title="Remark42">
 		I'm working on client-side part of the project since start of 2019. I work on implementation of
 		new functional, refactoring and updating of the UI.
@@ -44,13 +44,24 @@ I already took part in more than 10 hacks such as McHacks, SF Hacks, and LA Hack
 
 ## Conference Talks
 
-<Talk title="How to adopt new technology and don't waste time" lang="ru" conferences={[{ name: 'TechLead Conference', year: '2020' }]}>
+<Talk
+	title="How to adopt new technology and don't waste time"
+	lang="ru"
+	conferences={[{ name: 'TechLead Conference', year: '2020' }]}
+>
 	Told to the audience about TechRadar, what is it, and how to utilize it for a team or for the
 	whole company. Explained why TechRadar could help adopt new tecnologies and why it's more
 	important not just create it but build whole process to manage it.
 </Talk>
 
-<Talk title="From Request to DOMContentLoaded on Example of Mail.ru Main Page" lang="ru" conferences={[{ name: 'Highload++ Conference', year: '2015' }, { name: 'Mail.ru Meetup', year: '2015' }]}>
+<Talk
+	title="From Request to DOMContentLoaded on Example of Mail.ru Main Page"
+	lang="ru"
+	conferences={[
+		{ name: 'Highload++ Conference', year: '2015' },
+		{ name: 'Mail.ru Meetup', year: '2015' },
+	]}
+>
 	Spoke about optimizations that were done for get maximum speed of loading of Mail.ru main page.
 	Introduced how we use pure V8 engine for isomorphic rendering and how we reached really good
 	perfomance on the server-side as well as on client-side.
@@ -72,7 +83,7 @@ In case you are wondering what tech I am using daily and for development
 - BenQ ScreenBar Halo
 - Shure MV7 on Elgato Wave Mic Arm
 - Beyerdynamics DT 770 PRO
-- Rama M60-A Olivia Edition 
+- Rama M60-A Olivia Edition
 
 ### Battlestation
 
@@ -94,16 +105,19 @@ In case you are wondering what tech I am using daily and for development
 ### Keyboards
 
 **Rama M60-A Olivia Edition**
+
 - W02-A Internal Dampener
 - Drop X Holy Panda Switches
 - Drop + BIIP MT3 Extended 2048 Keycaps
 
 **KBDFans Tofu HHKB**
+
 - Silence Insert
 - ZealPC Zelious Switches
 - Gentleman Keycaps
 
 **HHKB Professional 2 (on sale)**
+
 - Silence Insert
 - Spacebar Foam Mod
 - Blue Spacebar
@@ -115,10 +129,8 @@ In case you are wondering what tech I am using daily and for development
 - Apple Watch
 - Insta360 One RS 4k Boost Lense
 
-
 ### Coding
 
 - Editor: VSCode, GoLand
 - Theme: Dracula Official
 - Terminal: iTerm and ZSH with Powerlevel10k
-

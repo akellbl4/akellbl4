@@ -32,6 +32,10 @@ h6 {
 	@apply text-slate-900 dark:text-slate-100;
 }
 
+img {
+	content-visibility: auto;
+}
+
 .preload-transitions * {
 	transition: none !important;
 }
@@ -122,7 +126,7 @@ h6 {
 }
 
 .prose .project a {
-	@apply inline-block font-bold text-slate-800 no-underline dark:text-slate-200;
+	@apply text-slate-800 dark:text-slate-200 inline-block font-bold no-underline;
 }
 .prose .project a:hover {
 	@apply dark:text-slate-200;
@@ -141,9 +145,12 @@ h6 {
 .prose *:hover > a {
 	@apply visible;
 }
+.prose :where(strong):not(:where([class~='not-prose'] *)) {
+	@apply text-inherit;
+}
 
 .rehype-code-title {
-	@apply rounded-t-lg bg-slate-200 py-3 px-4 font-mono text-sm font-bold tracking-tight dark:bg-slate-900 dark:text-slate-300;
+	@apply bg-slate-200 dark:bg-slate-900 dark:text-slate-300 rounded-t-lg py-3 px-4 font-mono text-sm font-bold tracking-tight;
 }
 
 .rehype-code-title + pre {

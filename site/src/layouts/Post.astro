@@ -1,17 +1,17 @@
 ---
 import calcReadingTime from 'reading-time'
 import { format, parse } from 'date-fns'
-import { Image } from '@astrojs/image';
 
 import photo from 'assets/images/photo.jpg';
 import Layout from "layouts/Layout.astro";
+import Image from 'components/Image.astro';
 import ViewsCounter from 'components/ViewsCounter.astro';
 import ViewsCounterScript from 'components/ViewsCounter.script.astro';
 
-const { title, publishedAt, original, astro } = Astro.props.content
+const { title, publishedAt, original } = Astro.props.content
 const publishDate = format(parse(publishedAt, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy')
-const { text: readingTime } = calcReadingTime(astro.source)
-const { pathname } = Astro.canonicalURL
+const { text: readingTime } = calcReadingTime(Astro.props.rawContent())
+const { pathname } = Astro.url
 const slug = pathname.split('/').splice(-2)[0]
 const githubFileUrl = `https://github.com/akellbl4/pavel.mineev.me/edit/main/site/src/pages${pathname.replace(/\/$/, '')}.md`
 ---
@@ -24,7 +24,7 @@ const githubFileUrl = `https://github.com/akellbl4/pavel.mineev.me/edit/main/sit
 		<header class="flex items-center mb-8 sm:mb-10">
 			<figure
 				class="bg-slate-200 w-8 h-8 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-slate-200 dark:ring-slate-800">
-				<Image src={photo} height={64} width={64} alt="Paul Mineev" />
+				<Image src={photo} height={48} width={48} alt="Paul Mineev" />
 			</figure>
 			<div class="flex flex-col sm:flex-row sm:justify-between sm:w-full text-sm">
 				<div class="text-slate-600 dark:text-slate-400">
