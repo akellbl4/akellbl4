@@ -9,7 +9,14 @@ import compress from 'astro-compress'
 
 export default defineConfig({
 	site: 'https://astro.mineev.me',
-	integrations: [svelte(), tailwind(), sitemap(), image(), mdx(), compress({ img: false })],
+	integrations: [
+		svelte(),
+		tailwind({ applyBaseStyles: false }),
+		sitemap(),
+		image(),
+		mdx(),
+		compress({ img: false }),
+	],
 	markdown: {
 		syntaxHighlight: false,
 		rehypePlugins: [
