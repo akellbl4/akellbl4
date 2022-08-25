@@ -1,0 +1,23 @@
+---
+import { getImage, ImageMetadata, TransformOptions, OutputFormat } from '@astrojs/image';
+import ImgHTMLAttributes = astroHTML.JSX.ImgHTMLAttributes
+
+interface LocalImageProps
+	extends Omit<TransformOptions, 'src'>,
+		Omit<ImgHTMLAttributes, 'src' | 'width' | 'height'> {
+	src: ImageMetadata | Promise<{ default: ImageMetadata }>;
+}
+
+interface RemoteImageProps extends TransformOptions, astroHTML.JSX.ImgHTMLAttributes {
+	src: string;
+	width: number;
+	height: number;
+	format?: OutputFormat;
+}
+
+export type Props = LocalImageProps | RemoteImageProps;
+
+const attrs = await getImage(Astro.props as Props);
+---
+
+<img {...attrs} loading='lazy' decoding='async' format="webp" />

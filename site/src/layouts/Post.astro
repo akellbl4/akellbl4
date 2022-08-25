@@ -1,17 +1,17 @@
 ---
 import calcReadingTime from 'reading-time'
 import { format, parse } from 'date-fns'
-import { Image } from '@astrojs/image';
 
 import photo from 'assets/images/photo.jpg';
 import Layout from "layouts/Layout.astro";
+import Image from 'components/Image.astro';
 import ViewsCounter from 'components/ViewsCounter.astro';
 import ViewsCounterScript from 'components/ViewsCounter.script.astro';
 
-const { title, publishedAt, original, astro } = Astro.props.content
+const { title, publishedAt, original } = Astro.props.content
 const publishDate = format(parse(publishedAt, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy')
-const { text: readingTime } = calcReadingTime(astro.source)
-const { pathname } = Astro.canonicalURL
+const { text: readingTime } = calcReadingTime(Astro.props.rawContent())
+const { pathname } = Astro.url
 const slug = pathname.split('/').splice(-2)[0]
 const githubFileUrl = `https://github.com/akellbl4/pavel.mineev.me/edit/main/site/src/pages${pathname.replace(/\/$/, '')}.md`
 ---

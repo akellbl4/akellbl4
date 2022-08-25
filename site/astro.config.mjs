@@ -3,12 +3,13 @@ import { defineConfig } from 'astro/config'
 import svelte from '@astrojs/svelte'
 import tailwind from '@astrojs/tailwind'
 import sitemap from '@astrojs/sitemap'
-import image from '@astrojs/image';
-import compress from "astro-compress";
+import image from '@astrojs/image'
+import mdx from '@astrojs/mdx'
+import compress from 'astro-compress'
 
 export default defineConfig({
 	site: 'https://astro.mineev.me',
-  integrations: [svelte(), tailwind({ config: { applyBaseStyles: false }}), sitemap(), image(), compress({ img: false })],
+	integrations: [svelte(), tailwind(), sitemap(), image(), mdx(), compress({ img: false })],
 	markdown: {
 		syntaxHighlight: false,
 		rehypePlugins: [
@@ -24,5 +25,5 @@ export default defineConfig({
 				'/api': 'http://localhost:8787',
 			},
 		},
-  },
+	},
 })

@@ -13,8 +13,8 @@ export type Props = {
 	sharingImageUrl?: string
 }
 
-const { pathname } = Astro.canonicalURL
-const url = Astro.canonicalURL.toString()
+const { pathname } = Astro.url
+const url = Astro.url.toString()
 const isHome = pathname === '/'
 const baseUrl = "https://paul.mineev.me"
 

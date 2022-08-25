@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
 	color-scheme: light dark;
 }
@@ -30,6 +26,10 @@ h4,
 h5,
 h6 {
 	@apply text-slate-900 dark:text-slate-100;
+}
+
+img {
+	content-visibility: auto;
 }
 
 .preload-transitions * {
@@ -140,6 +140,9 @@ h6 {
 
 .prose *:hover > a {
 	@apply visible;
+}
+.prose :where(strong):not(:where([class~='not-prose'] *)) {
+	@apply text-inherit;
 }
 
 .rehype-code-title {
