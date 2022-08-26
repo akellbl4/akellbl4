@@ -11,7 +11,7 @@ export default defineConfig({
 	site: 'https://astro.mineev.me',
 	integrations: [
 		svelte(),
-		tailwind({ applyBaseStyles: false }),
+		tailwind({ config: { applyBaseStyles: false } }),
 		sitemap(),
 		image(),
 		mdx(),
