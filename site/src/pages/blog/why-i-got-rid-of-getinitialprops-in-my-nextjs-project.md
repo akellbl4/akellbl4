@@ -272,7 +272,7 @@ export async function getStaticProps(ctx) {
 }
 ```
 
-We created a map of params in `getStaticPaths`, and they will look like `[{ name: ‘akellbl4’, name: ‘akellbi4.github.io’ }].` Then for each element of this map, `getStaticProps` will be called and this name will be passed in ctx.params. We could fiddle with the fallback param. [Check out docs](https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required) for more on that. If you need to update these pages by time, you could specify the revalidate param and return it from `getStaticProps`. [See the docs for more](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation).
+We created a map of params in `getStaticPaths`, and they will look like `[{ name: ‘akellbl4’ }, { name: ‘akellbi4.github.io’ }].` Then for each element of this map, `getStaticProps` will be called and this name will be passed in ctx.params. We could fiddle with the fallback param. [Check out docs](https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required) for more on that. If you need to update these pages by time, you could specify the revalidate param and return it from `getStaticProps`. [See the docs for more](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation).
 
 ### Server-side-rendered pages
 
