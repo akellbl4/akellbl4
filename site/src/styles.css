@@ -98,7 +98,7 @@ img {
 }
 
 .link-emoji::after {
-	@apply absolute top-0 left-0 h-full w-full text-center opacity-0;
+	@apply absolute left-0 top-0 h-full w-full text-center opacity-0;
 	content: attr(data-emoji);
 
 	color: initial;
@@ -126,7 +126,7 @@ img {
 }
 
 .prose .project a {
-	@apply text-slate-800 dark:text-slate-200 inline-block font-bold no-underline;
+	@apply inline-block font-bold text-slate-800 no-underline dark:text-slate-200;
 }
 .prose .project a:hover {
 	@apply dark:text-slate-200;
@@ -150,11 +150,11 @@ img {
 }
 
 .rehype-code-title {
-	@apply bg-slate-200 dark:bg-slate-900 dark:text-slate-300 rounded-t-lg py-3 px-4 font-mono text-sm font-bold tracking-tight;
+	@apply rounded-t-lg bg-slate-200 px-4 py-3 font-mono text-sm font-bold tracking-tight dark:bg-slate-900 dark:text-slate-300;
 }
 
 .rehype-code-title + pre {
-	@apply mt-0 rounded-t-none rounded-b-lg text-sm;
+	@apply mt-0 rounded-b-lg rounded-t-none text-sm;
 }
 
 .token.comment {
