@@ -5,15 +5,15 @@ import ViewsCounter from './ViewsCounter.astro'
 export type Props = {
 	title: string
 	summary: string
-	url?: string
-	lang?: string
+	url?: string | undefined
+	lang?: string| undefined
 	original?: {
 		url: string
-		external?: boolean
-	}
+		external?: boolean| undefined
+	}| undefined
 }
 
-const { title, summary, url, lang, original } = Astro.props
+const { title, summary, url = '', lang, original } = Astro.props
 const slug = url.split('/').pop()
 ---
 

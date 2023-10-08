@@ -24,7 +24,7 @@ const { title, conferences, lang } = Astro.props as Props
 	</h3>
 	{conferences && (
 	<ul>
-		{conferences.map(({ name, year }, i) => (
+		{conferences.map(({ name, year }) => (
 		<li class="text-slate-700 dark:text-slate-300">
 			{name}, <span class="text-slate-500 dark:text-slate-400">{year}</span>
 		</li>
