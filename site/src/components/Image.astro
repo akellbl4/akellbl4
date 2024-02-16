@@ -1,10 +1,11 @@
 ---
-import { getImage,type LocalImageProps, type RemoteImageProps } from 'astro:assets';
+import { getImage } from 'astro:assets'
+import { type UnresolvedImageTransform } from 'astro'
 
+export type Props = UnresolvedImageTransform
 
-export type Props = LocalImageProps | RemoteImageProps;
-
-const attrs = await getImage({ format: 'webp', ...Astro.props });
+const attrs = await getImage({ format: 'webp', ...Astro.props })
 ---
 
-<img {...attrs} loading='lazy' decoding='async' />
+<img {...attrs} loading="lazy" decoding="async" />
+

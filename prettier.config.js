@@ -1,13 +1,11 @@
-
-
 /** @type {import("prettier").Config} */
 const config = {
-  semi: false,
+	semi: false,
 	trailingComma: 'es5',
 	singleQuote: true,
 	printWidth: 100,
-  tailwindConfig: './site/tailwind.config.js',
-  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
+	tailwindConfig: './site/tailwind.config.js',
+	plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
 	overrides: [
 		{
 			files: '*.astro',
@@ -16,6 +14,6 @@ const config = {
 			},
 		},
 	],
-};
+}
 
-export default config;
+export default config
