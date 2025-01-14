@@ -2,66 +2,78 @@
 import calcReadingTime from 'reading-time'
 import { format, parse } from 'date-fns'
 
-import photo from 'assets/images/photo.jpg';
-import Layout from "layouts/Layout.astro";
-import Image from 'components/Image.astro';
-import ViewsCounter from 'components/ViewsCounter.astro';
-import ViewsCounterScript from 'components/ViewsCounter.script.astro';
+import photo from 'assets/images/photo.jpg'
+import Layout from 'layouts/Layout.astro'
+import Image from 'components/Image.astro'
+import ViewsCounter from 'components/ViewsCounter.astro'
+import ViewsCounterScript from 'components/ViewsCounter.script.astro'
 
 const { title, publishedAt, original } = Astro.props.content
 const publishDate = format(parse(publishedAt, 'yyyy-MM-dd', new Date()), 'MMMM d, yyyy')
 const { text: readingTime } = calcReadingTime(Astro.props.rawContent())
 const { pathname } = Astro.url
-const slug = pathname.split('/').splice(-1)[0]
-const githubFileUrl = `https://github.com/akellbl4/pavel.mineev.me/edit/main/site/src/pages${pathname.replace(/\/$/, '')}.md`
+const slug = pathname.split('/').at(-1)
+const githubFileUrl = `https://github.com/akellbl4/pavel.mineev.me/edit/main/site/src/pages${pathname.replace(
+	/\/$/,
+	''
+)}.md`
 ---
 
 <Layout title={title} canonical={original?.url}>
 	<article class="my-6" item-prop="blogPost" item-scope item-type="https://schema.org/BlogPosting">
-		<h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-6 " item-prop="name headline">
+		<h1 class="mb-6 text-3xl font-bold tracking-tight md:text-4xl" item-prop="name headline">
 			{title}
 		</h1>
-		<header class="flex items-center mb-8 sm:mb-10">
+		<header class="mb-8 flex items-center sm:mb-10">
 			<figure
-				class="bg-slate-200 w-8 h-8 sm:w-6 sm:h-6 mr-4 rounded-full overflow-hidden flex-shrink-0 ring-1 ring-slate-200 dark:ring-slate-800">
+				class="mr-4 h-8 w-8 flex-shrink-0 overflow-hidden rounded-full bg-slate-200 ring-1 ring-slate-200 dark:ring-slate-800 sm:h-6 sm:w-6"
+			>
 				<Image src={photo} height={48} width={48} alt="Paul Mineev" />
 			</figure>
-			<div class="flex flex-col sm:flex-row sm:justify-between sm:w-full text-sm">
+			<div class="flex flex-col text-sm sm:w-full sm:flex-row sm:justify-between">
 				<div class="text-slate-600 dark:text-slate-400">
 					<span item-prop="author" item-scope item-type="https://schema.org/Person">
 						<span item-prop="name">Paul Mineev</span>
 					</span>
-					&nbsp;at&nbsp;
+					 &nbsp;at&nbsp;
 					<time item-prop="datePublished" date-time={publishedAt}>
 						{publishDate}
 					</time>
 				</div>
 				<div class="text-slate-500">
 					<ViewsCounter {slug} shouldCount />
-					<span class="inline-block mx-2" role="separator">
-						&bull;
-					</span>
+					<span class="mx-2 inline-block" role="separator"> &bull;</span>
 					{readingTime}
 				</div>
 			</div>
 		</header>
-		<section class="prose dark:prose-dark w-full mb-6 mx-auto" item-prop="articleBody">
+		<section class="prose mx-auto mb-6 w-full dark:prose-dark" item-prop="articleBody">
 			<slot />
 		</section>
-		<footer class="max-w-[65ch] w-full mx-auto flex justify-between text-slate-600 dark:text-slate-400">
+		<footer
+			class="mx-auto flex w-full max-w-[65ch] justify-between text-slate-600 dark:text-slate-400"
+		>
 			<div class="text-sm">
-				<a class="transition inline-block border-b border-transparent hover:border-slate-600" href={githubFileUrl}>
+				<a
+					class="inline-block border-b border-transparent transition hover:border-slate-600"
+					href={githubFileUrl}
+				>
 					Edit on GitHub
 				</a>
 			</div>
-			{original && (
-			<div class="text-sm">
-				Originally posted on{' '}
-				<a class="transition inline-block border-b border-transparent hover:border-slate-600" href={original.url}>
-					{original.name}
-				</a>
-			</div>
-			)}
+			{
+				original && (
+					<div class="text-sm">
+						Originally posted on{' '}
+						<a
+							class="inline-block border-b border-transparent transition hover:border-slate-600"
+							href={original.url}
+						>
+							{original.name}
+						</a>
+					</div>
+				)
+			}
 		</footer>
 	</article>
 	<ViewsCounterScript />
