@@ -23,7 +23,7 @@
     "@astrojs/tailwind": "^5.0.1",
     "@sveltejs/vite-plugin-svelte": "^2.4.6",
     "@tailwindcss/typography": "^0.5.10",
-    "astro": "^3.2.3",
+    "astro": "^5.15.9",
     "astro-compress": "^2.0.15",
     "date-fns": "^2.30.0",
     "image-size": "^1.0.2",
